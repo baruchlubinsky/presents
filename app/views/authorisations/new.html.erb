@@ -1,0 +1,12 @@
+<h1>Sign in</h1>
+<%= form_tag :controller => :authorisations, :action => :create do %>
+	<%= label_tag :email, 'E-mail address' %>
+	<%= text_field_tag :email %></br>
+	<%= label_tag :password, 'Password' %>
+	<%= password_field_tag :password %></br>
+	<%= submit_tag 'Sign in' %>
+	<p>
+		<%= link_to 'Or create a new user', :controller => :users, :action => :new %>
+	</p>
+<% end %>
+
