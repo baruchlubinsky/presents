@@ -9,6 +9,8 @@ PresentsInThePost::Application.routes.draw do
   
   match 'login' => 'authorisations#new'
   match 'logout' => 'authorisations#destroy'
+  
+  root :to => 'pages#home'
 
   match 'admin' => 'admins#index'
 

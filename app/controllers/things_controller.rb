@@ -15,8 +15,10 @@ class ThingsController < ApplicationController
     @things = Thing.all
   end
   
-  
-  
-  def
+  def destroy
+    @thing = Thing.find(params[:id])
+    @thing.delete
+    redirect_to things_path
+  end
   
 end

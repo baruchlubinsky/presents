@@ -26,6 +26,11 @@ class StoriesController < ApplicationController
     @story.save
     redirect_to stories_path
   end
+  def destroy
+    @story = Story.find(params[:id])
+    @story.delete
+    redirect_to stories_path
+  end
   
   private
   def clean_images

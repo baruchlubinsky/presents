@@ -1,0 +1,13 @@
+<h1>Upload to things you like</h1>
+<%= form_for @thing do |f| %>
+    <%= f.fields_for :image do |attachment| %>
+        <p>
+        <%= attachment.file_field :file %>
+        </p>
+        <p>
+        <%= attachment.label :remote_file_url, "or image url" %><br />
+        <%= attachment.text_field :remote_file_url %>
+        </p>
+    <% end %>
+    <%= f.submit 'Upload' %>
+<% end %>

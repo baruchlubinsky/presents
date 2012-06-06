@@ -1,0 +1,10 @@
+<h1>Things you like</h1>
+<%= link_to 'Add an image', new_thing_path %>
+<ul>
+    <% @things.each do |t| %>
+      <li>
+          <%= image_tag t.image.file_url(:thumbnail).to_s %>
+          <%= link_to 'Delete', thing_path(t), :method => :delete %>
+      </li>  
+    <% end %>
+</ul>

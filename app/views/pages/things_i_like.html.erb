@@ -1,1 +1,10 @@
-Things I Like
+<%= content_for :head do %>
+    <%= stylesheet_link_tag "pages", :media => "all" %>
+    <%= stylesheet_link_tag "things_i_like", :media => "all" %>
+    <%= javascript_include_tag "masonry" %>
+    <%= javascript_include_tag "things_i_like" %>
+<% end %>
+
+<div id='container'>
+<%= render @things %>
+</div>

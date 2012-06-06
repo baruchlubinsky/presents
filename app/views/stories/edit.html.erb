@@ -37,7 +37,7 @@
     </p>
 <% end %>
 <ul>
-    <% @story.images.each do |image| %>
+    <% @story.blog_images.each do |image| %>
         <li>
             <%= image_tag image.file_url(:thumbnail).to_s %>
             <%= link_to 'Delete', story_blog_image_path(@story, image), :method => :delete %>

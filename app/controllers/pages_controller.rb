@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     
   end
   def things_i_like
+    @things = Thing.all.desc(:created_at)
     
   end
   def about

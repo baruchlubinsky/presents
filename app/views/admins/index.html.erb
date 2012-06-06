@@ -1,4 +1,15 @@
 <h1>Admin page</h1>
-<%= link_to 'Create a new post', new_story_path %>
-<%= link_to 'Edit posts', edit_stories_path %>
-<%= link_to %>
+<ul>
+    <li>
+        <%= link_to 'Create a new post', new_story_path %>
+    </li>
+    <li>
+        <%= link_to 'Edit posts', stories_path %>
+    </li>
+    <li>
+        <%= link_to 'Post on "Things I Like"', new_thing_path %>
+    </li>
+    <li>
+        <%= link_to 'Edit "Things I Like"', things_path %>
+    </li>
+</ul>
