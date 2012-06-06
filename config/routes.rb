@@ -24,7 +24,7 @@ PresentsInThePost::Application.routes.draw do
     resources :items
   end 
   
-
+  resources :things
   
   
   # The priority is based upon order of creation:

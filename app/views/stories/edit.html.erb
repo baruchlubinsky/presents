@@ -11,7 +11,29 @@
     <%= f.text_area :content %>
     </p>
     <p>
-        <%= f.submit 'Save changes' %>
+        <div id='upload_container'>
+            <%= f.fields_for 'blog_images[0]' do |attachments| %>
+                <p>
+                <%= attachments.file_field :file %>
+                </p>
+                <p>
+                <%= attachments.label :remote_file_url, "or image url" %><br />
+                <%= attachments.text_field :remote_file_url %>
+                </p>
+            <% end %>
+        </div>
+        <%= f.submit 'Submit changes' %>
+        <div class='hidden' id='upload_template'>
+        <%= f.fields_for 'blog_images[999]' do |attachments| %>
+            <p>
+            <%= attachments.file_field :file %>
+            </p>
+            <p>
+            <%= attachments.label :remote_file_url, "or image url" %><br />
+            <%= attachments.text_field :remote_file_url %>
+            </p>
+        <% end %>
+        </div>
     </p>
 <% end %>
 <ul>

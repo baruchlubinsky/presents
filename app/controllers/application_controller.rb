@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     
     def require_admin
       check_login
-      unless @user[:admin]
+      if @user.nil? || @user[:admin].nil?
         redirect_to home_path
       end
     end  
