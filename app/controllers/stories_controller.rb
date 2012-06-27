@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController 
   before_filter :require_admin
-  before_filter :clean_images, :only => [:create, :update]
+  #before_filter :clean_images, :only => [:create, :update]
   #before_filter :require_admin, :only => [:new, :create]
   #before_filter :make_images, :only => [:create]
   def index

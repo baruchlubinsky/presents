@@ -1,0 +1,72 @@
+<h1>Order your present in the post</h1>
+<% if @presents.nil? && @product.nil? %>
+<p>
+    We're sorry, there is no present available to order at this time, please check back soon.
+</p>
+<% else %>
+    <%= form_for @order do |f| %>
+        <% if @presents %>
+            <p>
+                <%= f.label :present, 'How many presents would you like to receive?' %>
+                <br />
+                <%= f.select :present, [['1 Present (R250)', 1],['2 Presents (R500)', 2],['3 Presents (R700)', 3]] %>
+            </p>
+            <p>
+                <%= f.label 'Choose the option to get the present bested suited to you'%>
+            </p>
+            <%= f.fields_for :options do |o| %>
+                <p>
+                    <%= o.label :recipient, 'This present is for a:'%>
+                    <br />
+                    <%= o.select :recipient, @presents.collect {|pres| [pres.recipient, pres.id]} %>
+                </p>
+                
+                <p>
+                <div id='options_container'>
+                    <%= render(:partial => 'presents/options', :locals => {:form => @order, :options => @presents[0].options}) %>
+                </div>
+                </p>
+             <% end %>
+         <% end %>
+         <% if @product %>
+            <%= label_tag "Ordering #{@product.name}" %>
+         <% end %>
+         <%= f.fields_for :options do |o| %>
+            <p>
+                <%= o.label :gift, 'Send as a gift?' %>
+                <%= o.check_box :gift %>
+            </p>
+            <div id='message' class='hidden'>
+                <p>
+                    <%= o.label :message, 'Write a message'%>
+                    <br />
+                    <%= o.text_area :message, :rows => 8  %>
+                </p>
+            </div>
+        <% end %>
+        <%= f.label :delivery_address, 'Delivery address' %>
+        <%= f.fields_for :delivery_address do |a| %>
+            <% 3.times do |i| %>
+                <p>
+                    <%= a.label i, "Address line #{i + 1}"%>
+                    <br />
+                    <%= a.text_field i %>
+                </p>
+            <% end %>
+            <p>
+                <%= a.label 3, "Postal code"%>
+                <br />
+                <%= a.text_field 3 %>
+            </p>
+        <% end %>
+        <%= label_tag "After completing this order, you will be e-mailed with our bank details to complete the payemnt."%>
+        <%= f.submit "Order" %>
+    <% end %>
+    <% if @presents %>
+        <div class='hidden'>
+            <%= form_tag present_path(@presents[0].id), :method => :get, :remote => true, :id => 'submit_present' do %>
+                <%= submit_tag  %>
+            <% end %>    
+        </div>
+    <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<%= fields_for form do |f| %>
+    <%= f.fields_for 'options' do |opt| %>
+        <% options.each do |o| %>
+            <div class='option'>
+            <label>
+            <%= image_tag o.image_url %>
+            <br />
+            <%= opt.radio_button 'choice', o.name %>
+            </label>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

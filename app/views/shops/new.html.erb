@@ -1,0 +1,17 @@
+<h1>New shop</h1>
+<%= form_for @shop do |f| %>
+    <%= flash[:notice] %>
+    <p>
+        <%= f.label :name, 'Shop name' %>
+        <br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= label_tag :artist_email, 'Artist email' %>
+        <br />
+        <%= text_field_tag :artist_email %>
+    </p>
+    <p>
+        <%= f.submit 'Create' %>
+    </p>
+<% end %>

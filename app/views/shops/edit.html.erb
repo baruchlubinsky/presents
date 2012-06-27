@@ -1,0 +1,22 @@
+<h1><%= @shop.name %></h1>
+<%= form_for @shop do |f| %>
+    <p>
+        <%= f.label :online, 'Is your shop ready to go online?'%>
+        <%= f.check_box :online %>
+    </p>
+    <p>
+        <%= f.label :description, 'About your shop' %>
+        <br />
+        <%= f.text_area :description, :rows => 4 %>
+    </p>
+    <%= f.submit 'Save' %>
+<% end %>
+<h2>Products</h2>
+<%= link_to 'Add a product', new_shop_product_path(@shop) %>
+<ul>
+    <% @shop.products.each do |p| %>
+        <li>
+            <%= p.name %>-<%= link_to 'Edit', edit_shop_product_path(@shop,p) %>-<%= link_to 'Delete', shop_product_path(@shop,p), :method => :delete, :confirm => 'Are you sure?\n(This action cannot be undone)' %>
+        </li>
+    <% end %>
+</ul>

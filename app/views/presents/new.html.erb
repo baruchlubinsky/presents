@@ -1,0 +1,27 @@
+<h1>New present</h1>
+<%= form_for @present, :html => {:multipart => true} do |f| %>
+    <p>
+        <%= f.label :recipient, 'This is a present for a:'%>
+        <br />
+        <%= f.text_field :recipient %>
+    </p>
+    <p>
+        <%= f.label :available_from, 'Available from' %>
+        <br />
+        <%= f.date_select :available_from %>
+    </p>
+    <p>
+        <%= f.label :available_to, 'Available from' %>
+        <br />
+        <%= f.date_select :available_to %>
+    </p>
+    <p>
+        <%= label_tag 'Present choices:' %>
+    </p>
+    <p>
+        <%= f.multi_upload :options, :image, :description => :name %>
+    </p>
+    <p>
+        <%= f.submit 'Submit' %>
+    </p>
+<% end %>

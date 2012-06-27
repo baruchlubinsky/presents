@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :check_login
   
     def check_login
     if session[:user_id].nil?
@@ -10,10 +11,24 @@ class ApplicationController < ActionController::Base
     end
     
     def require_admin
-      check_login
+      #check_login
       if @user.nil? || @user[:admin].nil?
         redirect_to home_path
       end
     end  
-
+    
+    def require_artist
+      #check_login
+      if @user.nil? || (@user[:artist].nil? && @user[:admin].nil?)
+        redirect_to home_path
+      end
+    end 
+  
+    def force_login
+      #check_login
+      if @user.nil?
+        session[:return_path] = request.url
+        redirect_to '/login', :notice => 'You must be signed in to place an order.'
+      end
+    end
 end

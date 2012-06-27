@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'carrierwave/processing/rmagick'
   
-class ImageUploader < CarrierWave::Uploader::Base
+class OptionImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -30,17 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  version :story do
-    process :resize_to_fit => [240, 1000]
-  end
-  
-  version :thumbnail do
-    process :resize_to_fill => [50, 50]
-  end
-  
-  version :large do
-    process :resize_to_limit => [600, 800]
-  end
+  #process :resize_to_fit [250, 250]
   #
   # def scale(width, height)
   #   # do something

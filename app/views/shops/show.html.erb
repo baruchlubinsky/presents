@@ -1,0 +1,9 @@
+<h1><%= @shop.name %></h1>
+<% if @shop.online %>
+    <p>
+        <span class='shop_bio'><%= @shop.description %></span>
+    </p>    
+    <%= render :partial => 'product', :collection => @shop.products %>
+<% else %>
+    This shop is currently offline. Please check back later.
+<% end %>

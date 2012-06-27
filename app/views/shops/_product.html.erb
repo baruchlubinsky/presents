@@ -1,0 +1,5 @@
+<h2><%= product.name %></h2>
+<h3><%= product.description %> - <%= number_to_currency product.price, :unit => 'R' %></h3>
+<% product.images.each do |im| %>
+    <%= image_tag im.file_url.to_s %>
+<% end %>

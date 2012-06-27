@@ -2,7 +2,14 @@ body
 {
   position: relative;
 }
-
+#column
+{
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  width: 740px;
+  background-color: #E9C6AF;
+}
 #header
 {
   position: relative;
@@ -13,6 +20,7 @@ body
 {
   margin: auto;
   width: 700px;
+  float: left;
 }
 #user
 {

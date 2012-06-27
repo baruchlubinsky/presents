@@ -12,43 +12,46 @@
     <div id='login'>
     
     </div>
-    
-<div id='header'>
-    <div id='user'>
-        <% if @user.nil? %>
-            <%= link_to 'Login', login_path %>
-        <% else %>
-            <%= "Welcome back #{@user.name} | " %><%= link_to 'Logout', logout_path %>
-        <% end %>
-        
+<div id='column'>    
+    <div id='header'>
+        <div id='user'>
+            <% if @user.nil? %>
+                <%= link_to 'Login', login_path %>
+            <% else %>
+                <%= "Welcome back #{@user.name} | " %><%= link_to 'Logout', logout_path %>
+            <% end %>
+            
+        </div>
+        <%= image_tag 'logo.jpg', :id => 'logo', :width => '250px' %>
+        <nav>
+            <ul>
+                <li>
+                    <%= link_to 'Home', home_path %> 
+                </li>
+                <li>
+                    <%= link_to 'News', news_path %> 
+                </li>
+                <li>
+                    <%= link_to 'Past Presents', past_presents_path %> 
+                </li>
+                <li>
+                    <%= link_to 'Things I Like', things_i_like_path %> 
+                </li>
+                <li>
+                    <%= link_to 'About', about_path %> 
+                </li>
+                <li>
+                    <%= link_to 'Order now', new_order_path %>
+                </li>
+                <li>
+                    <%= link_to 'Shop', shops_path %> 
+                </li>
+            </ul>
+        </nav>
     </div>
-    <%= image_tag 'logo.jpg', :id => 'logo', :width => '250px' %>
-    <nav>
-        <ul>
-            <li>
-                <%= link_to 'Home', home_path %> 
-            </li>
-            <li>
-                <%= link_to 'News', news_path %> 
-            </li>
-            <li>
-                <%= link_to 'Past Presents', past_presents_path %> 
-            </li>
-            <li>
-                <%= link_to 'Things I Like', things_i_like_path %> 
-            </li>
-            <li>
-                <%= link_to 'About', about_path %> 
-            </li>
-            <li>
-                <%= link_to 'Shop', shop_path %> 
-            </li>
-        </ul>
-    </nav>
+    <div id='content'>
+        <%= yield %>
+    </div>
 </div>
-<div id='content'>
-    <%= yield %>
-</div>
-
 </body>
 </html>

@@ -1,35 +1,27 @@
 <h1>
     New blog post
 </h1>
-<%= form_for @story, :multipart => true do |f| %>
-    <%= f.label :title, 'Post title' %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :content, 'Content' %>
-    <%= f.text_area :content %>
-    <br>
-    <div id='upload_container'>
-        <%= f.fields_for 'blog_images[0]' do |attachments| %>
-            <p>
-            <%= attachments.file_field :file %>
-            </p>
-            <p>
-            <%= attachments.label :remote_file_url, "or image url" %><br />
-            <%= attachments.text_field :remote_file_url %>
-            </p>
-        <% end %>
-    </div>
+<%= form_for @story, :html => {:multipart => true} do |f| %>
+    <p>
+        <%= f.label :title, 'Post title' %>
+        <br />
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :category, 'Category' %>
+        <br />
+        <%= f.select :category, %w[News Present Shop] %>
+    </p>
+    <p>
+        <%= f.label :content, 'Content' %>
+        <br />
+        <%= f.text_area :content %>
+    </p>
+    <p>
+        <%= f.multi_upload :blog_images, :file %>
+    </p>
     <%= f.submit 'Post' %>
-    <div class='hidden' id='upload_template'>
-    <%= f.fields_for 'blog_images[999]' do |attachments| %>
-        <p>
-        <%= attachments.file_field :file %>
-        </p>
-        <p>
-        <%= attachments.label :remote_file_url, "or image url" %><br />
-        <%= attachments.text_field :remote_file_url %>
-        </p>
-    <% end %>
+
     </div>
 <% end %>
 

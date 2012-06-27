@@ -1,5 +1,23 @@
 PresentsInThePost::Application.routes.draw do
 
+  resources :users
+  
+  resources :authorisations
+  
+  resources :orders
+  
+  resources :presents
+  
+  resources :stories do
+    resources :blog_images
+  end
+  
+  resources :shops do
+    resources :products
+  end 
+  
+  resources :things
+  
   match 'home' => 'pages#home'
   match 'news' => 'pages#news'
   match 'past_presents' => 'pages#past_presents'
@@ -13,21 +31,6 @@ PresentsInThePost::Application.routes.draw do
   root :to => 'pages#home'
 
   match 'admin' => 'admins#index'
-
-  resources :users
-  
-  resources :authorisations
-  
-  resources :stories do
-    resources :blog_images
-  end
-  
-  resources :shops do
-    resources :items
-  end 
-  
-  resources :things
-  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

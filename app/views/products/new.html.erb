@@ -1,0 +1,28 @@
+<h1><%= @shop.name %></h1>
+<h2>New product</h2>
+<%= form_for [@shop, @product] do |f| %>
+    <p>
+        <%= f.label :name, 'Name' %>
+        <br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :description, 'Description' %>
+        <br />
+        <%= f.text_field :description %>
+    </p>
+    <p>
+        <%= f.label :price, 'Price' %>
+        <br />
+        <%= f.text_field :price %>
+    </p>
+    <p>
+        <%= f.label 'Images' %>
+    </p>
+    <p>
+        <%= f.multi_upload :images, :file %>
+    </p>
+    <p>
+        <%= f.submit 'Create' %>
+    </p>
+<% end %>
