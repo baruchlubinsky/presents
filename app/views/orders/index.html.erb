@@ -1,0 +1,47 @@
+<%= link_to 'Admin menu', admin_path %>
+<h1>Orders</h1>
+<table class='record_table'>
+    <tr class='table_header'>
+        <td>
+            Ref no.
+        </td>
+        <td>
+            Customer
+        </td>
+        <td>
+            Product
+        </td>
+        <td>
+            Paid
+        </td>
+        <td>
+            Shipped
+        </td>
+    </tr>
+    <% @orders.each do |o| %>
+        
+        <tr>  
+            <%= form_for o, :remote => true, :format => :js do |f| %>
+                <td>
+                    <%= link_to o.ref_no, edit_order_path(o) %>
+                </td>
+                <td>
+                    <%= f.label :customer, o.user.name %>
+                </td>
+                <td>
+                    <%= f.label :product, o.product.name %>
+                </td>
+                <td>
+                    <%= f.check_box :paid, :data_trigger_submit => true %>
+                </td>
+                <td>
+                    <%= f.check_box :shipped, :data_trigger_submit => true %>
+                </td>
+                <td>
+                    <%= f.submit 'Save', :class => 'hidden' %>
+                </td>
+            <% end %>
+        </tr>
+        
+    <% end %>    
+</table>

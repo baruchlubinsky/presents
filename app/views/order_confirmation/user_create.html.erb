@@ -1,7 +1,20 @@
-Hi <%= @user.name %>
+Hi <%= @recipient %>
 
 Thank you for ordering from presents in the post.
 
 Your reference number for this order is: <%= @order.ref_no %>
 
-In order to complete this purchase please deposit
+In order to complete this purchase please deposit <%= number_to_currency @order.product.price %> into our bank account:
+
+Standard Bank
+0024232342
+3283942042
+
+Using your reference number as a beneficiairy reference.
+
+I will do everything I can to get your present to you as soon as possible.
+
+Sincerly,
+Raj
+
+Presents in the Post

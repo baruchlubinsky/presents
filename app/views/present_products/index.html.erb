@@ -1,0 +1,38 @@
+<%= link_to 'Admin menu', admin_path %>
+<h1>Present products</h1>
+<table class='record_table'>
+    <tr class='table_header'>
+        <td>
+            Name
+        </td>
+        <td>
+            Description
+        </td>
+        <td>
+            Price
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <% @presents.each do |p| %>
+    <tr>
+        <%= form_for p do |f| %>
+            <td><%= f.text_field :name, :size => 20 %></td>
+            <td><%= f.text_field :description %></td>  
+            <td><%= f.text_field :price, :size => 6 %></td>  
+            <td><%= f.submit 'Update' %></td>
+        <% end %>
+        <td>
+            <%= button_to "Delete", p, :method => :delete, :confirm => 'Are you sure?' %>
+        </td>
+    </tr>
+    <% end %>
+    <tr>
+        <%= form_for @new_present do |f| %>
+            <td><%= f.text_field :name, :size => 20 %></td>
+            <td><%= f.text_field :description %></td>  
+            <td><%= f.text_field :price, :size => 6 %></td>   
+            <td><%= f.submit 'Add' %></td>
+        <% end %>
+    </tr>
+</table>

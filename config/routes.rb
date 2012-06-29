@@ -8,6 +8,8 @@ PresentsInThePost::Application.routes.draw do
   
   resources :presents
   
+  resources :present_products
+  
   resources :stories do
     resources :blog_images
   end

@@ -1,6 +1,6 @@
 $(document).ready(function (){
 
-	$("form").bind("ajax:success", function(event, data) {
+	$("form.edit_thing").bind("ajax:success", function(event, data) {
 		var response = eval(data);
 		setLargeImage(response.image.file.large.url);
 	});

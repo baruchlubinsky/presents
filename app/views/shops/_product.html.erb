@@ -1,5 +1,6 @@
-<h2><%= product.name %></h2>
-<h3><%= product.description %> - <%= number_to_currency product.price, :unit => 'R' %></h3>
+<h2><%= product.name %> - <%= link_to "Buy now", new_order_path(:product_id => product.id) %></h2>
+<h3><%= number_to_currency product.price, :unit => 'R' %></h3>
+<h3><%= product.description %></h3>
 <% product.images.each do |im| %>
     <%= image_tag im.file_url.to_s %>
 <% end %>

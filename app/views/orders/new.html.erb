@@ -1,15 +1,15 @@
 <h1>Order your present in the post</h1>
-<% if @presents.nil? && @product.nil? %>
+<% if @present && @presents.empty?  %>
 <p>
     We're sorry, there is no present available to order at this time, please check back soon.
 </p>
 <% else %>
     <%= form_for @order do |f| %>
-        <% if @presents %>
+        <% if @present %>
             <p>
-                <%= f.label :present, 'How many presents would you like to receive?' %>
+                <%= f.label :product, 'How many presents would you like to receive?' %>
                 <br />
-                <%= f.select :present, [['1 Present (R250)', 1],['2 Presents (R500)', 2],['3 Presents (R700)', 3]] %>
+                <%= f.select :product_id, @products.map {|p| [p.name, p.id]} %>
             </p>
             <p>
                 <%= f.label 'Choose the option to get the present bested suited to you'%>
@@ -27,9 +27,9 @@
                 </div>
                 </p>
              <% end %>
-         <% end %>
-         <% if @product %>
+         <% else %>
             <%= label_tag "Ordering #{@product.name}" %>
+            <%= f.hidden_field :product_id %>
          <% end %>
          <%= f.fields_for :options do |o| %>
             <p>
@@ -48,15 +48,15 @@
         <%= f.fields_for :delivery_address do |a| %>
             <% 3.times do |i| %>
                 <p>
-                    <%= a.label i, "Address line #{i + 1}"%>
+                    <%= a.label "line #{i}", "Address line #{i + 1}"%>
                     <br />
                     <%= a.text_field i %>
                 </p>
             <% end %>
             <p>
-                <%= a.label 3, "Postal code"%>
+                <%= a.label :post_code, "Postal code"%>
                 <br />
-                <%= a.text_field 3 %>
+                <%= a.text_field :post_code %>
             </p>
         <% end %>
         <%= label_tag "After completing this order, you will be e-mailed with our bank details to complete the payemnt."%>

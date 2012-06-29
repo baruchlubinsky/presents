@@ -1,26 +1,50 @@
+$column-color: #770011;
+
+#admin_column
+{
+  margin: 20px auto;
+  padding: 20px 20px;
+  width: 740px;
+  background-color: $column-color;
+}
+
+#admin_content
+{
+  padding: 20px;
+  background-color: white;
+}
+
+
 body
 {
   position: relative;
+  font-family: 'Junge', serif;
+}
+h1,h2,h3,h4,h5,h6
+{
+  font-family: 'Vollkorn', serif;
+  font-weight: normal;
 }
 #column
 {
   position: relative;
   margin: auto;
-  padding: 20px;
   width: 740px;
-  background-color: #E9C6AF;
+  background-color: $column-color;
 }
 #header
 {
   position: relative;
-  margin: auto;
-  width: 700px;
+  padding: 20px;
+  width: 740px;
+  background-color: $column-color;
 }
 #content
 {
-  margin: auto;
-  width: 700px;
+  width: 740px;
+  padding: 20px;
   float: left;
+  background-color: $column-color;
 }
 #user
 {
@@ -34,17 +58,25 @@ nav
   li
   {
     display: inline;
-    margin-left: 25px;
+    margin-left: 15px;
+  }
+  a
+  {
+    font-family: 'Vollkorn', serif;
+    font-size: 18px;
   }
 }
 .story_container
 {
-  width: 606px;
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 10px;
   display: block;
+  background-color: rgba(255, 255, 255, 1);
   .images
   {
     float: left;
-    width: 606px;
+    width: 100%;
     .main_image
     {
       //width: 400px;
@@ -62,7 +94,7 @@ nav
   }
   .story
   {
-    width: 600px;
+
     display: block;
   }
 }

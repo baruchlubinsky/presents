@@ -2,5 +2,5 @@
     <%= @story.title %>
 </h2>
 <p>
-    <%= @story.content.gsub("\r\n", "<p />") %>
+    <%= h @story.content %>
 </p>
