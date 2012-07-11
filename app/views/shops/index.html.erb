@@ -1,8 +1,12 @@
 <h1>
     Shops
 </h1>
-<ul>
-    <% @shops.each do |s| %>
-        <li><%= s.name %></li>
-    <% end %>
-</ul>
+<% if @user && @user[:admin] %>
+    <ul>
+        <% @shops.each do |s| %>
+            <li><%= s.name %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <%= render @shops %>
+<% end %>

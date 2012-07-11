@@ -1,1 +1,41 @@
-Home
+<div id='three_pictures'>
+    <%= image_tag '3steps.png' %>
+</div>
+<div id='home_container'>
+    <div id='latest_news'>
+        <h2>Latest news</h2>
+        <h3><%= @news.title %></h3>
+        <% unless @news.images.empty? %>
+            <%= image_tag @news.images[0].file_url(:story).to_s, :class => 'news_image' %>
+            <%= image_tag @news.images[1].file_url(:story).to_s, :class => 'news_image' %>
+        <% end %>
+        <%= simple_format h @news.content.split('.').first %>
+        <%= link_to 'Click here for more', story_path(@news) %>
+    </div>
+    <div id='latest_shops'>
+        <h2>Shop</h2>
+        <% @products.each do |p| %>
+            <%= link_to image_tag(p.images[0].file_url(:story).to_s, :class => 'product_image'), shop_path(p.shop) %>
+        <% end %>
+    </div>
+    <div id='latest_present'>
+        <h2>Latest Presents</h2>
+       <h3><%= @present.title %></h3>
+        <% unless @present.images.empty? %>
+            <%= image_tag @present.images[0].file_url(:story).to_s, :class => 'news_image' %>
+            <%= image_tag @present.images[1].file_url(:story).to_s, :class => 'news_image' %>
+        <% end %>
+        <%= simple_format h @present.content.split('.').first %>
+        <%= link_to 'Click here for more', story_path(@present) %>
+    </div>
+    
+</div>
+<div id='latest_things'>
+    <h2>Things I like</h2>
+    <div id='container'>
+        <%= render @things %>
+    </div>
+</div>
+<div id='home_footer'>
+    
+</div>

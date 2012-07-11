@@ -1,0 +1,7 @@
+<h3><%= preview.title %></h3>
+<% unless preview.images.empty? %>
+    <%= image_tag story.images[0].file_url(:story).to_s, :class => 'news_image' %>
+    <%= image_tag story.images[1].file_url(:story).to_s, :class => 'news_image' %>
+<% end %>
+<%= simple_format h preview.content.split('.').first %>
+<%= link_to 'Click here for more', story_path(preview) %>

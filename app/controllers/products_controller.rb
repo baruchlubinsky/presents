@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
     @product = Product.new(:shop => @shop)
   end
   
+  def show
+    @product = Product.find(params[:id])
+    @shop = Shop.find_by_name(params[:shop_id])
+  end
+  
   def create
     @shop = Shop.find_by_name(params[:shop_id])
     @product = Product.new(params[:product])
@@ -14,4 +19,17 @@ class ProductsController < ApplicationController
     redirect_to edit_shop_path(@shop.name)
   end
   
+  def edit
+    @product = Product.find(params[:id])
+    @shop = Shop.find_by_name(params[:shop_id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @shop = Shop.find_by_name(params[:shop_id])
+    @product.write_attributes(params[:product])
+    @product.save
+    redirect_to edit_shop_path(@shop.name)
+  end
+    
 end

@@ -12,10 +12,13 @@ PresentsInThePost::Application.routes.draw do
   
   resources :stories do
     resources :blog_images
+    resources :comments
   end
   
   resources :shops do
-    resources :products
+    resources :products do
+      resources :images, :only => :destroy
+    end
   end 
   
   resources :things

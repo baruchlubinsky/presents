@@ -3,6 +3,7 @@ class Shop
   
   field :name, :type => String
   field :description, :type => String
+  field :blurb, :type => String
   field :online, :type => Boolean
   
   belongs_to :user

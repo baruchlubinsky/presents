@@ -1,4 +1,4 @@
-$column-color: #770011;
+$column-color: white;
 
 #admin_column
 {
@@ -12,39 +12,33 @@ $column-color: #770011;
 {
   padding: 20px;
   background-color: white;
-}
-
-
-body
-{
-  position: relative;
-  font-family: 'Junge', serif;
-}
-h1,h2,h3,h4,h5,h6
-{
-  font-family: 'Vollkorn', serif;
-  font-weight: normal;
+  float: left;
+  width: 100%;
 }
 #column
 {
   position: relative;
   margin: auto;
+  padding: 20px;
   width: 740px;
   background-color: $column-color;
+  border-style: none solid; 
 }
 #header
 {
   position: relative;
-  padding: 20px;
-  width: 740px;
-  background-color: $column-color;
+
+  width: 700px;
+  background-color: white;
 }
 #content
 {
+  position: relative;
+  left: -23px;
   width: 740px;
-  padding: 20px;
-  float: left;
+  margin: 0;
   background-color: $column-color;
+  border-style: none solid; 
 }
 #user
 {
@@ -66,6 +60,14 @@ nav
     font-size: 18px;
   }
 }
+section
+{
+  padding: 10px;
+  margin-bottom: 10px;
+  border-style:solid;
+  border-width:2px;
+  border-color:#f0f0f0;
+}
 .story_container
 {
   background-color: white;
@@ -73,6 +75,25 @@ nav
   margin-bottom: 10px;
   display: block;
   background-color: rgba(255, 255, 255, 1);
+  h2
+  {
+    text-align: center;
+    margin: 5px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  p.story_date
+  {
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 0px;
+    font-size: 14px;
+  }
+  .permalink
+  {
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
   .images
   {
     float: left;
@@ -97,4 +118,8 @@ nav
 
     display: block;
   }
+}
+.comments_link
+{
+  cursor: pointer;
 }

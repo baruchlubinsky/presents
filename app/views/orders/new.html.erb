@@ -4,6 +4,7 @@
     We're sorry, there is no present available to order at this time, please check back soon.
 </p>
 <% else %>
+    <div id='order_container'>
     <%= form_for @order do |f| %>
         <% if @present %>
             <p>
@@ -20,17 +21,15 @@
                     <br />
                     <%= o.select :recipient, @presents.collect {|pres| [pres.recipient, pres.id]} %>
                 </p>
-                
-                <p>
-                <div id='options_container'>
+ 
                     <%= render(:partial => 'presents/options', :locals => {:form => @order, :options => @presents[0].options}) %>
-                </div>
-                </p>
+               
              <% end %>
          <% else %>
-            <%= label_tag "Ordering #{@product.name}" %>
+            <h2><%= label_tag "Ordering #{@product.name}" %></h2>
             <%= f.hidden_field :product_id %>
          <% end %>
+         <div id='options_container'>
          <%= f.fields_for :options do |o| %>
             <p>
                 <%= o.label :gift, 'Send as a gift?' %>
@@ -44,6 +43,7 @@
                 </p>
             </div>
         <% end %>
+        
         <%= f.label :delivery_address, 'Delivery address' %>
         <%= f.fields_for :delivery_address do |a| %>
             <% 3.times do |i| %>
@@ -59,8 +59,9 @@
                 <%= a.text_field :post_code %>
             </p>
         <% end %>
-        <%= label_tag "After completing this order, you will be e-mailed with our bank details to complete the payemnt."%>
+        <%= label_tag "After completing this order, you will be e-mailed with our bank details to complete the payment."%>
         <%= f.submit "Order" %>
+        </div>
     <% end %>
     <% if @presents %>
         <div class='hidden'>
@@ -69,4 +70,5 @@
             <% end %>    
         </div>
     <% end %>
+    </div>
 <% end %>

@@ -1,6 +1,11 @@
-<h2><%= product.name %> - <%= link_to "Buy now", new_order_path(:product_id => product.id) %></h2>
-<h3><%= number_to_currency product.price, :unit => 'R' %></h3>
-<h3><%= product.description %></h3>
-<% product.images.each do |im| %>
-    <%= image_tag im.file_url.to_s %>
-<% end %>
+<a href='<%= shop_product_path(product.shop, product)  %>'>
+<div class='product'>
+    <div>
+    <%= image_tag product.images.first.file_url(:story) %>
+    <h4><%= product.name %></h4>
+    </div>
+    <div class='price'>
+    <h5><%= number_to_currency product.price %></h5>
+    </div>
+</div>
+</a>

@@ -1,0 +1,25 @@
+<section id='full_product'>
+    <div>
+        <h1><%= link_to @shop.name, shop_path(@shop) %></h1>
+        <h2><%= @product.name %></h2>
+    </div>
+    <div id='product_images'>
+        <%= image_tag @product.images.first.file_url, :id => 'main_product_image', :data_thumb_url => @product.images.first.file_url(:thumbnail) %>
+        <div id='sub_images'>
+            <% @product.images.drop(1).take(3).each do |i| %>
+                <%= image_tag i.file_url(:thumbnail), :data_full_url => i.file_url %>
+            <% end %>            
+        </div>
+    </div>
+    <div id='product_details'>
+        <h4>
+            <%= @product.description %>
+        </h4>
+        <h3>
+            <%= number_to_currency @product.price %>
+        </h3>
+        <h4>
+            <%= link_to 'Buy now', new_order_path(:product_id => @product.id) %>
+        </h4>
+    </div>
+</section>

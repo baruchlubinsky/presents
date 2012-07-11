@@ -3,12 +3,18 @@ require 'digest/sha1'
 class User
 	include Mongoid::Document
 	
-	field :name, :type => String
+	field :first_name, :type => String
+	field :surname, :type => String
+	
 	field :email, :type => String
   field :level, :type => String
 	field :salt, :type => String
 	index :email, :unique => true
 	field :password, :type => String 
+	
+	field :gender, :type => String
+	field :birthdate, :type => Date
+	field :hometown, :type => String
 
 	validates_uniqueness_of :email
 	validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -28,6 +34,10 @@ class User
 	
 	def password_match?(pw)
 	  self.hash_password(pw) == self.password
+	end
+	
+	def name
+	  self.first_name << " " << self.surname
 	end
 	
 end

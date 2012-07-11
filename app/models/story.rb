@@ -6,6 +6,8 @@ class Story
   field :content, :type => String
   field :category, :type => String
   
+  has_many :comments
+  
   embeds_many :blog_images, as: :imageable, :class_name => 'Image', cascade_callbacks: true
 
   def summary

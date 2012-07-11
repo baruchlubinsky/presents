@@ -9,9 +9,12 @@
 </head>
 <body>
     <div id='admin_column'>
-    <div id='admin_content'>
-        <%= yield %>
-    </div>
+        <div id='header'>
+            <%= image_tag 'header.jpg', :id => 'logo', :width => '700px' %>            
+        </div>
+        <div id='admin_content'>
+            <%= yield %>
+        </div>
     </div>
 </body>
 </html>

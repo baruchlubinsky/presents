@@ -1,0 +1,38 @@
+<h1><%= @shop.name %></h1>
+<h2><%= @product.name %></h2>
+<%= form_for [@shop, @product] do |f| %>
+    <p>
+        <%= f.label :name, 'Name' %>
+        <br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :description, 'Description' %>
+        <br />
+        <%= f.text_field :description %>
+    </p>
+    <p>
+        <%= f.label :price, 'Price' %>
+        <br />
+        R<%= f.text_field :price %>
+    </p>
+    <p>
+        <%= f.label 'Images' %>
+        <br>
+        Up to 4 images are displayed in the store.
+    </p>
+    <ul>
+        <% @product.images.each do |image| %>
+            <li>
+                <%= image_tag image.file_url(:thumbnail).to_s %>
+                <%= link_to 'Delete', shop_product_image_path(@shop, @product, image), :method => :delete %>
+            </li>
+        <% end %>
+    </ul>  
+    <p>
+        <%= f.multi_upload :images, :file %>
+    </p>
+    <p>
+        <%= f.submit 'Save' %>
+    </p>
+<% end %>

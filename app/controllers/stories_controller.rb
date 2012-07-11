@@ -1,13 +1,24 @@
 class StoriesController < ApplicationController 
-  before_filter :require_admin
+  before_filter :require_admin, :except => [:show]
   #before_filter :clean_images, :only => [:create, :update]
   #before_filter :require_admin, :only => [:new, :create]
   #before_filter :make_images, :only => [:create]
   def index
     @stories = Story.all
+    @new_comment = Comment.new
+    unless @user.nil?
+      @new_comment.name = @user.name
+      @new_comment.email = @user.email
+    end
   end
   def show
     @story = Story.find(params[:id])
+    @new_comment = Comment.new
+    unless @user.nil?
+      @new_comment.name = @user.name
+      @new_comment.email = @user.email
+    end
+    render :layout => 'pages'
   end
   def new
     @story = Story.new
