@@ -29,6 +29,6 @@ class AuthorisationsController < ApplicationController
   def destroy    
     session[:user_id] = nil
     session[:access] = nil
-    redirect_to new_authorisation_path
+    redirect_to root_path
   end
 end

@@ -1,5 +1,5 @@
 <h1>Welcome to Presents in the Post</h1>
-<%= flash[:message] %>
+<span class='message'><%= flash[:message] %></span>
 <%= form_for (@user) do |f| %>
     <p>
 	<%= f.label :first_name, 'First name' %></br>

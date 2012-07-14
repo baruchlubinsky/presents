@@ -1,0 +1,6 @@
+<div class='card'>
+    
+    <%= form_for thing, remote: true, format: 'json', method: 'get' do |f| %>
+        <%= f.submit 'Large image', :type => :image, :src => thing.image.file_url(:story) %>  
+    <% end %>        
+</div>
