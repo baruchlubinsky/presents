@@ -5,30 +5,62 @@
 
 body
 {
-  background: url('../images/wallpaper.jpg');
+  background: url('../images/wallpaper2.jpg');
+  background-attachment:fixed;
   margin: 0;
   padding: 0;
   
   position: relative;
-  font-family: 'Junge', serif;
+  font-family: 'Quattrocento', serif;
+  font-size: 14px;
 }
 
 h1,h2,h3,h4,h5,h6
 {
-  font-family: 'Vollkorn', serif;
+  font-family: 'Cantata One', serif;
   font-weight: normal;
 }
-
+h1
+{
+  font-size: 34px;
+}
+h2
+{
+  font-size: 30px;
+}
+h3
+{
+  font-size: 26px;
+}
+form
+{
+  input, textarea
+  {
+    border: dashed 2px #e0e0e0;
+    font-family: 'Quattrocento', serif;
+  }
+  textarea
+  {
+    border: dashed 2px #e0e0e0;
+    font-family: 'Special Elite', cursive;
+  }
+  select
+  {
+    border: solid 2px #e0e0e0;
+    background-image: none;
+    background-color: white;
+    font-family: 'Quattrocento', serif;
+  }
+}
 h1,h2
 {
   a
   {
     color: black;
-    text-decoration: none;
+    //text-decoration: none;
   }
 }
-
 label
 {
-  font-family: 'Vollkorn', serif;
+  font-family: 'Quattrocento', serif;
 }

@@ -37,7 +37,7 @@ class User
 	end
 	
 	def name
-	  self.first_name << " " << self.surname
+	  self.first_name + " " + self.surname
 	end
 	
 end
