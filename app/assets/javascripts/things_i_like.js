@@ -2,6 +2,18 @@ $(document).ready(function(){
 	$('img[data_full_size]').click(setLargeImage);
 });
 
+$(window).load(function(){
+
+	var $container = $('.card_container');
+	$container.imagesLoaded(function(){
+  		$container.masonry({
+    	itemSelector : '.card'
+  		});
+	});
+
+
+});
+
 function setLargeImage(event)
 {
 	alert('event');
@@ -22,17 +34,7 @@ $(document).ready(function (){
 
 });
 
-$(window).load(function(){
 
-	var $container = $('#container');
-	$container.imagesLoaded(function(){
-  		$container.masonry({
-    	itemSelector : '.card'
-  		});
-	});
-
-
-});
 
 function setLargeImage(image)
 {

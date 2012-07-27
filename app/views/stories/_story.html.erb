@@ -5,13 +5,10 @@
     <p class='story_date'>
         <%= story.created_at.to_date.to_formatted_s :long_ordinal %>
     </p>
-    <div class='images'>
-        <%= image_tag story.images[0].file_url(:story).to_s, :class => 'main_image' unless story.images.empty? %>
-        <% if story.images.count > 1 %>
-            <% story.images.drop(1).each do |image| %>
-                <%= image_tag image.file_url(:story).to_s, :class => 'sub_image '%>
-            <% end %>
-        <% end %>
+    <div class='card_container'>
+		<% story.images.each do |img| %>
+			<%= image_card img %>
+		<% end %>
     </div>
     <div class='story'>
         <%= simple_format(story.content) %>

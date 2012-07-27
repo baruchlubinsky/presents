@@ -40,7 +40,7 @@ $column-color: white;
 #content
 {
   position: relative;
-  width: 740px;
+  width: 700px;
   margin: 0;
   padding: 20px;
   background-color: $column-color;
@@ -84,7 +84,8 @@ section
   background-color: white;
   h2
   {
-    text-align: center;
+    text-align: center; 
+	letter-spacing: 3px;
     margin: 5px;
     margin-bottom: 0px;
     padding-bottom: 0px;

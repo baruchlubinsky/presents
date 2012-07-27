@@ -7,6 +7,7 @@ class PresentsController < ApplicationController
   def create
     @present = Present.new(params[:present])
     @present.save
+    redirect_to '/admin', :notice => 'Successfully created a new present'
   end
   
   def show
