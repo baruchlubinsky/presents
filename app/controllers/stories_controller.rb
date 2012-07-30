@@ -24,18 +24,42 @@ class StoriesController < ApplicationController
     @story = Story.new
   end
   def create
-    @story = Story.new(params[:story])
-    @story.save
-    redirect_to stories_path
+    begin
+      @story = Story.new(params[:story])
+    rescue CarrierWave::IntegrityError
+      params[:story][:blog_images] = nil
+      @story = Story.new(params[:story])
+      flash[:notice] = "Invalid image file"
+      return render :new
+    end  
+    if @story.valid?
+      @story.save
+      redirect_to stories_path, :notice => "Post saved"       
+    else
+      flash[:notice] = "Invalid data"
+      render 'new'
+    end 
   end
   def edit
     @story = Story.find(params[:id])
   end
   def update
     @story = Story.find(params[:id])
-    @story.write_attributes(params[:story])
-    @story.save
-    redirect_to stories_path
+    begin
+      @story.write_attributes(params[:story])
+    rescue CarrierWave::IntegrityError
+      params[:story][:blog_images] = nil
+      @story = Story.new(params[:story])
+      flash[:notice] = "Invalid image file"
+      return render :edit
+    end
+    if @story.valid?
+      @story.save
+      redirect_to stories_path
+    else
+      flash[:notice] = "Invalid data"
+      render 'edit'
+    end  
   end
   def destroy
     @story = Story.find(params[:id])

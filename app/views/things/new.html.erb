@@ -1,5 +1,6 @@
 <%= link_to 'Admin menu', admin_path %>
 <h1>Upload to things you like</h1>
+<span class='notice'><%= flash[:notice] %></span>
 <%= form_for @thing do |f| %>
     <%= f.fields_for :image do |attachment| %>
         <p>

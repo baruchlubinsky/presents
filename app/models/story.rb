@@ -9,6 +9,8 @@ class Story
   has_many :comments
   
   embeds_many :blog_images, as: :imageable, :class_name => 'Image', cascade_callbacks: true
+  
+  validates_presence_of :title
 
   def summary
     self.content.split("\n")[0]

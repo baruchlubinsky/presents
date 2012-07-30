@@ -7,9 +7,17 @@ class ThingsController < ApplicationController
   end
   
   def create
-    @thing = Thing.new(params[:thing])
-    @thing.save
-    redirect_to things_path
+    begin
+      @thing = Thing.new(params[:thing])
+    rescue CarrierWave::IntegrityError
+      return redirect_to new_thing_path, notice: "Invalid image file"
+    end  
+    if @thing.valid?
+      @thing.save
+      redirect_to things_path
+    else
+      render 'new', notice: "Invalid data" 
+    end
   end
   
   def index

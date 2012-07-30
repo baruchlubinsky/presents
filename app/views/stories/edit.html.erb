@@ -2,6 +2,7 @@
 <h1>
     Edit story
 </h1>
+<span class='notice'><%= flash[:notice] %></span>
 <%= form_for @story, :multipart => true do |f| %>
     <p>
     <%= f.label :title, 'Post title' %>

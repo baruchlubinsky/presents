@@ -1,5 +1,6 @@
 <h1><%= @shop.name %></h1>
 <h2><%= @product.name %></h2>
+<span class='notice'><%= flash[:notice] %></span>
 <%= form_for [@shop, @product] do |f| %>
     <p>
         <%= f.label :name, 'Name' %>
