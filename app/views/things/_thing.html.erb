@@ -1,3 +1,7 @@
 <div class='card'>
-    <%= image_tag thing.image.file_url(:story), :data_full_size => thing.image.file_url(:large) %>        
+	<% if thing.source.nil? %>
+    	<%= image_tag thing.image.file_url(:story), :data_full_size => thing.image.file_url(:large) %>        
+	<% else %>
+		<%= image_tag thing.image.file_url(:story), :data_full_size => thing.image.file_url(:large), :data_source => thing.source, :data_source_label => thing.source_label %>
+	<% end %>	
 </div>

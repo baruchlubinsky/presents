@@ -21,9 +21,21 @@
                     <br />
                     <%= o.select :recipient, @presents.collect {|pres| [pres.recipient, pres.id]} %>
                 </p>
- 
-                    <%= render(:partial => 'presents/options', :locals => {:form => @order, :options => @presents[0].options}) %>
-               
+ 				<div id='choices_container'>
+					<% @presents.each_with_index do |p, i| %>
+					<div id='choices_<%= i %>' class='choices hidden'>
+						<% p.options.each do |option| %>
+						<div class='card'>
+			            <label>
+			            <%= image_tag option.image_url %>
+			            <br />
+			            <%= o.radio_button 'choice', option.name %>
+			            </label>
+			            </div>
+						<% end %>
+					</div>	
+					<% end %>
+				</div>
              <% end %>
          <% else %>
             <h2><%= label_tag "Ordering #{@product.name}" %></h2>
@@ -60,7 +72,9 @@
             </p>
         <% end %>
         <%= label_tag "After completing this order, you will be e-mailed with our bank details to complete the payment."%>
-        <%= f.submit "Order" %>
+		<p>
+        	<%= f.submit "Order" %>
+		</p>	
         </div>
     <% end %>
     <% if @presents %>

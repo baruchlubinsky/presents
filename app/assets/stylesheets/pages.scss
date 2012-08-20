@@ -3,7 +3,7 @@ $column-color: white;
 #admin_column
 {
   margin: 20px auto;
-  padding: 20px 20px;
+  
   width: 740px;
   background-color: $column-color;
 }
@@ -13,7 +13,7 @@ $column-color: white;
   padding: 20px;
   background-color: white;
   float: left;
-  width: 100%;
+  width: 700px;
 }
 #column
 {
@@ -31,11 +31,17 @@ $column-color: white;
   width: 740px;
   background-color: white;
 }
+#footer
+{
+	background: url('../images/footer.jpg');
+	width: 740px;
+	height: 332px;
+}
+
 #logo
 {
   width: 480px;
-  align: center;
-  margin-left: 110px;
+  margin-left: 140px;
 }
 #content
 {
@@ -89,6 +95,14 @@ section
     margin: 5px;
     margin-bottom: 0px;
     padding-bottom: 0px;
+	a
+	{
+		color: black;
+	}
+	a:link {text-decoration:none;}
+	a:visited {text-decoration:none;}
+	a:hover {text-decoration:underline;}
+	a:active {text-decoration:underline;}
   }
   p.story_date
   {
@@ -98,7 +112,7 @@ section
     font-size: 14px;
     font-family: 'Quattrocento', serif;
   }
-  .permalink
+  .comments_link
   {
     font-size: 12px;
     margin-bottom: 0px;

@@ -5,7 +5,7 @@
 
 body
 {
-  background: url('../images/wallpaper2.jpg');
+  background: url('../images/wallpaper.jpg');
   background-attachment: fixed;
   margin: 0;
   padding: 0;
@@ -14,6 +14,7 @@ body
   font-family: 'Quattrocento', serif;
   font-size: 14px;
 }
+
 
 h1,h2,h3,h4,h5,h6
 {
@@ -31,6 +32,10 @@ h2
 h3
 {
   font-size: 26px;
+}
+h4
+{
+  font-size: 16px;
 }
 form
 {

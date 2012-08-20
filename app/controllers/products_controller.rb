@@ -13,7 +13,14 @@ class ProductsController < ApplicationController
   
   def create
     @shop = Shop.find_by_name(params[:shop_id])
-    @product = Product.new(params[:product])
+    begin
+      @product = Product.new(params[:product])
+    rescue CarrierWave::IntegrityError
+      params[:product][:images] = nil;
+      @product = Product.new(params[:product])
+      flash[:notice] = "Invalid image file"
+      return render :new
+    end
     @shop.products << @product
     @shop.save
     redirect_to edit_shop_path(@shop.name)
@@ -27,7 +34,12 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @shop = Shop.find_by_name(params[:shop_id])
-    @product.write_attributes(params[:product])
+    begin
+      @product.write_attributes(params[:product])
+    rescue CarrierWave::IntegrityError
+      flash[:notice] = "Invalid image file"
+      return render :new
+    end
     @product.save
     redirect_to edit_shop_path(@shop.name)
   end

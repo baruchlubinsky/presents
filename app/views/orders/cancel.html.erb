@@ -1,0 +1,3 @@
+<h1>Payment failed</h1>
+Do you want to:
+<%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] } %> or <%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> ?

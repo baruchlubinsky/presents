@@ -1,1 +1,9 @@
 <%= render @stories %>
+<%= content_for :overlay do %>
+<div id='full_page' class='hidden'>
+    <div id='full_container'>
+        <img id='large_image'>
+        <span id='source'> </span>
+    </div>
+</div>
+<% end %>

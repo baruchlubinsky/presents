@@ -1,3 +1,19 @@
+#scroller_container
+{
+ 	position: relative;
+	overflow: hidden;
+}
+#scroller
+{
+	position: relative;
+	width: 10000px;
+}
+.tagline
+{
+	text-align: center;
+	font-size: 20px;
+}
+
 #three_pictures
 {
   img

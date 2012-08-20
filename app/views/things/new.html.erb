@@ -11,5 +11,15 @@
         <%= attachment.text_field :remote_file_url %>
         </p>
     <% end %>
+	<p>
+		<%= f.label :source, 'Source' %>
+		<br />
+		<%= f.text_field :source %>
+	</p>
+	<p>
+		<%= f.label :source_label, 'Source label' %>
+		<br />
+		<%= f.text_field :source_label %>
+	</p>
     <%= f.submit 'Upload' %>
 <% end %>

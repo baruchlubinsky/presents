@@ -15,6 +15,9 @@ class User
 	field :gender, :type => String
 	field :birthdate, :type => Date
 	field :hometown, :type => String
+	
+	field :shoe_size, :type => String
+	field :tshirt_size, :type => String
 
 	validates_uniqueness_of :email
 	validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

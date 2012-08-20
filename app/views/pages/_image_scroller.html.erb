@@ -1,0 +1,8 @@
+<div id="scroller_container">
+	<div id="scroller" data_items_count="<%= images.count %>" >
+		<% images.each do |i| %>
+			<%= image_div i.file_url(:story), 'card' %>
+		<% end %>
+	</div>	
+</div>
+	

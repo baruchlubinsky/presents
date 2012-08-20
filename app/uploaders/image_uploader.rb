@@ -41,6 +41,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :large do
     process :resize_to_limit => [600, 800]
   end
+  
+  
+  def default_url
+    "/images/fallback/default.jpg"
+  end
   #
   # def scale(width, height)
   #   # do something

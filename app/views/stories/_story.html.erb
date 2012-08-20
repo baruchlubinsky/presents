@@ -1,6 +1,6 @@
 <section class='story_container'>
-    <h2>
-        <%= story.title %>
+    <h2 class='story_title'>
+        <%= link_to story.title, story_path(story) %>
     </h2>
     <p class='story_date'>
         <%= story.created_at.to_date.to_formatted_s :long_ordinal %>
@@ -13,8 +13,8 @@
     <div class='story'>
         <%= simple_format(story.content) %>
     </div>
-    <p class='permalink'>
-        <%= link_to 'Read full story', story_path(story) %> - <a name='comments' onclick='toggleComments("<%= story.id %>")' class='comments_link'>Comments (<%= story.comments.count %>)</a>
+    <p>
+      <a name='comments' onclick='toggleComments("<%= story.id %>")' class='comments_link'>Comments (<%= story.comments.count %>)</a>
     </p>
     <div class='hidden' id="<%= story.id %>_comments">
         <h3>Comments</h3>

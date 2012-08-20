@@ -6,7 +6,7 @@ module LayoutHelper
   end
   
   def image_card(img)
-    image = image_tag(img.file_url(:story), :data_full_size => img.file_url(:large))
+    image = image_tag(img.file_url(:story), :data_full_size => img.file_url(:large), :data_source => img.source, :data_source_label => img.source_label )
     conatiner = content_tag(:div, image, :class => 'card')
   end
   

@@ -17,6 +17,29 @@
 	<%= f.label :password, 'Password' %></br>
 	<%= f.password_field :password %>
 	</p>
+	<h4>
+		The following fields are optional. The more we know about you the better your presents will be.
+	</h4>
+	<p>
+		<%= f.label :gender, 'Gender' %></br>
+		<%= f.text_field :gender %>
+	</p>
+	<p>
+		<%= f.label :birthdate, 'Birthdate' %></br>
+		<%= f.date_select :birthdate %>
+	</p>
+	<p>
+		<%= f.label :hometown, 'Home town' %></br>
+		<%= f.text_field :hometown %>
+	</p>
+	<p>
+		<%= f.label :shoe_size, 'Shoe size' %></br>
+		<%= f.text_field :shoe_size %>
+	</p>
+	<p>
+		<%= f.label :tshirt_size, 'T-shirt size' %></br>
+		<%= f.text_field :tshirt_size %>
+	</p>		
 	<p>
 	<%= f.submit 'Sign up' %>
 	</p>

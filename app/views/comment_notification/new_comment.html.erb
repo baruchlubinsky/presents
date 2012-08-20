@@ -1,12 +1,25 @@
+<p>
 Dear Pammi - Joy
-
+</p>
+<p>
 Someone just posted a comment on Presents in the Post. Please review the message to make sure that it is suitable for your site.
-
+</p>
+<p>
 The comment is about <%= @comment.story.title %>.
-
+</p>
+<p>
 <%= @comment.name %>
-
+</p>
+<p>
 <%= @comment.website %>
-
+</p>
+<p>
 <%= @comment.content %>
-
+</p>
+<p>
+Please ensure that this is safe for your website. If its not, please visit: <%= link_to edit_story_url(@comment.story) %> to remove it.
+</p>
+<p>
+Kind regards<br />
+Raj
+</p>

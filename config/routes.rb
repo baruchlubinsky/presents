@@ -4,7 +4,13 @@ PresentsInThePost::Application.routes.draw do
   
   resources :authorisations
   
-  resources :orders
+  resources :orders do
+    member do
+      post 'success'
+      post 'cancel'
+      post 'mail'
+    end
+  end
   
   resources :presents
   

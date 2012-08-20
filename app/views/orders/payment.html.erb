@@ -1,0 +1,13 @@
+Processing payment...
+
+<form action='https://dev-virtual.mygateglobal.com/PaymentPage.cfm' method='post' >
+	<input type='hidden' name='Mode', value='<%= @payment[:mode] %>' >
+	<input type='hidden' name='MerchantID' value='<%= @payment[:merchant_id] %>' >
+	<input type='hidden' name='ApplicationID', value='<%= @payment[:application_id] %>' >
+	<input type='hidden' name='MerchantReference' value='<%= @payment[:merchant_reference] %>' >
+	<input type='hidden' name='Amount' value='<%= @payment[:amount] %>' >
+	<input type='hidden' name='Currency' value='<%= @payment[:currency_code] %>' >
+	<input type='hidden' name='RedirectSuccessfulURL' value='<%= @payment[:redirect_successful_url] %>' >
+	<input type='hidden' name='RedirectFailedURL' value='<%= @payment[:redirect_failed_url] %>' >
+    <input type="submit" value="Send Details">
+</form>
