@@ -19,7 +19,7 @@
             <% if @user.nil? %>
                 <%= link_to 'Login', login_path %>
             <% else %>
-                <%= "Welcome back #{@user.name} | " %><%= link_to 'Logout', logout_path %>
+                Welcome back <%= link_to @user.name, edit_user_path(@user) %> | <%= link_to 'Logout', logout_path %>
             <% end %>
             
         </div>
@@ -33,19 +33,19 @@
                     <%= link_to 'Home', home_path %> 
                 </li>
                 <li>
-                    <%= link_to 'News', news_path %> 
+                    <%= link_to 'Get a Present', new_order_path %> 
                 </li>
                 <li>
-                    <%= link_to 'Past Presents', past_presents_path %> 
+                    <%= link_to 'The Story', story_path %> 
                 </li>
                 <li>
-                    <%= link_to 'Things I Like', things_i_like_path %> 
+                    <%= link_to 'Today', today_path %> 
                 </li>
                 <li>
-                    <%= link_to 'About', about_path %> 
+                    <%= link_to 'Raj Loves', raj_loves_path %> 
                 </li>
                 <li>
-                    <%= link_to 'Order now', new_order_path %>
+                    <%= link_to 'Posted Presents', posted_presents_path %>
                 </li>
                 <li>
                     <%= link_to 'Shop', shops_path %> 

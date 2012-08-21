@@ -1,4 +1,4 @@
-<h1>Welcome to Presents in the Post</h1>
+<h1>Update your personal details</h1>
 <span class='message'><%= flash[:message] %></span>
 <%= form_for (@user) do |f| %>
     <p>
@@ -8,14 +8,6 @@
 	<p>
 	<%= f.label :surname, 'Surname' %></br>
     <%= f.text_field :surname %>
-	</p>
-	<p>
-	<%= f.label :email, 'E-mail address' %></br>
-	<%= f.text_field :email %>
-	</p>
-	<p>
-	<%= f.label :password, 'Password' %></br>
-	<%= f.password_field :password %>
 	</p>
 	<h4>
 		The following fields are optional. The more we know about you the better your presents will be.
@@ -41,6 +33,6 @@
 		<%= f.text_field :tshirt_size %>
 	</p>		
 	<p>
-	<%= f.submit 'Sign up' %>
+	<%= f.submit 'Save' %>
 	</p>
 <% end %>

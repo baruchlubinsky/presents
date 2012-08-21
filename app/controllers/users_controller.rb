@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  
+  before_filter :force_login, :only => [:edit, :update]
+    
   def new
     @user = User.new
   end
+  
   def create
     @user = User.new(params[:user])
-    puts :params['user']
-    puts @user
     if @user.save
       session[:user_id] = @user.id
       if session[:return_path].nil?
@@ -19,11 +19,26 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
-  def show
-    @user = User.find(session[:user_id])
-    @users = User.all.to_a
-    @users.delete(@user)
+  
+  def edit
+    if params[:id].to_s != session[:user_id].to_s
+      render "Illegal operation"
+    else
+      @user = User.find(session[:user_id])
+    end
   end
+  
+  def update
+    @user = User.find(params[:id])
+    if params[:user][:admin]
+      render "Illegal operation"
+    else
+      @user.write_attributes(params[:user])
+      @user.save
+      redirect_to home_path
+    end
+  end
+  
   def index
     @users = User.all
   end

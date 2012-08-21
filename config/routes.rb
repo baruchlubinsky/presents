@@ -1,5 +1,12 @@
 PresentsInThePost::Application.routes.draw do
-
+  match 'home' => 'pages#home'
+  match 'today' => 'pages#today'
+  match 'posted_presents' => 'pages#posted_presents'
+  match 'raj_loves' => 'pages#raj_loves'
+  match 'about' => 'pages#about'
+  match 'story' => 'pages#story'
+  match 'shop' => 'pages#shop'
+  
   resources :users
   
   resources :authorisations
@@ -30,10 +37,11 @@ PresentsInThePost::Application.routes.draw do
   resources :things
   
   match 'home' => 'pages#home'
-  match 'news' => 'pages#news'
-  match 'past_presents' => 'pages#past_presents'
-  match 'things_i_like' => 'pages#things_i_like'
+  match 'today' => 'pages#today'
+  match 'posted_presents' => 'pages#posted_presents'
+  match 'raj_loves' => 'pages#raj_loves'
   match 'about' => 'pages#about'
+  match 'story' => 'pages#story'
   match 'shop' => 'pages#shop'
   
   match 'login' => 'authorisations#new'

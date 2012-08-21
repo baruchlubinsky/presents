@@ -17,18 +17,21 @@ class PagesController < ApplicationController
     
     @scroller_images = Thing.all.desc(:created_at).limit(6).map {|t| t.image};
   end
-  def news
+  def today
     @stories = Story.all.desc(:created_at).limit(5)
   end
-  def past_presents
+  def posted_presents
     @stories = Story.where(:category => 'Present').desc(:created_at)
   end
-  def things_i_like
+  def raj_loves
     @things = Thing.all.desc(:created_at)
     
   end
   def about
     
+  end
+  def story
+  
   end
   def shop
     
