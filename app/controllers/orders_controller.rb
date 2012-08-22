@@ -70,6 +70,15 @@ class OrdersController < ApplicationController
       payment_params[:currency_code] = 'ZAR'
       payment_params[:redirect_successful_url] = success_order_url @order, :authenticity_token => session[:_csrf_token]
       payment_params[:redirect_failed_url] = cancel_order_url @order, :authenticity_token => session[:_csrf_token]
+    elsif Rails.env == 'production'
+      payment_params[:mode] = '0'
+      payment_params[:merchant_id] = '92aa125b-b814-4b8c-9179-6f10f406ea99'
+      payment_params[:application_id] = '665cbd87-fcd6-44ba-82e9-d12ceadef2ff'
+      payment_params[:merchant_refernce] = @order.ref_no
+      payment_params[:amount] = @order.product.price
+      payment_params[:currency_code] = 'ZAR'
+      payment_params[:redirect_successful_url] = success_order_url @order, :authenticity_token => session[:_csrf_token]
+      payment_params[:redirect_failed_url] = cancel_order_url @order, :authenticity_token => session[:_csrf_token]
     end
     payment_params
   end
