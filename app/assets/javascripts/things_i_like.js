@@ -28,7 +28,7 @@ function setLargeImage(event)
 		$('#source').html("<a href=" + url + ">" + label + "</a>");
 	}
 	$('#full_page').removeClass('hidden');
-	$('#full_page').click(function(){$('#full_page').addClass('hidden')});
+	$('#full_page').click(function(){$('#full_page').addClass('hidden');$('#source').html("");});
 }
 
 

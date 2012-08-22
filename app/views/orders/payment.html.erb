@@ -7,8 +7,8 @@ Processing payment...
 	<input type='hidden' name='MerchantReference' value='<%= @payment[:merchant_reference] %>' >
 	<input type='hidden' name='Amount' value='<%= @payment[:amount] %>' >
 	<input type='hidden' name='Currency' value='<%= @payment[:currency_code] %>' >
-	<input type='hidden' name='RedirectSuccessfulURL' value='<%= @payment[:redirect_successful_url] %>' >
-	<input type='hidden' name='RedirectFailedURL' value='<%= @payment[:redirect_failed_url] %>' >
+	<input type='hidden' name='RedirectSuccessfulURL' value='<%= u @payment[:redirect_successful_url] %>' >
+	<input type='hidden' name='RedirectFailedURL' value='<%= u @payment[:redirect_failed_url] %>' >
     <input type="submit" value="Send Details" >
 </form>
 
