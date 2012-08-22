@@ -19,7 +19,7 @@
             <% if @user.nil? %>
                 <%= link_to 'Login', login_path %>
             <% else %>
-                Welcome back <%= link_to @user.name, edit_user_path(@user) %> | <%= link_to 'Logout', logout_path %>
+                Hello <%= link_to @user.name, edit_user_path(@user) %> | <%= link_to 'Logout', logout_path %>
             <% end %>
             
         </div>

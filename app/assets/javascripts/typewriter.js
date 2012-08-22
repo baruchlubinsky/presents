@@ -2,7 +2,7 @@ $(document).ready(function (){
 	$('textarea').keypress(playKeyPress);
 });
 
-keySound = new Audio('../sounds/key.wav');
+keySound = new Audio(SERVER_HTTP_HOST() + '/sounds/key.wav');
 
 function playKeyPress()
 {
@@ -13,3 +13,13 @@ function playKeyPress()
 	keySound.play();
 }
 
+function SERVER_HTTP_HOST(){  
+    var url = window.location.href;  
+    url = url.replace("http://", "");   
+      
+    var urlExplode = url.split("/");  
+    var serverName = urlExplode[0];  
+      
+    serverName = 'http://'+serverName;  
+    return serverName;  
+}
