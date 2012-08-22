@@ -1,0 +1,18 @@
+<h1>Edit this Raj's love</h1>
+<span class='notice'><%= flash[:notice] %></span>
+<%= form_for @thing do |f| %>
+	<p>
+		<%= image_tag @thing.image.file_url(:thumbnail).to_s %>
+	</p>
+	<p>
+		<%= f.label :source, 'Source' %>
+		<br />
+		<%= f.text_field :source %>
+	</p>
+	<p>
+		<%= f.label :source_label, 'Source label' %>
+		<br />
+		<%= f.text_field :source_label %>
+	</p>
+	<%= f.submit 'Save' %>
+<% end %>

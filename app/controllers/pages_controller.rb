@@ -30,7 +30,7 @@ class PagesController < ApplicationController
   def about
     
   end
-  def story
+  def the_story
   
   end
   def shop

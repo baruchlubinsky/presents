@@ -4,7 +4,7 @@
   <title>PresentsInThePost</title>
   <%= stylesheet_link_tag    "application", :media => "all" %> 
   <%= javascript_include_tag "application" %>
-  <link href='http://fonts.googleapis.com/css?family=Cardo|Junge|Vollkorn|Bentham|Quattrocento|Special+Elite|Cantata+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento|Special+Elite' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
@@ -36,7 +36,7 @@
                     <%= link_to 'Get a Present', new_order_path %> 
                 </li>
                 <li>
-                    <%= link_to 'The Story', story_path %> 
+                    <%= link_to 'The Story', the_story_path %> 
                 </li>
                 <li>
                     <%= link_to 'Today', today_path %> 

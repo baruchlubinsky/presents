@@ -43,6 +43,7 @@ class StoriesController < ApplicationController
   def edit
     @story = Story.find(params[:id])
   end
+  
   def update
     @story = Story.find(params[:id])
     begin
@@ -61,6 +62,7 @@ class StoriesController < ApplicationController
       render 'edit'
     end  
   end
+  
   def destroy
     @story = Story.find(params[:id])
     @story.delete

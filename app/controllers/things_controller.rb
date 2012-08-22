@@ -30,10 +30,24 @@ class ThingsController < ApplicationController
     redirect_to things_path
   end
   
-  
   def show
     @thing = Thing.find(params[:id])
     respond_with(@thing)
+  end
+  
+  def edit
+    @thing = Thing.find(params[:id])
+  end
+  
+  def update
+    @thing = Thing.find(params[:id])
+    @thing.write_attributes(params[:thing])
+    if @thing.valid?
+      @thing.save
+      redirect_to things_path
+    else
+      render 'edit', notice: "Invalid data" 
+    end
   end
   
 end

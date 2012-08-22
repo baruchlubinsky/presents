@@ -4,7 +4,7 @@ PresentsInThePost::Application.routes.draw do
   match 'posted_presents' => 'pages#posted_presents'
   match 'raj_loves' => 'pages#raj_loves'
   match 'about' => 'pages#about'
-  match 'story' => 'pages#story'
+  match 'the_story' => 'pages#the_story'
   
   resources :users
   
