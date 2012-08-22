@@ -1,5 +1,5 @@
 <h1><%= @shop.name %></h1>
-<%= form_for @shop do |f| %>
+<%= form_for @shop, :action => :update do |f| %>
     <p>
         <%= f.label :online, 'Is your shop ready to go online?' %>
         <%= f.check_box :online %>

@@ -3,12 +3,8 @@ class ShopsController < ApplicationController
   before_filter :require_artist, :only => [:edit]
   
   def index
-    if @user.nil? || @user[:admin].nil?
-      @shops = Shop.where(:online => true)
+      @shops = Shop.where(:online => true).where(:gte => {'products.count' => 0})
       render :layout => 'pages'
-    else
-      @shops = Shop.all
-    end
   end
   
   def new
@@ -45,14 +41,12 @@ class ShopsController < ApplicationController
     @shop = Shop.find_by_name(params[:id])
     @shop.write_attributes(params[:shop])
     @shop.save
-    redirect_to shops_url << "/#{@shop.name}"
+    binding.pry
+    redirect_to edit_shop_path @shop
   end
   
   def show
     @shop = Shop.find_by_name(params[:id])
     render :layout => 'pages'
   end
-  
-  
-  
 end

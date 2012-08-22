@@ -5,7 +5,6 @@ PresentsInThePost::Application.routes.draw do
   match 'raj_loves' => 'pages#raj_loves'
   match 'about' => 'pages#about'
   match 'story' => 'pages#story'
-  match 'shop' => 'pages#shop'
   
   resources :users
   
@@ -35,15 +34,7 @@ PresentsInThePost::Application.routes.draw do
   end 
   
   resources :things
-  
-  match 'home' => 'pages#home'
-  match 'today' => 'pages#today'
-  match 'posted_presents' => 'pages#posted_presents'
-  match 'raj_loves' => 'pages#raj_loves'
-  match 'about' => 'pages#about'
-  match 'story' => 'pages#story'
-  match 'shop' => 'pages#shop'
-  
+
   match 'login' => 'authorisations#new'
   match 'logout' => 'authorisations#destroy'
   
