@@ -1,9 +1,9 @@
 class ShopsController < ApplicationController
   before_filter :require_admin, :only => [:new, :create, :destroy]
-  before_filter :require_artist, :only => [:edit]
+  before_filter :require_artist, :only => [:edit, :update]
   
   def index
-      @shops = Shop.where(:online => true).where(:gte => {'products.count' => 0})
+      @shops = Shop.where(:online => true)
       render :layout => 'pages'
   end
   

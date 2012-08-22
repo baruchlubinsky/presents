@@ -8,7 +8,11 @@
 {
   float: left;
 }
-
+#shop_container
+{
+  float: left;
+  clear: both;
+}
 .shop_window
 {
   float: left;
@@ -53,6 +57,7 @@
   float: left;
   clear: both;
 }
+
 #product_images
 {
   float: left;

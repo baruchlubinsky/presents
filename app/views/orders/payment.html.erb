@@ -9,5 +9,12 @@ Processing payment...
 	<input type='hidden' name='Currency' value='<%= @payment[:currency_code] %>' >
 	<input type='hidden' name='RedirectSuccessfulURL' value='<%= @payment[:redirect_successful_url] %>' >
 	<input type='hidden' name='RedirectFailedURL' value='<%= @payment[:redirect_failed_url] %>' >
-    <input type="submit" value="Send Details">
+    <input type="submit" value="Send Details" >
 </form>
+
+<script type='text/javascript'>
+$(document).ready
+{
+	$('form').submit();
+}
+</script>

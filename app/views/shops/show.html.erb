@@ -2,8 +2,10 @@
 <% if @shop.online %>
     <p>
         <span class='shop_bio'><%= @shop.description %></span>
-    </p>    
-    <%= render :partial => 'product', :collection => @shop.products %>
+    </p>  
+  	<div id='shop_container'>
+    	<%= render :partial => 'product', :collection => @shop.products %>
+	</div>
 <% else %>
     This shop is currently offline. Please check back later.
 <% end %>
