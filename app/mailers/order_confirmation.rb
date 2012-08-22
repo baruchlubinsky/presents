@@ -4,13 +4,13 @@ class OrderConfirmation < ActionMailer::Base
   def user_confirm(user, order)
     @recipient = user.name
     @order = order
-    mail :to => user.email, :subject => 'Thank you for you order'
+    mail :to => user.email, :subject => "Thank you for you order (No. #{@order.ref_no})"
   end
   
   def owner_confirm(user, order)
     @customer = user
     @order = order
-    mail :to => 'pammijoy@gmail.com', :subject => 'New order received'    
+    mail :to => 'pammijoy@gmail.com', :subject => "New order received (No. #{@order.ref_no})"   
   end
   
   def bank_details(user, order)
