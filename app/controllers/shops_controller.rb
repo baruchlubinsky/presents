@@ -41,7 +41,6 @@ class ShopsController < ApplicationController
     @shop = Shop.find_by_name(params[:id])
     @shop.write_attributes(params[:shop])
     @shop.save
-    binding.pry
     redirect_to edit_shop_path @shop
   end
   
