@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController 
   before_filter :require_admin, :except => [:show]
-  #before_filter :clean_images, :only => [:create, :update]
+  before_filter :clean_images, :only => [:create, :update]
   #before_filter :require_admin, :only => [:new, :create]
   #before_filter :make_images, :only => [:create]
   def index
@@ -71,7 +71,6 @@ class StoriesController < ApplicationController
   
   private
   def clean_images
-    puts params[:story][:blog_images]
     params[:story][:blog_images].delete_if { |key, val| val[:file].nil? && val[:remote_file_url] == "" }
   end
 end
