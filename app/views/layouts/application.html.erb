@@ -4,8 +4,10 @@
   <title>PresentsInThePost</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+	<%= tinymce_managed_javascript_tag "stories" %>
   <link href='http://fonts.googleapis.com/css?family=Quattrocento|Special+Elite' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
     <div id='admin_column'>

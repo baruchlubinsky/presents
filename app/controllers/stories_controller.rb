@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController 
+  include TinymceFilemanager
   before_filter :require_admin, :except => [:show]
   before_filter :clean_images, :only => [:create, :update]
   #before_filter :require_admin, :only => [:new, :create]
@@ -21,6 +22,7 @@ class StoriesController < ApplicationController
     render :layout => 'pages'
   end
   def new
+    binding.pry
     @story = Story.new
   end
   def create
