@@ -12,13 +12,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    if Rails.env.production?
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    else
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -42,10 +46,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [600, 800]
   end
   
-  
-  def default_url
-    "/images/fallback/default.jpg"
-  end
+  #def default_url
+  #  "/images/fallback/default.jpg"
+  #end
   #
   # def scale(width, height)
   #   # do something

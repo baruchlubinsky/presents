@@ -13,6 +13,7 @@ class ThingsController < ApplicationController
       return redirect_to new_thing_path, notice: "Invalid image file"
     end  
     if @thing.valid?
+      
       @thing.save
       redirect_to things_path
     else

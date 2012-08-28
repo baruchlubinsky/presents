@@ -13,7 +13,8 @@ gem 'bson_ext'
 
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-
+gem 'fog'
+gem 'aws-s3'
 gem 'rmagick'
 
 group :development, :test do

@@ -10,6 +10,9 @@ class Shop
   
   has_many :products
   
+  embeds_one :cover, as: :imageable, :class_name => 'Image', cascade_callbacks: true 
+  embeds_one :logo, as: :imageable, :class_name => 'Image', cascade_callbacks: true
+  
   validates :name, :uniqueness => true
   
   def to_param
