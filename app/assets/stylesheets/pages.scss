@@ -34,6 +34,7 @@ $column-color: white;
 #footer
 {
 	background: url('../images/footer.jpg');
+	margin-top: 430px;
 	width: 740px;
 	height: 332px;
 	clear: both;
@@ -58,7 +59,7 @@ $column-color: white;
 {
   position: relative;
   top: 3px;
-  right: 3px;
+  right: 0px;
 padding: 10px;
   background-color: rgba(255, 255, 255, 0.8);
 }

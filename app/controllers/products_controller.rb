@@ -43,5 +43,10 @@ class ProductsController < ApplicationController
     @product.save
     redirect_to edit_shop_path(@shop.name)
   end
-    
+  
+  def destroy
+    @product = Product.find(params[:id])
+    @product.delete
+    redirect_to edit_shop_path params[:shop_id]
+  end
 end

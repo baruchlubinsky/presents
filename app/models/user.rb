@@ -20,7 +20,11 @@ class User
 	field :tshirt_size, :type => String
 
 	validates_uniqueness_of :email
-	validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :message => 'Please enter a valid e-mail address'
+	validates_presence_of :email, :message => 'Please enter your e-mail address'
+	validates_presence_of :password, :message => 'You must provide a password'
+	validates_presence_of :first_name, :message => 'Please enter your first name'
+	validates_presence_of :last_name, :message => 'Please enter your last name'	
 	
 	has_many :orders
 	

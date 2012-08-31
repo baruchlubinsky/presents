@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_filter :require_admin, :only => [:new, :create, :destroy]
+  before_filter :require_admin, :only => [:new, :create, :destroy, :admin]
   before_filter :require_artist, :only => [:edit, :update]
   
   def index
@@ -32,9 +32,9 @@ class ShopsController < ApplicationController
   
   def edit
     @shop = Shop.find_by_name(params[:id])
-    unless @shop.user_id == @user.id
-      redirect_to '/login', :notice => 'Only the artist may enter this page'
-    end
+    # unless @shop.user_id == @user.id
+    #       redirect_to '/login', :notice => 'Only the artist may enter this page'
+    #     end
   end
   
   def update
@@ -47,5 +47,9 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find_by_name(params[:id])
     render :layout => 'pages'
+  end
+  
+  def admin
+    @shops = Shop.all
   end
 end

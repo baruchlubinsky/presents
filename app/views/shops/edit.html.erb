@@ -1,5 +1,5 @@
 <h1><%= @shop.name %></h1>
-<%= form_for @shop, :action => :update do |f| %>
+<%= form_for @shop do |f| %>
     <p>
         <%= f.label :online, 'Is your shop ready to go online?' %>
         <%= f.check_box :online %>
@@ -14,6 +14,30 @@
         <br />
         <%= f.text_area :description, :rows => 4 %>
     </p>
+	<p>
+		<%= f.label :logo, 'Logo' %>
+		<% if @shop.logo %>
+			<p>
+				<%= image_tag @shop.logo.file_url(:thumbnail) %>
+			</p>
+		<% end %>
+		<br />
+		<%= f.fields_for :logo do |u|%>
+			<%= u.file_field :file %>
+		<% end %>
+	</p>
+	<p>
+		<%= f.label :cover, 'Shop front image' %>
+		<% if @shop.cover %>
+			<p>
+				<%= image_tag @shop.cover.file_url(:thumbnail) %>
+			</p>
+		<% end %>
+		<br />
+		<%= f.fields_for :cover do |u|%>
+			<%= u.file_field :file %>
+		<% end %>
+	</p>
     <%= f.submit 'Save' %>
 <% end %>
 <h2>Products</h2>

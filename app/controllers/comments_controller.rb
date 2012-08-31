@@ -5,14 +5,19 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.fix_url
     @story = Story.find(params[:story_id])
-    @story.comments << @comment
-    @comment.save
-    @story.save
+    if @comment.valid?
+      @story.comments << @comment
+      @comment.save
+      @story.save
     
-    message = CommentNotification.new_comment @comment
-    message.deliver
+      message = CommentNotification.new_comment @comment
+      message.deliver
     
-    redirect_to story_path(@story, :anchor => 'comments')
+      redirect_to story_path(@story, :anchor => 'comments')
+    else
+      @story
+      render @story, :anchor => 'comments'
+    end
   end
   
   def destroy

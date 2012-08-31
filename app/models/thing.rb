@@ -7,5 +7,5 @@ class Thing
   field :source, :type => String
   field :source_label, :type => String
   
-  validates_format_of :source, :with => /^http:/
+  validates_format_of :source, :with => /^$|^http:/
 end

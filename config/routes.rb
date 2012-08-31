@@ -28,6 +28,9 @@ PresentsInThePost::Application.routes.draw do
   end
   
   resources :shops do
+    collection do
+      get 'admin'
+    end
     resources :products do
       resources :images, :only => :destroy
     end

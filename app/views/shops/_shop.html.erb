@@ -1,11 +1,8 @@
+<div class='shop_container'>
 <a href='<%= shop_path(shop.name) %>'>
     <section class='shop_summary'>   
-        <h2><%= shop.name %></h2>
-        <span class='shop_description'>
-            <%= shop.blurb %>
-        </span>
-        <div class='shop_front'>
-            <%= image_div shop.products.first.images.first.file_url(:story), 'shop_window' %>
-        </div>
+          <%= image_div shop.cover.file_url, 'shop_window' %>
+		<h2><%= shop.name %></h2>
     </section>
 </a>
+</div>

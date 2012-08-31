@@ -1,0 +1,8 @@
+<h1>Choose a shop to edit</h1>
+<ul>
+<% @shops.each do |s| %>
+	<li>
+		<%= link_to s.name, edit_shop_path(s) %>
+	</li>
+<% end %>
+</ul>
