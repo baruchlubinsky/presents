@@ -24,7 +24,7 @@ class User
 	validates_presence_of :email, :message => 'Please enter your e-mail address'
 	validates_presence_of :password, :message => 'You must provide a password'
 	validates_presence_of :first_name, :message => 'Please enter your first name'
-	validates_presence_of :last_name, :message => 'Please enter your last name'	
+	validates_presence_of :surname, :message => 'Please enter your surname'	
 	
 	has_many :orders
 	
@@ -36,7 +36,9 @@ class User
   end
     
 	def password=(val)
-	  self.write_attribute(:password, self.hash_password(val))
+	  unless val.empty?	    
+  	  self.write_attribute(:password, self.hash_password(val))
+	  end
 	end
 	
 	def password_match?(pw)

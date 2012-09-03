@@ -11,16 +11,26 @@ class ScrollerImagesController < ApplicationController
   end
   
   def create
-    @scroller_image = ScrollerImage.new(params[:scroller_image])
-    @scroller_image.save
-    redirect_to scroller_images_path
+    @new_scroller_image = ScrollerImage.new(params[:scroller_image])
+    if @new_scroller_image.valid?
+      @new_scroller_image.save
+      redirect_to scroller_images_path
+    else
+      @scroller_images = ScrollerImage.all
+      render :index
+    end
   end
   
   def update
     @scroller_image = ScrollerImage.find(params[:id])
     @scroller_image.write_attributes(params[:scroller_image])
-    @scroller_image.save
-    redirect_to scroller_images_path
+    if @scroller_image.valid?
+      @scroller_image.save
+      redirect_to scroller_images_path
+    else
+      @scroller_images = ScrollerImage.all
+      render :index
+    end
   end
   
   def destroy

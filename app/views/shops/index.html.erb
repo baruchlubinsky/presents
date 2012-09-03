@@ -1,3 +1,5 @@
-
+<% if @shops && @shops.count > 0 %>
 <%= render @shops %>
-
+<% else %>
+<h3>The makers are still busy getting everything ready. Please check back soon.</h3>
+<% end %>

@@ -13,12 +13,18 @@ class StoriesController < ApplicationController
   end
   def show
     @story = Story.find(params[:id])
+    if @story.online == false
+      @story = "Sorry this post is not available."
+    end
     @new_comment = Comment.new
     unless @user.nil?
       @new_comment.name = @user.name
       @new_comment.email = @user.email
     end
     render :layout => 'pages'
+  end
+  def preview
+    @story = Story.find(params[:id])
   end
   def new
     @story = Story.new
@@ -34,7 +40,7 @@ class StoriesController < ApplicationController
     end  
     if @story.valid?
       @story.save
-      redirect_to stories_path, :notice => "Post saved"       
+      redirect_to preview_story_path(@story)       
     else
       flash[:notice] = "Invalid data"
       render 'new'
@@ -56,7 +62,11 @@ class StoriesController < ApplicationController
     end
     if @story.valid?
       @story.save
-      redirect_to stories_path
+      if @story.online
+        redirect_to stories_path
+      else
+        redirect_to preview_story_path(@story)
+      end
     else
       flash[:notice] = "Invalid data"
       render 'edit'
@@ -71,6 +81,8 @@ class StoriesController < ApplicationController
   
   private
   def clean_images
-    params[:story][:blog_images].delete_if { |key, val| val[:file].nil? && val[:remote_file_url] == "" }
+    if params[:story][:blog_images]
+      params[:story][:blog_images].delete_if { |key, val| val[:file].nil? && val[:remote_file_url] == "" }
+    end
   end
 end

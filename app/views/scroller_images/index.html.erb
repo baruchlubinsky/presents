@@ -21,6 +21,14 @@
 <% end %>
 <ul>
 <p />
+<% unless @new_scroller_image.errors.empty? %>
+<span class='message'>Could not create scrolly machine.</span>
+<ul>
+<% @new_scroller_image.errors.messages.values.each do |e| %>
+<li><span class='error'><%= e.first.to_s %></span></li>
+<% end %>
+</ul>
+<% end %>
 <%= form_for @new_scroller_image do |f| %>
 	<p>
 		<%= f.label 'Make a new image (192 by 256 pixels)' %>

@@ -1,5 +1,12 @@
 <h1>Welcome to Presents in the Post</h1>
-<span class='message'><%= flash[:message] %></span>
+<% unless @user.errors.empty? %>
+<span class='message'>Could not create user.</span>
+<ul>
+<% @user.errors.messages.values.each do |e| %>
+<li><span class='error'><%= e.first.to_s %></span></li>
+<% end %>
+</ul>
+<% end %>
 <%= form_for (@user) do |f| %>
     <p>
 	<%= f.label :first_name, 'First name' %></br>

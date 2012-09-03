@@ -25,6 +25,10 @@
     <p>
         <%= f.multi_upload :blog_images, :file %>
     </p>
+	<p>
+		<%= f.label :online, 'Online' %>
+		<%= f.check_box :online %>
+	</p>
     <p>
         <%= f.submit 'Save' %>
     </p>

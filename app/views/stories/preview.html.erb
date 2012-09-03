@@ -1,0 +1,5 @@
+<%= render @story %>
+<%= form_for @story do |f| %>
+	<%= f.hidden_field :online, :value => 'true' %>
+	<%= f.submit 'Post' %> or <%= link_to 'Edit', edit_story_path(@story) %>
+<% end %>

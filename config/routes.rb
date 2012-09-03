@@ -23,6 +23,9 @@ PresentsInThePost::Application.routes.draw do
   resources :present_products
   
   resources :stories do
+    member do
+      get 'preview'
+    end
     resources :blog_images
     resources :comments
   end

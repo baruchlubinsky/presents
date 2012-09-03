@@ -5,4 +5,7 @@ class ScrollerImage
   
   embeds_one :image, as: :imageable, :class_name => 'Image', cascade_callbacks: true
   
+  validates :image, :presence => {:message => 'Please upload an image'}
+  validates :link, :presence => {:link => 'Please set a link'}
+  
 end
