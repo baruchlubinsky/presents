@@ -20,7 +20,8 @@ class UsersController < ApplicationController
         redirect_to new_user_path
       end
     else
-      flash
+      render :new
+    end
   end
   
   def edit
