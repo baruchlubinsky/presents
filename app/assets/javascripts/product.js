@@ -1,3 +1,4 @@
+/*
 $(document).ready(function (){
 	$("img[data_full_url*='uploads']").click(changeFullImage);
 });
@@ -15,4 +16,10 @@ function changeFullImage()
 	
 	self.attr('src', temp_thumb);
 	self.attr('data_full_url', temp_full);
+}
+*/
+
+function set_product_image(src)
+{
+	$('#main_product_image').attr('src', src);
 }

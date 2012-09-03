@@ -1,0 +1,39 @@
+<h1>Scroller images</h1>
+<ul>
+<% @scroller_images.each do |si| %>
+	<li>
+		<%= form_for si do |f| %>
+			<%= image_tag si.image.file_url(:thumbnail) %>
+			<br />
+			<p>
+				<%= f.fields_for :image do |i|%>
+					<%= i.file_field :file %>
+				<% end %>
+			</p>
+			<p>
+				<%= f.label :link, 'Link' %>
+				<br />
+				<%= f.text_field :link %>
+			</p>
+			<%= f.submit 'Update' %> <%= link_to 'Delete', scroller_image_path(si), method: :delete %>
+		<% end %>
+	</li>
+<% end %>
+<ul>
+<p />
+<%= form_for @new_scroller_image do |f| %>
+	<p>
+		<%= f.label 'Make a new image (192 by 256 pixels)' %>
+	</p>
+	<p>
+		<%= f.fields_for :image do |i|%>
+			<%= i.file_field :file %>
+		<% end %>
+	</p>
+	<p>
+		<%= f.label :link, 'Link' %>
+		<br />
+		<%= f.text_field :link %>
+	</p>
+	<%= f.submit 'Save' %>
+<% end %>

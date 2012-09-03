@@ -10,7 +10,7 @@ class Story
   
   embeds_many :blog_images, as: :imageable, :class_name => 'Image', cascade_callbacks: true
   
-  validates_presence_of :title, :message => 'Story must have a title'
+  validates :title, :presence => {:message => 'Story must have a title'}
 
   def summary
     self.content.split("\n")[0]

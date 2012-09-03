@@ -13,8 +13,7 @@ class Shop
   embeds_one :cover, as: :imageable, :class_name => 'Image', cascade_callbacks: true 
   embeds_one :logo, as: :imageable, :class_name => 'Image', cascade_callbacks: true
   
-  validates :name, :uniqueness => true, :message => 'Shop name must be unique'
-  validates_presence_of :name, :message => 'Please enter a shop name'
+  validates :name, :uniqueness => { :message => 'Shop name must be unique'}, :presence => {:message => 'Please enter a shop name'}
   
   def to_param
     name

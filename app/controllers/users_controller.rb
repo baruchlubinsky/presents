@@ -7,17 +7,20 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save
-      session[:user_id] = @user.id
-      if session[:return_path].nil?
-        redirect_to home_path
+    if @user.valid?
+      if @user.save
+        session[:user_id] = @user.id
+        if session[:return_path].nil?
+          redirect_to home_path
+        else
+          redirect_to session.delete(:return_path)
+        end
       else
-        redirect_to session.delete(:return_path)
+        flash[:message] = 'Unable to create user'
+        redirect_to new_user_path
       end
     else
-      flash[:message] = 'Unable to create user'
-      redirect_to new_user_path
-    end
+      flash
   end
   
   def edit

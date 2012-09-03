@@ -1,7 +1,7 @@
 <h1><%= @shop.name %></h1>
 <h2>New product</h2>
 <span class='notice'><%= flash[:notice] %></span>
-<%= form_for [@shop, @product] do |f| %>
+<%= form_for [@shop, @product], :html => {:multipart => true} do |f| %>
     <p>
         <%= f.label :name, 'Name' %>
         <br />
@@ -18,7 +18,7 @@
         R<%= f.text_field :price %>
     </p>
     <p>
-        <%= f.label 'Images' %>
+        <%= f.label 'Images (400px wide)' %>
     </p>
     <p>
         <%= f.multi_upload :images, :file %>

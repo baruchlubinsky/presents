@@ -37,6 +37,8 @@ PresentsInThePost::Application.routes.draw do
   end 
   
   resources :things
+  
+  resources :scroller_images
 
   match 'login' => 'authorisations#new'
   match 'logout' => 'authorisations#destroy'

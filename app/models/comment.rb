@@ -12,9 +12,9 @@ class Comment
   
   default_scope desc(:created_at)
   
-  validates_presence_of :name, :message => "Please enter your name"
-  validates_presence_of :email, :message => "Please enter your e-mail address"
-  validates_presence_of :content, :message => "Please enter a comment"
+  validates :name, :presence => {:message => "Please enter your name"}
+  validates :email, :presence => {:message => "Please enter your e-mail address"}
+  validates :content, :presence => {:message => "Please enter a comment"}
   
   
   def self.comment_for(user)

@@ -8,6 +8,26 @@
 	position: relative;
 	width: 10000px;
 }
+.scroll_image_container
+{
+	float: left;
+	padding: 20px 8px 20px 8px;
+	border-radius: 3px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	box-shadow: 4px 4px 2px #bbbbbb;
+}
+.scroll_image
+{
+	width: 192px;
+	overflow: hidden;
+	text-align: center;
+	img
+	{ 
+	  
+	  height: 256px;
+	}
+}
 .tagline
 {
 	text-align: center;

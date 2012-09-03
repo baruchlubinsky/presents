@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 #    @all_products.reverse!
 #    @products = @all_products.take(3)
     
-    @scroller_images = Thing.all.desc(:created_at).limit(6).map {|t| t.image};
+    @scroller_images = ScrollerImage.all;
   end
   def today
     @stories = Story.all.desc(:created_at).limit(5)

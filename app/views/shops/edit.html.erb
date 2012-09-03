@@ -45,7 +45,7 @@
 <ul>
     <% @shop.products.each do |p| %>
         <li>
-            <%= p.name %>-<%= link_to 'Edit', edit_shop_product_path(@shop,p) %>-<%= link_to 'Delete', shop_product_path(@shop,p), :method => :delete, :confirm => 'Are you sure?\n(This action cannot be undone)' %>
+            <%= p.name %>-<%= link_to 'Edit', edit_shop_product_path(@shop,p) %>-<%= link_to 'Delete', shop_product_path(@shop,p), :method => :delete, :confirm => "Are you sure?\n(This action cannot be undone)" %>
         </li>
     <% end %>
 </ul>

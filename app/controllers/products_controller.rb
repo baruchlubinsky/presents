@@ -9,12 +9,14 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @shop = Shop.find_by_name(params[:shop_id])
+    render :layout => 'pages'
   end
   
   def create
     @shop = Shop.find_by_name(params[:shop_id])
     begin
       @product = Product.new(params[:product])
+      @product.save
     rescue CarrierWave::IntegrityError
       params[:product][:images] = nil;
       @product = Product.new(params[:product])

@@ -1,11 +1,13 @@
-<a href='<%= shop_product_path(product.shop, product)  %>'>
-<div class='product'>
-    <div>
-    <%= image_tag product.images.first.file_url(:story) %>
-    <h4><%= product.name %></h4>
-    </div>
-    <div class='price'>
-    <h5><%= number_to_currency product.price %></h5>
-    </div>
+<div class='product_container'>
+	<a href='<%= shop_product_path(product.shop, product)  %>'>
+		<div class='product'>
+		    <%= image_div product.images.first.file_url(:story), 'product_image' %>
+			<div class='product_name'>
+			  <h4><%= product.name %></h4>
+		    </div>
+		    <div class='product_card_price'>
+			    <h4><%= number_to_currency product.price %></h4>
+		    </div>
+		</div>
+	</a>
 </div>
-</a>
