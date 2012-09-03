@@ -5,11 +5,9 @@
     <p class='story_date'>
         <%= story.created_at.to_date.to_formatted_s :long_ordinal %>
     </p>
-    <div class='card_container'>
 		<% story.images.each do |img| %>
-			<%= image_card img %>
+			<%= image_div img.file_url, 'blog_image' %>
 		<% end %>
-    </div>
     <div class='story'>
         <%= simple_format(story.content) %>
     </div>

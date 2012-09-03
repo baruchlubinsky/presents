@@ -3,6 +3,9 @@ class StoriesController < ApplicationController
   before_filter :clean_images, :only => [:create, :update]
   #before_filter :require_admin, :only => [:new, :create]
   #before_filter :make_images, :only => [:create]
+  
+  @tab = 'story'
+  
   def index
     @stories = Story.all
     @new_comment = Comment.new

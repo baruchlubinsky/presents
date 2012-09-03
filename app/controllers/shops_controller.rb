@@ -2,7 +2,10 @@ class ShopsController < ApplicationController
   before_filter :require_admin, :only => [:new, :create, :destroy, :admin]
   before_filter :require_artist, :only => [:edit, :update]
   
+  
+  
   def index
+      @tab = 'shop'
       @shops = Shop.where(:online => true)
       render :layout => 'pages'
   end
@@ -45,6 +48,7 @@ class ShopsController < ApplicationController
   end
   
   def show
+    @tab = 'shop'
     @shop = Shop.find_by_name(params[:id])
     render :layout => 'pages'
   end

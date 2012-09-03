@@ -16,22 +16,23 @@ class PagesController < ApplicationController
 #    @products = @all_products.take(3)
     
     @scroller_images = ScrollerImage.all;
+    @tab = 'home'
   end
   def today
+    @tab = 'today'
     @stories = Story.all.desc(:created_at).limit(5)
   end
   def posted_presents
+    @tab = 'posted'
     @stories = Story.where(:category => 'Present').desc(:created_at)
   end
   def raj_loves
+    @tab = 'loves'
     @things = Thing.all.desc(:created_at)
     
   end
-  def about
-    
-  end
   def the_story
-  
+    @tab = 'story'
   end
   def shop
     

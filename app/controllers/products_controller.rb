@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   end
   
   def show
+    @tab = 'shop'
     @product = Product.find(params[:id])
     @shop = Shop.find_by_name(params[:shop_id])
     render :layout => 'pages'

@@ -2,7 +2,10 @@ class OrdersController < ApplicationController
   before_filter :force_login, :except => [:success, :cancel] 
   before_filter :require_admin, :only => [:index, :edit, :show, :update]
   
+  
+  
   def new
+    @tab = 'order'
     @order = Order.new
     if params[:product_id]
       @product = Product.find(params[:product_id])
