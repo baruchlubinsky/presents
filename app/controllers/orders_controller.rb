@@ -9,10 +9,11 @@ class OrdersController < ApplicationController
     @order = Order.new
     if params[:product_id]
       @product = Product.find(params[:product_id])
-      @order.product = @product
+      @products =  Array.new 
+      @products << @product
     else
       @present = true
-      @products = PresentProduct.all
+      @products = Product.presents
       @presents = Present.where(:available_from.lte => Time.now).where(:available_to.gt => Time.now)
     end
     render :layout => 'pages'
@@ -20,11 +21,19 @@ class OrdersController < ApplicationController
   
   def create
     @order = Order.new(params[:order])
-    @order.create_ref_no
-    @order.user = @user
-    @order.save
-    @payment = my_gate_params
-    render :payment
+    if @order.valid?
+      @order.order_items.to_a.count.times do |i|
+        p = Product.find(@order.order_items[i].product_id)
+        @order.order_items[i].write_attributes p.order_item
+      end
+      @order.create_ref_no
+      @order.user = @user
+      @order.save
+      @payment = my_gate_params
+      render :payment
+    else
+      render :new
+    end
   end
   
   def index
@@ -69,25 +78,27 @@ class OrdersController < ApplicationController
       payment_params[:merchant_id] = '92aa125b-b814-4b8c-9179-6f10f406ea99'
       payment_params[:application_id] = '665cbd87-fcd6-44ba-82e9-d12ceadef2ff'
       payment_params[:merchant_refernce] = @order.ref_no
-      payment_params[:amount] = @order.product.price
+      payment_params[:amount] = @order.total
       payment_params[:currency_code] = 'ZAR'
-      payment_params[:redirect_successful_url] = success_order_url @order, :authenticity_token => session[:_csrf_token]
-      payment_params[:redirect_failed_url] = cancel_order_url @order, :authenticity_token => session[:_csrf_token]
+      payment_params[:redirect_successful_url] = success_order_url @order
+      payment_params[:redirect_failed_url] = cancel_order_url @order
     elsif Rails.env == 'production'
       payment_params[:mode] = '0'
-      payment_params[:merchant_id] = '92aa125b-b814-4b8c-9179-6f10f406ea99'
-      payment_params[:application_id] = '665cbd87-fcd6-44ba-82e9-d12ceadef2ff'
+      payment_params[:merchant_id] = '50572584-edca-49c3-befe-006897bd1ce4'
+      payment_params[:application_id] = '780f4f8c-02a8-4e56-ab44-e29e52f7a09d'
       payment_params[:merchant_refernce] = @order.ref_no
-      payment_params[:amount] = @order.product.price
+      payment_params[:amount] = @order.total
       payment_params[:currency_code] = 'ZAR'
-      payment_params[:redirect_successful_url] = success_order_url @order, :authenticity_token => session[:_csrf_token]
-      payment_params[:redirect_failed_url] = cancel_order_url @order, :authenticity_token => session[:_csrf_token]
+      payment_params[:redirect_successful_url] = success_order_url @order
+      payment_params[:redirect_failed_url] = cancel_order_url @order
     end
     payment_params
   end
   
   def success
     @order = Order.find(params[:id])
+    session[:user_id] = @order.user_id
+    @user = User.find session[:user_id]
     @order.paid = true
     @order.save
     message = OrderConfirmation.user_confirm @user, @order
@@ -98,6 +109,7 @@ class OrdersController < ApplicationController
   
   def failure
     @order = Order.find(params[:id])
+    session[:user_id] = @order.user_id
   end
   
   def mail

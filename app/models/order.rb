@@ -7,7 +7,7 @@ class Order
   field :ref_no, :type => String
   field :present, :type => String
   
-  belongs_to :product
+  embeds_many :order_items, :cascade_callbacks => true
   
   field :options, :type => Hash
   
@@ -17,6 +17,14 @@ class Order
   
   def create_ref_no
     self.ref_no ||= Time.now.to_i.to_s << id.to_s.last(2)
+  end
+  
+  def total
+    sum = 0;
+    self.order_items.each do |p|
+      sum = sum + p.price
+    end
+    return sum
   end
   
 end

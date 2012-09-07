@@ -1,4 +1,4 @@
-.option
+.choices
 {
   float: left;
   text-align: center;
@@ -13,5 +13,9 @@
 	float: left;
 	width: 100%;
 	clear: both;
+	.card
+	{
+		margin-right: 8px;
+	}
 }
 

@@ -56,7 +56,8 @@
 #full_product
 {
 	float: left;
-		position: relative;
+	position: relative;
+	min-height: 220px;
 }
 #main_product_image
 {
@@ -86,11 +87,33 @@
 {
 	
 }
+.image_num
+{
+	a
+	{
+	float: left;
+	padding: 5px;
+	padding-bottom: 0px;
+	
+	display: block;
+	
+	font-size: 18px;
+	}
+}
+#sub_images
+{
+	vertical-align: middle;
+	img
+	{
+	float: left;
+	padding-top: 3px;
+	}
+}
 #product_bottom
 {
 	position: absolute;
 	width: 270px;
-	bottom: 0px;
+	bottom: 7px;
 	right: 0px;
 }
 #logo_container

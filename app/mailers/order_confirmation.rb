@@ -1,10 +1,10 @@
 class OrderConfirmation < ActionMailer::Base
-  default from: "Raj Kulkarani <raj@presentsinthepost.co.za>"
+  default from: "Raj Pachai <raj@presentsinthepost.co.za>"
   
   def user_confirm(user, order)
     @recipient = user.name
     @order = order
-    mail :to => user.email, :subject => "Thank you for you order (No. #{@order.ref_no})"
+    mail :to => user.email, :subject => "Order Confirmation"
   end
   
   def owner_confirm(user, order)

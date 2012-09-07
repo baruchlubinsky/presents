@@ -1,4 +1,9 @@
 <h1>Welcome to Presents in the Post</h1>
+
+<h4>Please fill in as many details as you can.<br /> 
+	The more Raj knows, the better he can make sure the present fits you just right.<br />
+	You will need your login details to get a present and buy from the shop.
+</h4>
 <% unless @user.errors.empty? %>
 <span class='message'>Could not create user.</span>
 <ul>
@@ -24,9 +29,6 @@
 	<%= f.label :password, 'Password' %></br>
 	<%= f.password_field :password %>
 	</p>
-	<h4>
-		The following fields are optional. The more we know about you the better your presents will be.
-	</h4>
 	<p>
 		<%= f.label :gender, 'Gender' %></br>
 		<%= f.text_field :gender %>

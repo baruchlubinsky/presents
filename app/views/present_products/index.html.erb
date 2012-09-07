@@ -11,15 +11,19 @@
         <td>
             Price
         </td>
+		<td>
+			Months
+		</td>	
         <td></td>
         <td></td>
     </tr>
     <% @presents.each do |p| %>
     <tr>
-        <%= form_for p do |f| %>
+        <%= form_for p, :controller => :present_products do |f| %>
             <td><%= f.text_field :name, :size => 20 %></td>
             <td><%= f.text_field :description %></td>  
             <td><%= f.text_field :price, :size => 6 %></td>  
+			<td><%= f.text_field :months, :size => 6 %></td>
             <td><%= f.submit 'Update' %></td>
         <% end %>
         <td>
@@ -28,11 +32,12 @@
     </tr>
     <% end %>
     <tr>
-        <%= form_for @new_present do |f| %>
-            <td><%= f.text_field :name, :size => 20 %></td>
-            <td><%= f.text_field :description %></td>  
-            <td><%= f.text_field :price, :size => 6 %></td>   
-            <td><%= f.submit 'Add' %></td>
+        <%= form_tag :controller => :present_products, :action => :create, :method => :put do  %>
+            <td><%= text_field_tag 'present_product[name]', nil,:size => 20 %></td>
+            <td><%= text_field_tag 'present_product[description]' %></td>  
+            <td><%= text_field_tag 'present_product[price]', nil,:size => 6 %></td>   
+			<td><%= text_field_tag 'present_product[months]', nil,:size => 6 %></td>
+            <td><%= submit_tag 'Add' %></td>
         <% end %>
     </tr>
 </table>

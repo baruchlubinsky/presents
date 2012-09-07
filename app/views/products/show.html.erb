@@ -2,11 +2,21 @@
     <div id='product_images'>
         <%= image_tag @product.images.first.file_url, :id => 'main_product_image' %>
         <div id='sub_images'>
+			<%= image_tag 'dot.jpg' %>
             <% @product.images.each_with_index do |i, index| %>
+				<span class='image_num'>
                 <%= link_to (index + 1).to_s, "javascript: set_product_image('#{i.file_url}');"%>
+				</span>
+				<%= image_tag 'dot.jpg' %>	
+				
             <% end %>            
         </div>
     </div>
+	<div class='hidden'>
+		<% @product.images.each do |i| %>
+			<%= image_tag i.file_url %>			
+        <% end %>
+	</div>
     <div id='product_details'>
 		<h3 class='product_title'>
 			<%= @product.name %>

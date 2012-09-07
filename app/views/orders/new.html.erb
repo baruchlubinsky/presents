@@ -1,4 +1,12 @@
 <h1>Order your present in the post</h1>
+<% unless @order.errors.empty? %>
+<span class='message'>Could not create order.</span>
+<ul>
+<% @order.errors.messages.values.each do |e| %>
+<li><span class='error'><%= e.first.to_s %></span></li>
+<% end %>
+</ul>
+<% end %>
 <% if @present && @presents.empty?  %>
 <p>
     We're sorry, there is no present available to order at this time, please check back soon.
@@ -10,7 +18,9 @@
             <p>
                 <%= f.label :product, 'How many presents would you like to receive?' %>
                 <br />
-                <%= f.select :product_id, @products.map {|p| [p.name, p.id]} %>
+				<%= f.fields_for 'order_items[0]' do |oi| %>
+                <%= oi.select 'product_id', @products.map {|p| [p.name, p.id]} %>
+				<% end %>
             </p>
             <p>
                 <%= f.label 'Choose the option to get the present bested suited to you'%>
@@ -38,8 +48,12 @@
 				</div>
              <% end %>
          <% else %>
-            <h2><%= label_tag "Ordering #{@product.name}" %></h2>
-            <%= f.hidden_field :product_id %>
+            <h2><%= label_tag "Ordering #{(@products.collect {|p| p.name}).join(',')}" %></h2>
+			<% @products.each_with_index do |product, index| %>
+				<%= f.fields_for "order_items[#{index}]" do |oi| %>
+	            	<%= oi.hidden_field 'product_id', :value => product.id %>
+				<% end %>
+			<% end %>
          <% end %>
          <div id='options_container'>
          <%= f.fields_for :options do |o| %>
