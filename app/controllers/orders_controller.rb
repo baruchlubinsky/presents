@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
       payment_params[:redirect_successful_url] = success_order_url @order
       payment_params[:redirect_failed_url] = cancel_order_url @order
     elsif Rails.env == 'production'
-      payment_params[:mode] = '0'
+      payment_params[:mode] = '1'
       payment_params[:merchant_id] = '50572584-edca-49c3-befe-006897bd1ce4'
       payment_params[:application_id] = '780f4f8c-02a8-4e56-ab44-e29e52f7a09d'
       payment_params[:merchant_refernce] = @order.ref_no
