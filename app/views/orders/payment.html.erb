@@ -1,6 +1,6 @@
 Processing payment...
 
-<form action='https://dev-virtual.mygateglobal.com/PaymentPage.cfm' method='post' >
+<form action=<%= @payment[:url] %> method='post' >
 	<input type='hidden' name='Mode', value='<%= @payment[:mode] %>' >
 	<input type='hidden' name='MerchantID' value='<%= @payment[:merchant_id] %>' >
 	<input type='hidden' name='ApplicationID', value='<%= @payment[:application_id] %>' >

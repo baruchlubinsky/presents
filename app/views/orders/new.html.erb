@@ -33,17 +33,19 @@
                 </p>
  				<div id='choices_container'>
 					<% @presents.each_with_index do |p, i| %>
-					<div id='choices_<%= i %>' class='choices hidden'>
-						<% p.options.each do |option| %>
-						<div class='card'>
-			            <label>
-			            <%= image_tag option.image_url %>
-			            <br />
-			            <%= o.radio_button 'choice', option.name %>
-			            </label>
-			            </div>
+						<% unless p.options.empty? %>
+							<div id='choices_<%= i %>' class='choices hidden'>
+								<% p.options.each do |option| %>
+								<div class='card'>
+					            <label>
+					            <%= image_tag option.image_url %>
+					            <br />
+					            <%= o.radio_button 'choice', option.name %>
+					            </label>
+					            </div>
+								<% end %>
+							</div>	
 						<% end %>
-					</div>	
 					<% end %>
 				</div>
              <% end %>
