@@ -8,4 +8,6 @@ class ScrollerImage
   validates :image, :presence => {:message => 'Please upload an image'}
   validates :link, :presence => {:link => 'Please set a link'}
   
+  default_scope desc(:id)
+  
 end

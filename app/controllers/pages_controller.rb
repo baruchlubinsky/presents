@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
   def today
     @tab = 'today'
-    @stories = Story.all.desc(:created_at).limit(5)
+    @stories = Story.all.where(:online => true).desc(:created_at).limit(5)
   end
   def posted_presents
     @tab = 'posted'
