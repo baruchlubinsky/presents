@@ -3,7 +3,7 @@ class Option
   
   field :name, :type => String
   
-  mount_uploader :image, OptionImageUploader
+  mount_uploader :image, ImageUploader
   
   embedded_in :present  
 end
