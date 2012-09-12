@@ -2,8 +2,6 @@ class ShopsController < ApplicationController
   before_filter :require_admin, :only => [:new, :create, :destroy, :admin]
   before_filter :require_artist, :only => [:edit, :update]
   
-  
-  
   def index
       @tab = 'shop'
       @shops = Shop.where(:online => true)

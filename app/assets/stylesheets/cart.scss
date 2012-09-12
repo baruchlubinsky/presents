@@ -1,0 +1,37 @@
+.cart_item
+{
+	float: left;
+	width: 700px;
+	clear: both;
+	padding: 10px;
+}
+.cart_image
+{
+	float: left;
+	height: 120px;
+	img
+	{
+		width: 120px;
+	}
+	overflow: hidden;
+}
+.cart_details
+{
+	float: left;
+	padding-left: 20px;
+	max-width: 450px;
+}
+.cart_remove
+{
+	float: right;
+	padding-right: 20px;
+}
+.cart_total
+{
+	padding-left: 150px;
+}
+.cart_checkout
+{
+	margin-left: 150px;
+	font-size: 20px;
+}

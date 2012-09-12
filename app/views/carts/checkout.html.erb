@@ -1,0 +1,44 @@
+<h1>Checkout</h1>
+You are about to order:
+<ul>
+	<% @order.order_items.each do |oi| %>
+		<li><%= oi.name %></li>
+	<% end %>
+</ul>
+<p>
+Total: <%= number_to_currency @order.total %>
+</p>
+<h3>Order Details</h3>
+<%= form_for @order, :url => payment_order_path(@order.id.to_s) do |f| %>
+     <%= f.fields_for :options do |o| %>
+        <p>
+            <%= o.label :gift, 'Send as a gift?' %>
+            <%= o.check_box :gift %>
+        </p>
+        <div id='message' class='hidden'>
+            <p>
+                <%= o.label :message, 'Write a message'%>
+                <br />
+                <%= o.text_area :message, :rows => 8  %>
+            </p>
+        </div>
+    <% end %>
+    <%= f.label :delivery_address, 'Delivery address' %>
+    <%= f.fields_for :delivery_address do |a| %>
+        <% 3.times do |i| %>
+            <p>
+                <%= a.label "line #{i}", "Address line #{i + 1}"%>
+                <br />
+                <%= a.text_field i.to_s %>
+            </p>
+        <% end %>
+        <p>
+            <%= a.label :post_code, "Postal code"%>
+            <br />
+            <%= a.text_field :post_code  %>
+        </p>
+    <% end %>
+	<p>
+    	<%= f.submit "Purchase" %>
+	</p>	
+<% end %>

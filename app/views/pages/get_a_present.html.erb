@@ -1,0 +1,43 @@
+<% if @presents.empty?  %>
+<p>
+    We're sorry, there is no present available to order at this time, please check back soon.
+</p>
+<% else %>
+    <div id='order_container'>
+	    <%= form_tag '/cart/add_present' do %>
+	   		<p>
+				<%= label_tag :product, 'How many presents would you like to receive?' %>
+				<br />
+				<%= select_tag :product_id, options_from_collection_for_select(@products, :id, :name) %>
+			</p>
+			<p>
+				<%= label_tag 'Choose the option to get the present bested suited to you'%>
+			</p>
+			<%= fields_for :options do |o| %>
+				<p>
+					<%= o.label :recipient, 'This present is for a:'%>
+					<br />
+					<%= o.select :recipient, options_from_collection_for_select(@presents, :id, :recipient) %>
+				</p>
+				<div id='choices_container'>
+					<% @presents.each_with_index do |p, i| %>
+						<% unless p.options.empty? %>
+							<div id='choices_<%= i %>' class='choices hidden'>
+								<% p.options.each_with_index do |option, index| %>
+									<div class='card'>
+										<label>
+											<%= image_tag option.image_url %>
+											<br />
+											<%= o.radio_button 'choice', index %>
+										</label>
+									</div>
+								<% end %>
+							</div>	
+						<% end %>
+					<% end %>
+				</div>
+			<% end %>	
+			<%= submit_tag 'Add to cart' %>
+		<% end %>
+	</div>
+<% end %>

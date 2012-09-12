@@ -78,17 +78,17 @@
                 <p>
                     <%= a.label "line #{i}", "Address line #{i + 1}"%>
                     <br />
-                    <%= a.text_field i %>
+                    <%= a.text_field i.to_s %>
                 </p>
             <% end %>
             <p>
                 <%= a.label :post_code, "Postal code"%>
                 <br />
-                <%= a.text_field :post_code %>
+                <%= a.text_field :post_code  %>
             </p>
         <% end %>
 		<p>
-        	<%= f.submit "Order" %>
+        	<%= f.submit "Order", :action => :create %>
 		</p>	
         </div>
     <% end %>

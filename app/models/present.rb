@@ -6,6 +6,7 @@ class Present
   field :available_to, :type => Time
   
   field :recipient, :type => String
+  field :orders, :type => Integer
   
   embeds_many :options, :class_name => 'Option', cascade_callbacks: true
 end

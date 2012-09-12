@@ -27,7 +27,7 @@ class User
 	validates_presence_of :surname, :message => 'Please enter your surname'	
 	
 	has_many :orders
-	
+	embeds_one :cart
 	has_one :shop
 	
   def hash_password(pw)

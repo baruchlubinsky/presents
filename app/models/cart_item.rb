@@ -1,12 +1,12 @@
-class OrderItem
+class CartItem
   include Mongoid::Document
   
-  field :shipped, :type => Boolean
   field :name, :type => String
   field :shop, :type => String
   field :price, :type => Float
+  field :thumbnail, :type => String
   field :note, :type => String
   
-  embedded_in :order
+  embedded_in :cart
   
 end

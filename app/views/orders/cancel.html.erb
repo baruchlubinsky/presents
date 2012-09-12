@@ -1,3 +1,7 @@
 <h1>Payment failed</h1>
-Do you want to:
+<p>
+	<%= @message %>
+</p>
+Do you want to: 
+<%= button_to "Review your order", edit_order_path(params[:id]), :method => :get %> 
 <%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] } %> or <%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> ?

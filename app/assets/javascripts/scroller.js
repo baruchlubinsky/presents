@@ -1,10 +1,10 @@
 $(document).ready(function (){
 	maxScroll = parseInt($('#scroller').attr('data_items_count')) - 3;
 	scrollCount = 0;
-	scrollTimer = setInterval(animateScroller, 4000);
+	scrollTimer = setInterval(animateScroller, 3000);
 	
 	$('#scroller_container').mouseenter(function(){clearInterval(scrollTimer);});
-	$('#scroller_container').mouseleave(function(){scrollTimer = setInterval(animateScroller, 4000);});
+	$('#scroller_container').mouseleave(function(){scrollTimer = setInterval(animateScroller, 3000);});
 });
 
 var maxScroll;

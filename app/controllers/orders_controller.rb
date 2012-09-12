@@ -51,24 +51,45 @@ class OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
+    @order.order_items = Array.new
     @order.update_attributes(params[:order])
-    respond_to do |format|
-      format.html do
-        @order.save
-        redirect_to orders_path
+    if @order.valid?
+      @order.order_items.to_a.count.times do |i|
+        p = Product.find(@order.order_items[i].product_id)
+        @order.order_items[i].write_attributes p.order_item
       end
-      format.js do
-        if @order.save
-          render :nothing => true
-        else
-          render :inline => "alert('Error on save, please reload the page');"
-        end
-      end
+      @order.create_ref_no
+      @order.user = @user
+      @order.save
+      @payment = my_gate_params
+      render :payment
+    end
+  end
+  
+  def payment
+    @order = Order.find(params[:id])
+    @order.update_attributes(params[:order])
+    if @order.valid?
+      @order.create_ref_no
+      @order.user = @user
+      @order.save
+      @payment = my_gate_params
+      render :payment
     end
   end
   
   def edit
     @order = Order.find(params[:id])
+    @products = Array.new
+    @order.order_items.each do |oi|
+      @products << Product.find(oi.product_id)
+    end
+    if @products[0][:_type] == 'PresentProduct'
+      @present = true
+      @presents = Present.where(:available_from.lte => Time.now).where(:available_to.gt => Time.now)
+    end
+    @order.save
+    render :layout => 'pages'
   end
   
   def my_gate_params
@@ -109,10 +130,11 @@ class OrdersController < ApplicationController
     owner_message.deliver
   end
   
-  def failure
+  def cancel
     @order = Order.find(params[:id])
     session[:user_id] = @order.user_id
     @user = User.find session[:user_id]
+    @message = params['_ERROR_MESSAGE']
   end
   
   def mail

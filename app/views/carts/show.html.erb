@@ -1,0 +1,25 @@
+<h1>Your shopping cart</h1>
+<% if @items.empty? %>
+	Your cart is empty.
+<% else %>
+	<% @items.each do |item| %>
+		<div class='cart_item'>
+			<%= image_div item.thumbnail, 'cart_image' %>
+			<div class='cart_details'>
+				<p>
+					<%= "#{item.name} from #{item.shop}" %>
+				</p>
+				<p>
+					<%= number_to_currency item.price %>
+				</p>
+			</div>
+			<div class='cart_remove'>
+				<p>
+					<%= link_to 'Remove', cart_remove_item_path(item.id) %>
+				</p>
+			</div>			
+		</div>	
+	<% end %>
+	<h4 class='cart_total'>Total: <%= number_to_currency((@items.collect{|i| i.price}).inject{|sum, i| sum + i}) %></h4>
+	<%= button_to 'Proceed to checkout', checkout_path, :class => 'cart_checkout' %>
+<% end %>

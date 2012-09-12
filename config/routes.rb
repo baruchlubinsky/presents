@@ -5,6 +5,14 @@ PresentsInThePost::Application.routes.draw do
   match 'raj_loves' => 'pages#raj_loves'
   match 'about' => 'pages#about'
   match 'the_story' => 'pages#the_story'
+  match 'get_a_present' => 'pages#get_a_present'
+  match 'contact' => 'pages#contact'
+  
+  match 'cart/show' => 'carts#show'
+  match 'cart/add_item' => 'carts#add_item'
+  match 'cart/add_present' => 'carts#add_present'
+  match 'cart/remove_item/:id' => 'carts#remove_item', :as => :cart_remove_item
+  match 'checkout' => 'carts#checkout'
   
   resources :users
   
@@ -12,6 +20,7 @@ PresentsInThePost::Application.routes.draw do
   
   resources :orders do
     member do
+      put 'payment'
       post 'success'
       post 'cancel'
       post 'mail'

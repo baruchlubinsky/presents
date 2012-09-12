@@ -1,7 +1,7 @@
 $(document).ready(function (){
 	//$('#order_options_recipient').change(loadOptions);
-	$('#order_options_recipient').change(showOptions);
-	$('#order_options_recipient').change();
+	$('#options_recipient').change(showOptions);
+	$('#options_recipient').change();
 	$('#order_options_gift').change(toggleMessage);
 });
 

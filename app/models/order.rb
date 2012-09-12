@@ -13,7 +13,7 @@ class Order
   
   belongs_to :user
   
-  validates_presence_of :delivery_address, :message => "Please enter a delivery address"
+  #validates_presence_of :delivery_address, :message => "Please enter a delivery address"
   
   def create_ref_no
     self.ref_no ||= Time.now.to_i.to_s << id.to_s.last(2)

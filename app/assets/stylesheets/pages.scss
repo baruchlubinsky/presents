@@ -20,6 +20,8 @@ $column-color: white;
 	img
 	{
 		width: 660px;
+		padding-bottom: 10px;
+		padding-top: 10px;
 	}
 }
 #column
@@ -41,7 +43,7 @@ $column-color: white;
 #footer
 {
 	background: url('../images/footer.jpg');
-	margin-top: 430px;
+	margin-top: 280px;
 	width: 740px;
 	height: 332px;
 	clear: both;
@@ -146,4 +148,9 @@ a:active {text-decoration:underline;}
 .info_container
 {
 	padding: 20px;
+}
+.answer
+{
+	margin-left: 10px;
+	font-style:italic
 }
