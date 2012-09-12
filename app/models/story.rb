@@ -4,6 +4,7 @@ class Story
   
   field :title, :type => String
   field :content, :type => String
+  field :intro, :type => String
   field :category, :type => String
   field :online, :type => Boolean, :default => false
   

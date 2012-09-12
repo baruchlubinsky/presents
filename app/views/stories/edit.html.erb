@@ -5,11 +5,15 @@
 <span class='notice'><%= flash[:notice] %></span>
 <%= form_for @story, :multipart => true do |f| %>
     <p>
-    <%= f.label :title, 'Post title' %>
+    <%= f.label :title, 'Post title' %><br />
     <%= f.text_field :title %>
     </p>
+	<p>
+    <%= f.label :intro, 'Intro' %><br />
+    <%= f.text_area :intro %>
+    </p>
     <p>
-    <%= f.label :content, 'Content' %>
+    <%= f.label :content, 'Content' %><br />
     <%= f.text_area :content %>
     </p>
     <%= f.label :images, 'Images' %>

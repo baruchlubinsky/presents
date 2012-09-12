@@ -16,9 +16,6 @@ class StoriesController < ApplicationController
   end
   def show
     @story = Story.find(params[:id])
-    if @story.online == false
-      @story = "Sorry this post is not available."
-    end
     @new_comment = Comment.new
     unless @user.nil?
       @new_comment.name = @user.name

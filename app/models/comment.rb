@@ -31,7 +31,7 @@ class Comment
       unless self.website.start_with?('http://')
         self.website = 'http://' << self.website
       end
-      if self.website.contains('script')
+      if self.website.index('script') != nil
         self.website = ''
       end
     end

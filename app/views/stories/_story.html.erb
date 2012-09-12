@@ -5,6 +5,9 @@
     <p class='story_date'>
         <%= story.created_at.to_date.to_formatted_s :long_ordinal %>
     </p>
+	<div class='story'>
+        <%= simple_format(story.intro) %>
+    </div>
 		<% story.images.each do |img| %>
 			<%= image_div img.file_url, 'blog_image' %>
 		<% end %>
@@ -17,18 +20,23 @@
     <div class='hidden' id="<%= story.id %>_comments">
         <h3>Comments</h3>
         <% story.comments.each do |comment| %>
-            <span class='comment_author'>
-                <% if comment.website.empty? %>
-                    <%= comment.name %>
-                <% else %>
-                    <%= link_to comment.name, comment.website %>
-                <% end %>
-            </span>
-            <span class='comment_time'>
-                <%= comment.created_at.to_formatted_s :long_ordinal %>
-            </span>
-            <%= simple_format comment.content %>
+			<div class='comment'>
+            	<div class='comment_author'>
+	                <% if comment.website.empty? %>
+	                    <%= comment.name %>
+	                <% else %>
+	                    <%= link_to comment.name, comment.website %>
+	                <% end %>
+	            </div>
+				<div class='comment_content'>
+	            <%= simple_format comment.content %>
+				</div>
+				<div class='comment_time'>
+	                <%= comment.created_at.to_formatted_s :long_ordinal %>
+	            </div>
+			</div>
         <% end %>
+		<h4>Post a comment</h4>
         <%= form_for([story, Comment.comment_for(@user)]) do |f| %>
             <p>
                 <%= f.label :name, 'Name' %>

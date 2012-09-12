@@ -149,8 +149,27 @@ a:active {text-decoration:underline;}
 {
 	padding: 20px;
 }
+.question
+{
+	font-size: 16px;
+}
 .answer
 {
-	margin-left: 10px;
-	font-style:italic
+	color: #A0A0A0;
+}
+.comment_author
+{
+	font-weight: bold;
+}
+.comment_content
+{
+
+}
+.comment_time
+{
+	font-size: 11px;
+}
+.comment
+{
+	padding-bottom: 14px;
 }
