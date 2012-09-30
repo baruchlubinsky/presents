@@ -27,6 +27,7 @@ $column-color: white;
 #column
 {
   position: relative;
+  
   margin: auto;
   padding-top: 0px;
   width: 740px;
@@ -43,7 +44,7 @@ $column-color: white;
 #footer
 {
 	background: url('../images/footer.jpg');
-	margin-top: 280px;
+	margin-top: 180px;
 	width: 740px;
 	height: 332px;
 	clear: both;
@@ -60,7 +61,7 @@ $column-color: white;
   width: 700px;
   margin: 0;
   padding: 20px;
-  padding-bottom: 140px;
+  //padding-bottom: 140px;
   background-color: $column-color;
  //border-style: none solid; 
 }
@@ -71,22 +72,27 @@ $column-color: white;
   right: 0px;
   padding: 10px;
   background-color: rgba(255, 255, 255, 1);
+  width: 700px;
+}
+#cart
+{
+	float :right;
 }
 nav
 {
-	margin-left: 80px;
+	margin-left: 8px;
 	position: relative;
   	a
 	{
 		position:relative;
 		&:hover
 		{
-			top: -3px;
+			top: -5px;
 		}
 	}
 	a.current
 	{
-		top: -3px;
+		top: -5px;
 	}
 }
 section
@@ -104,8 +110,10 @@ a
 }
 a:link {text-decoration:none;}
 a:visited {text-decoration:none;}
-a:hover {text-decoration:underline;}
-a:active {text-decoration:underline;}
+a:hover {text-decoration:none;
+		color: #969696;}
+a:active {text-decoration:none;
+	    color: #969696;}
 .story_container
 {
   background-color: white;
@@ -151,7 +159,7 @@ a:active {text-decoration:underline;}
 }
 .question
 {
-	font-size: 16px;
+	
 }
 .answer
 {
@@ -172,4 +180,22 @@ a:active {text-decoration:underline;}
 .comment
 {
 	padding-bottom: 14px;
+}
+#phone
+{
+	padding-left:30px;
+	padding-top: 60px;
+	float:left;	
+}
+#contact_details
+{
+	float:left;
+	padding-left:80px;
+	padding-top: 70px;
+	wdith: 400px;
+	p
+	{
+		width:100%;
+	align: center;
+	}
 }

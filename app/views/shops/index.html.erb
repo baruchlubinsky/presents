@@ -1,5 +1,8 @@
 <% if @shops && @shops.count > 0 %>
+<div id='shop_window_container'>
 <%= render @shops %>
+</div>
+<p>
 <% else %>
 <h3>The makers are still busy getting everything ready. Please check back soon.</h3>
 <% end %>

@@ -113,7 +113,8 @@
 {
 	position: absolute;
 	width: 270px;
-	bottom: 7px;
+	bottom: 1
+	7px;
 	right: 0px;
 }
 #logo_container
@@ -125,4 +126,9 @@
 		margin-top: 180px;
 		width: 400px;
 	}
+}
+#shop_window_container
+{
+	float: left;
+	padding-bottom: 350px;;
 }

@@ -7,7 +7,15 @@ class CartsController < ApplicationController
   end
 
   def add_item
-    
+    product = Product.find(params[:product_id])
+    @user.cart ||= Cart.new
+    cart_item = CartItem.new({:name => product.name,
+                              :price => product.price,
+                              :shop => product.shop.name,
+                              :thumbnail => product.images.first.file_url(:thumbnail)})
+    @user.cart.cart_items << cart_item
+    @user.cart.save
+    redirect_to '/cart/show'
   end
   
   def add_present

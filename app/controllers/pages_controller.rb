@@ -29,6 +29,6 @@ class PagesController < ApplicationController
     
   end
   def contact
-    
+    @tab = 'contact'
   end
 end

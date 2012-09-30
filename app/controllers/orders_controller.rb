@@ -95,10 +95,10 @@ class OrdersController < ApplicationController
   def my_gate_params
     payment_params = Hash.new
     if Rails.env == 'development'
-      payment_params[:url] = 'https://dev-virtual.mygateglobal.com/PaymentPage.cfm'
+      payment_params[:url] = 'https://virtual.mygateglobal.com/PaymentPage.cfm'
       payment_params[:mode] = '0'
-      payment_params[:merchant_id] = '92aa125b-b814-4b8c-9179-6f10f406ea99'
-      payment_params[:application_id] = '665cbd87-fcd6-44ba-82e9-d12ceadef2ff'
+      payment_params[:merchant_id] = '50572584-edca-49c3-befe-006897bd1ce4'
+      payment_params[:application_id] = '780f4f8c-02a8-4e56-ab44-e29e52f7a09d'
       payment_params[:merchant_reference] = @order.ref_no
       payment_params[:amount] = @order.total
       payment_params[:currency_code] = 'ZAR'
@@ -106,7 +106,7 @@ class OrdersController < ApplicationController
       payment_params[:redirect_failed_url] = cancel_order_url @order
     elsif Rails.env == 'production'
       payment_params[:url] = 'https://virtual.mygateglobal.com/PaymentPage.cfm'
-      payment_params[:mode] = '0'
+      payment_params[:mode] = '1'
       payment_params[:merchant_id] = '50572584-edca-49c3-befe-006897bd1ce4'
       payment_params[:application_id] = '780f4f8c-02a8-4e56-ab44-e29e52f7a09d'
       payment_params[:merchant_reference] = @order.ref_no
@@ -122,6 +122,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     session[:user_id] = @order.user_id
     @user = User.find session[:user_id]
+    @user.cart.cart_items.delete_all
+    @user.cart.save
     @order.paid = true
     @order.save
     message = OrderConfirmation.user_confirm @user, @order
