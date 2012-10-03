@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :force_login, :only => [:edit, :update]
-    
+  
   def new
     @user = User.new
   end

@@ -1,5 +1,3 @@
-<h1>Welcome to Presents in the Post</h1>
-
 <h4>Please fill in as many details as you can.<br /> 
 	The more Raj knows, the better he can make sure the present fits you just right.<br />
 	You will need your login details to get a present and buy from the shop.
@@ -42,12 +40,28 @@
 		<%= f.text_field :hometown %>
 	</p>
 	<p>
+		<%= f.label :day_job, 'What do you do in the day?' %></br>
+		<%= f.text_field :day_job %>
+	</p>
+	<p>
+		<%= f.label :dream_job, 'What do you wish you were doing?' %></br>
+		<%= f.text_field :dream_job %>
+	</p>
+	<p>
 		<%= f.label :shoe_size, 'Shoe size' %></br>
 		<%= f.text_field :shoe_size %>
 	</p>
 	<p>
 		<%= f.label :tshirt_size, 'T-shirt size' %></br>
 		<%= f.text_field :tshirt_size %>
+	</p>
+	<p>
+		<%= f.label :waist_size, 'Dress/Pants size' %></br>
+		<%= f.text_field :waist_size %>
+	</p>
+	<p>
+		<%= f.label :dream_present, 'What is your dream present?' %></br>
+		<%= f.text_field :dream_present %>
 	</p>		
 	<p>
 	<%= f.submit 'Sign up' %>

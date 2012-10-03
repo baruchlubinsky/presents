@@ -15,6 +15,10 @@ class User
 	field :gender, :type => String
 	field :birthdate, :type => Date
 	field :hometown, :type => String
+	field :day_job, :type => String
+	field :dream_job, :type => String
+	field :waist_size, :type => String
+	field :dream_present, :type => String
 	
 	field :shoe_size, :type => String
 	field :tshirt_size, :type => String

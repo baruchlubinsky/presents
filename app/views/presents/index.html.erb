@@ -1,0 +1,23 @@
+<h1>Presents</h1>
+<h2>Online</h2>
+<ul>
+<% @presents.where(:online => true).each do |p| %>
+	<li><%= p.recipient %> - <%= p.orders %> 
+		<%= form_for p do |f| %>
+			<%= f.hidden_field :online, :value => false %>
+    		<%= f.submit 'Take offline' %> 
+		<% end %>
+	</li>
+<% end %>
+</ul>
+<h2>Offline</h2>
+<ul>
+<% @presents.where(:online.ne=> true).each do |p| %>
+	<li><%= p.recipient %> - <%= p.orders %>  
+		<%= form_for p do |f| %>
+			<%= f.hidden_field :online, :value => true %>
+    		<%= f.submit 'Take online' %> 
+		<% end %>
+</li>
+<% end %>
+</ul>

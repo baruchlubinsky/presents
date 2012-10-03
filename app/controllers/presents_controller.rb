@@ -1,7 +1,11 @@
 class PresentsController < ApplicationController
-  #require_admin
+  before_filter :require_admin
   def new
     @present = Present.new
+  end
+  
+  def index
+    @presents = Present.all
   end
   
   def create
@@ -10,6 +14,11 @@ class PresentsController < ApplicationController
     redirect_to '/admin', :notice => 'Successfully created a new present'
   end
   
+  def update
+    @present = Present.find(params[:id])
+    @present.write_attributes(params[:present])
+    @present.save
+  end
   def show
     @present = Present.find(params[:id])
   end

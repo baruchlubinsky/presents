@@ -1,4 +1,15 @@
 <%= render @stories %>
+<% if @total > 5 %>
+    <div id='sub_images'>
+		<%= image_tag 'dot.jpg' %>
+		<% (@total / 5 + 1).times do |i| %>
+			<span class='image_num'>
+	        <%= link_to (i + 1), today_path(:page => i + 1)%>
+			</span>
+		    <%= image_tag 'dot.jpg' %>
+		<% end %>
+	</div>	
+<% end %>
 <%= content_for :overlay do %>
 <div id='full_page' class='hidden'>
     <div id='full_container'>

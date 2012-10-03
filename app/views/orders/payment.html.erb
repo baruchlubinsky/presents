@@ -9,6 +9,12 @@ Processing payment...
 	<input type='hidden' name='Currency' value='<%= @payment[:currency_code] %>' >
 	<input type='hidden' name='RedirectSuccessfulURL' value='<%= u @payment[:redirect_successful_url] %>' >
 	<input type='hidden' name='RedirectFailedURL' value='<%= u @payment[:redirect_failed_url] %>' >
+	<input type='hidden' name='Recipient' value='<%= @payment[:recipient] %>'>
+	<input type='hidden' name='ShippingAddress1' value='<%= @payment[:shipping_address1] %> '>
+	<input type='hidden' name='ShippingAddress2' value='<%= @payment[:shipping_address2] %> '>
+	<input type='hidden' name='ShippingAddress3' value='<%= @payment[:shipping_address3] %> '>
+	<input type='hidden' name='ShippingAddress4' value='<%= @payment[:shipping_address4] %> '>
+	<input type='hidden' name='ShippingAddress5' value=' '>
     <input type="submit" value="Send Details" >
 </form>
 

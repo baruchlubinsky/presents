@@ -14,13 +14,18 @@ PresentsInThePost::Application.routes.draw do
   match 'cart/remove_item/:id' => 'carts#remove_item', :as => :cart_remove_item
   match 'checkout' => 'carts#checkout'
   
+  match 'payment' => 'orders#payment'
+  
   resources :users
   
   resources :authorisations
   
   resources :orders do
+    collection do
+      post 'search'
+    end
     member do
-      put 'payment'
+      post 'payment'
       post 'success'
       post 'cancel'
       post 'mail'

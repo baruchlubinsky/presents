@@ -2,8 +2,7 @@ class Present
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes
   
-  field :available_from, :type => Time
-  field :available_to, :type => Time
+  field :online, :type => Boolean
   
   field :recipient, :type => String
   field :orders, :type => Integer

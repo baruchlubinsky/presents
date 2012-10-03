@@ -1,8 +1,18 @@
 <%= link_to 'Admin menu', admin_path %>
 <h1>Edit Order</h1>
 <%= form_for @order do |f| %>
-    
-    <%= f.label :delivery_address, 'Delivery address' %>
+	<h3>Items</h3>
+	<ul>
+	<% @order.order_items.each do |i| %>
+		<li><%= "#{i.name} from #{i.shop}. #{i.note}" %></li>
+	<% end %>
+	</ul>
+	<h3>Details</h3>
+	<% if @order.options['gift'] %>
+		<p>This is a gift.<p>
+		<p><%= simple_format @order.options['message'] %><p>
+	<% end %>
+    <%= f.label :delivery_address, 'Delivery address:' %>
     <%= f.fields_for :delivery_address do |d| %>
         <% @order.delivery_address.keys.each do |k| %>
            <p><%= d.text_field k, :value => @order.delivery_address[k] %></p>

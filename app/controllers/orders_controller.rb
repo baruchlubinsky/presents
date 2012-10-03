@@ -21,27 +21,28 @@ class OrdersController < ApplicationController
   
   def create
     @order = Order.new(params[:order])
-    if @order.valid?
-      @order.order_items.to_a.count.times do |i|
-        p = Product.find(@order.order_items[i].product_id)
-        @order.order_items[i].write_attributes p.order_item
-      end
-      @order.create_ref_no
-      @order.user = @user
-      @order.save
-      @payment = my_gate_params
-      render :payment
-    else
-      render :new
+    @order.order_items.to_a.count.times do |i|
+      p = Product.find(@order.order_items[i].product_id)
+      @order.order_items[i].write_attributes p.order_item
     end
+    @order.create_ref_no
+    @order.user = @user
+    @order.save
+    @payment = my_gate_params
+    render 'orders/payment'
   end
   
   def index
-    @orders = Order.includes(:user).includes(:product).all.desc(:created_at).asc(:paid, :shipped)
+    @orders = Order.includes(:user).all.asc(:paid, :shipped).desc(:created_at)
   end
   
   def show
     @order = Order.find(params[:id])
+  end
+  
+  def search
+    @order = Order.where(:ref_no => params[:ref_no]).first
+    redirect_to edit_order_path @order
   end
   
   def destroy
@@ -53,43 +54,32 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.order_items = Array.new
     @order.update_attributes(params[:order])
-    if @order.valid?
-      @order.order_items.to_a.count.times do |i|
-        p = Product.find(@order.order_items[i].product_id)
-        @order.order_items[i].write_attributes p.order_item
-      end
-      @order.create_ref_no
-      @order.user = @user
-      @order.save
-      @payment = my_gate_params
-      render :payment
-    end
+    @order.save
+    redirect_to :index
   end
   
   def payment
-    @order = Order.find(params[:id])
-    @order.update_attributes(params[:order])
-    if @order.valid?
+    if Order.exists?(:conditions => {:id => params[:id]})
+      @order = Order.find(params[:id])
+      @order.order_items = Array.new
+      @order.write_attributes(params[:order])
+    else
+      @order = Order.new(params[:order])
+    end
+    unless @order.delivery_address['0'].empty? || @order.delivery_address['post_code'].empty?
       @order.create_ref_no
       @order.user = @user
       @order.save
       @payment = my_gate_params
       render :payment
+    else
+      @order[:error] = 'Please enter an address and a post code.'
+      render 'carts/checkout'
     end
   end
   
   def edit
     @order = Order.find(params[:id])
-    @products = Array.new
-    @order.order_items.each do |oi|
-      @products << Product.find(oi.product_id)
-    end
-    if @products[0][:_type] == 'PresentProduct'
-      @present = true
-      @presents = Present.where(:available_from.lte => Time.now).where(:available_to.gt => Time.now)
-    end
-    @order.save
-    render :layout => 'pages'
   end
   
   def my_gate_params
@@ -104,6 +94,12 @@ class OrdersController < ApplicationController
       payment_params[:currency_code] = 'ZAR'
       payment_params[:redirect_successful_url] = success_order_url @order
       payment_params[:redirect_failed_url] = cancel_order_url @order
+      payment_params[:recipient] = @order.user.name
+      payment_params[:shipping_address1] = @order.delivery_address["0"]
+      payment_params[:shipping_address2] = (@order.delivery_address["1"] || ' ')
+      payment_params[:shipping_address3] = (@order.delivery_address["2"] || ' ')
+      payment_params[:shipping_address4] = @order.delivery_address["post_code"]
+      
     elsif Rails.env == 'production'
       payment_params[:url] = 'https://virtual.mygateglobal.com/PaymentPage.cfm'
       payment_params[:mode] = '1'
@@ -114,6 +110,11 @@ class OrdersController < ApplicationController
       payment_params[:currency_code] = 'ZAR'
       payment_params[:redirect_successful_url] = success_order_url @order
       payment_params[:redirect_failed_url] = cancel_order_url @order
+      payment_params[:recipient] = @order.user.name      
+      payment_params[:shipping_address1] = @order.delivery_address["0"]
+      payment_params[:shipping_address2] = (@order.delivery_address["1"] || ' ')
+      payment_params[:shipping_address3] = (@order.delivery_address["2"] || ' ')
+      payment_params[:shipping_address4] = @order.delivery_address["post_code"]
     end
     payment_params
   end
@@ -130,6 +131,7 @@ class OrdersController < ApplicationController
     message.deliver
     owner_message = OrderConfirmation.owner_confirm @user, @order
     owner_message.deliver
+    render :layout => 'pages'
   end
   
   def cancel

@@ -29,6 +29,7 @@ class CartsController < ApplicationController
                               :shop => 'Presents in the Post', 
                               :thumbnail => present.options[params[:options][:choice].to_i].image_url, 
                               :note => present.options[params[:options][:choice].to_i].name })
+                              
     @user.cart ||= Cart.new
     @user.cart.cart_items << cart_item
     @user.cart.save
@@ -41,16 +42,21 @@ class CartsController < ApplicationController
   end
   
   def checkout
-    @order = Order.new
-    @order.order_items = Array.new
-    @user.cart.cart_items.each do |cart|
-      @order.order_items << OrderItem.new({:name => cart.name, 
+    if params[:order_id]
+      @order = Order.find params[:order_id] 
+    else
+      @order = Order.new
+      @order.options = Hash.new
+      @order.delivery_address = Hash.new
+      @order.order_items = Array.new
+      @user.cart.cart_items.each do |cart|
+        @order.order_items << OrderItem.new({:name => cart.name, 
                                            :price => cart.price, 
                                            :shop => cart.shop, 
                                            :note => cart.note, 
                                            :shipped => false})
+      end
     end
-    @order.save
-  end
+end
 
 end

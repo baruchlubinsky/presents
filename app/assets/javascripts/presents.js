@@ -3,6 +3,7 @@ $(document).ready(function (){
 	$('#options_recipient').change(showOptions);
 	$('#options_recipient').change();
 	$('#order_options_gift').change(toggleMessage);
+	$('#order_options_gift').change();
 });
 
 

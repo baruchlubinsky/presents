@@ -1,6 +1,6 @@
 class Order
   include Mongoid::Document
-  
+  include Mongoid::Timestamps
   field :delivery_address, :type => Hash
   field :paid, :type => Boolean, :default => false
   field :shipped, :type => Boolean
@@ -12,9 +12,7 @@ class Order
   field :options, :type => Hash
   
   belongs_to :user
-  
-  #validates_presence_of :delivery_address, :message => "Please enter a delivery address"
-  
+
   def create_ref_no
     self.ref_no ||= Time.now.to_i.to_s << id.to_s.last(2)
   end
