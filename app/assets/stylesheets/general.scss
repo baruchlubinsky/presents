@@ -16,12 +16,22 @@ body
   letter-spacing: 0.1em;
   font-size: 14px;
 }
-
-
+p
+{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+ol
+{
+	list-style-type: decimal;
+	padding-left: 20px;
+}
 h1,h2,h3,h4,h5,h6
 {
   font-family: 'Cantata One', serif;
   font-weight: normal;
+ // margin-top: 1.33em;
+  margin-bottom: 1.33em;
 }
 h1
 {

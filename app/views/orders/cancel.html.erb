@@ -2,10 +2,13 @@
 <p>
 	<%= @message %>
 </p>
-Do you want to: 
+Do you want to:
+<p /> 
 <%= form_tag checkout_path do %>
 	<%= hidden_field_tag :order_id, params[:id] %>
 	<%= submit_tag 'Review your order' %>
 <% end %>
-
-<%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] } %> or <%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> ?
+<p />
+<%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] } %>
+<p />
+<%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> ?

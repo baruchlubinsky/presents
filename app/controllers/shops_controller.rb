@@ -24,7 +24,7 @@ class ShopsController < ApplicationController
       if @shop.valid?
         @shop.save
         @artist.save
-        redirect_to shops_path
+        redirect_to shops_admin_path
       else
         redirect_to new_shop_path, :notice => 'Please ensure that the shop name is unique'        
       end

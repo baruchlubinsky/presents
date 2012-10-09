@@ -12,7 +12,7 @@ $column-color: white;
 {
   padding: 20px;
   background-color: white;
-  float: left;
+  
   width: 700px;
 }
 .blog_image
@@ -82,6 +82,11 @@ nav
 {
 	margin-left: 8px;
 	position: relative;
+	div
+	{
+		width: 740px;
+		overflow: hidden;
+	}	
   	a
 	{
 		position:relative;

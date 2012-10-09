@@ -33,5 +33,12 @@
 .cart_checkout
 {
 	margin-left: 150px;
+	float: left;
+	cursor: pointer;
+}
+.cart_shop
+{
+	float: right;
+	margin-right: 10px;
 	cursor: pointer;
 }

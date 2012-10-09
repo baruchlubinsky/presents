@@ -143,10 +143,14 @@ class OrdersController < ApplicationController
   
   def mail
     @order = Order.find(params[:id])
-    message = OrderConfirmation.user_confirm @user, @order
+    message = OrderConfirmation.bank_details @user, @order
     message.deliver
     owner_message = OrderConfirmation.owner_confirm @user, @order
     owner_message.deliver
+    @user = User.find session[:user_id]
+    @user.cart.cart_items.delete_all
+    @user.cart.save
+    render :layout => 'pages'
   end
   
 end

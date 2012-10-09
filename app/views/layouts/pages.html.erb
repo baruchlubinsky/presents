@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PresentsInThePost</title>
+  <title>Presents In The Post</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.7.2/build/cssreset/cssreset-min.css">
 
   <%= stylesheet_link_tag    "application", :media => "all" %> 
   <%= javascript_include_tag "application" %>
@@ -29,6 +30,7 @@
         </div>
         	<a href="/"><%= image_tag 'header.jpg', :id => 'logo' %></a>
         <nav>
+		<div>
 			<%= image_tag 'navdot.jpg' %>
   			<%= link_to image_tag('navhome.jpg'), home_path, :class => @tab == 'home' ? 'current' : 'regular' %> 
 			<%= image_tag 'navdot.jpg' %>
@@ -46,6 +48,7 @@
 			<%= image_tag 'navdot.jpg' %>
 			<%= link_to image_tag('navcontact.jpg'), contact_path, :class => @tab == 'contact' ? 'current' : 'regular' %> 
 			<%= image_tag 'navdot.jpg' %>
+		<div>
         </nav>
 		<div>
             <%= yield :prenav %>
