@@ -3,6 +3,7 @@
 	float: left;
 	padding-left:5px;
 	padding-right:5px;
+	clear: both;
 }
 .shop_summary
 {
@@ -27,6 +28,7 @@
 	float: left;
 	padding-left:5px;
 	padding-right:5px;
+	padding-bottom: 10px;
 }
 .product
 {
@@ -63,7 +65,7 @@
 {
 	float: left;
 	position: relative;
-	min-height: 220px;
+	min-height: 300px;
 }
 #main_product_image
 {

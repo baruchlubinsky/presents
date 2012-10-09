@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     end
     @shop.products << @product
     @shop.save
-    redirect_to edit_shop_path(@shop.name)
+    redirect_to shop_product_path(@shop.name, @product)
   end
   
   def edit
@@ -45,6 +45,7 @@ class ProductsController < ApplicationController
     end
     @product.save
     redirect_to edit_shop_path(@shop.name)
+    redirect_to shop_product_path(@shop.name, @product)
   end
   
   def destroy

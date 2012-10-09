@@ -1,7 +1,7 @@
 <div class='product_container'>
 	<a href='<%= shop_product_path(product.shop, product)  %>'>
 		<div class='product'>
-		    <%= image_div product.images.first.file_url(:story), 'product_image' %>
+		    <%= image_div product.images.first.file_url(:thumbnail), 'product_image' %>
 			<div class='product_name'>
 			  <h4><%= product.name %></h4>
 		    </div>

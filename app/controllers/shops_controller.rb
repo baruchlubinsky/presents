@@ -42,7 +42,7 @@ class ShopsController < ApplicationController
     @shop = Shop.find_by_name(params[:id])
     @shop.write_attributes(params[:shop])
     @shop.save
-    redirect_to edit_shop_path @shop, :notice => 'Saved changes'
+    redirect_to shop_path(@shop.name)
   end
   
   def show
