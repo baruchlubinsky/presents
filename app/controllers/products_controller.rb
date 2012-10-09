@@ -44,7 +44,6 @@ class ProductsController < ApplicationController
       return render :new
     end
     @product.save
-    redirect_to edit_shop_path(@shop.name)
     redirect_to shop_product_path(@shop.name, @product)
   end
   
