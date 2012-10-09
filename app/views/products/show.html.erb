@@ -20,11 +20,9 @@
 		<h3 class='product_title'>
 			<%= @product.name %>
 		</h3>
-        <h4>
+        <p>
             <%= simple_format @product.description %>
-        </h4>
-		
-
+        </p>
     </div>
  	<div id='product_bottom'>
 		<h4 class='product_price'>
@@ -37,5 +35,5 @@
 	</div>
 </section>
 <div id='logo_container'>
-	<%= image_tag @shop.logo.file_url%>
+	<a href='<%= shop_path(@shop.name) %>'><%= image_tag @shop.logo.file_url%></a>
 </div>

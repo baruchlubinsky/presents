@@ -3,7 +3,7 @@
     <p>
         <span class='shop_bio'><%= @shop.description %></span>
     </p>  
-  	<div id='shop_container'>
+  	<div id='shop_product_container'>
     	<%= render :partial => 'product', :collection => @shop.products %>
 	</div>
 <% else %>
