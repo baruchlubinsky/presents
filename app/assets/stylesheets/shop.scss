@@ -34,7 +34,12 @@
 	border-radius: 3px;
 	float: left;
 	padding: 20px 14px 6px 14px;
-	text-align: center;
+	text-align: left;
+	h4
+	{
+		margin-top: 0.3em;
+		margin-bottom: 0.2em;
+	}
 }
 .product_image
 {
@@ -47,11 +52,12 @@
 }
 .product_name
 {
-	float: left;
+	width: 192px;
+	overflow: hidden;
 }
 .product_card_price
 {
-	float: right;
+
 }
 #full_product
 {

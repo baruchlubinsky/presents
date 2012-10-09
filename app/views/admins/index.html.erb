@@ -1,9 +1,14 @@
 <h1>Admin page</h1>
+<p>
 <span class='message'><%= flash[:notice] %></span>
+</p>
 <ul>
     <li>
         <%= link_to 'Create a new present', new_present_path %>
     </li>
+	<li>
+		<%= link_to 'View all presents', presents_path %>
+	</li>	
     <li>
         <%= link_to 'Create a new post', new_story_path %>
     </li>
@@ -30,4 +35,5 @@
     </li>
 	<li>
 		<%= link_to 'Edit the scrolly machine', scroller_images_path %>
+	</li>
 </ul>

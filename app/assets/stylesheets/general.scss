@@ -26,28 +26,41 @@ ol
 	list-style-type: decimal;
 	padding-left: 20px;
 }
+ul
+{
+	list-style-type: disc;
+	padding-left: 20px;
+}
 h1,h2,h3,h4,h5,h6
 {
   font-family: 'Cantata One', serif;
   font-weight: normal;
- // margin-top: 1.33em;
+  margin-top: 1.33em;
   margin-bottom: 1.33em;
 }
 h1
 {
   font-size: 34px;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 h2
 {
   font-size: 30px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 h3
 {
   font-size: 26px;
+  margin-top: 1em;
+  margin-bottom: 1.33em;
 }
 h4
 {
   font-size: 16px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 form
 {
