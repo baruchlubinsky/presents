@@ -69,6 +69,10 @@ form
     border: dashed 2px #e0e0e0;
     font-family: 'Quattrocento', serif;
   }
+  input[type='submit']
+  {
+	cursor: pointer;
+  }
   textarea
   {
     border: dashed 2px #e0e0e0;
