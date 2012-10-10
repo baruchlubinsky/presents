@@ -44,7 +44,7 @@ class CartsController < ApplicationController
   def checkout
     if params[:order_id]
       @order = Order.find params[:order_id] 
-      if @order.options.nil
+      if @order.options.nil?
         @order.options = Hash.new
       end
     else
