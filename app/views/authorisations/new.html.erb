@@ -1,11 +1,17 @@
 <h1>Sign in</h1>
 <span><%= flash[:notice] %></span>
 <%= form_tag :controller => :authorisations, :action => :create do %>
-	<%= label_tag :email, 'E-mail address' %>
-	<%= text_field_tag :email %></br>
-	<%= label_tag :password, 'Password' %>
-	<%= password_field_tag :password %></br>
+	<p>
+	<%= label_tag :email, 'E-mail address' %><br />
+	<%= text_field_tag :email %>
+	</p>
+	<p>
+	<%= label_tag :password, 'Password' %><br />
+	<%= password_field_tag :password %>
+	</p>
+	<p>
 	<%= submit_tag 'Sign in' %>
+	</p>
 	<p>
 		<%= link_to 'Or create a new user', :controller => :users, :action => :new %>
 	</p>
