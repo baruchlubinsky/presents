@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.valid?
       if @user.save
         session[:user_id] = @user.id
-        message = SignupConfirmation.welcome(params[:user][:first_name], params[:user][:password])
+        message = SignupConfirmation.welcome(@user, params[:user][:password])
         message.deliver
         if session[:return_path].nil?
           redirect_to home_path
