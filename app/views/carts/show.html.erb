@@ -22,5 +22,9 @@
 	<% end %>
 	<h4 class='cart_total'>Total: <%= number_to_currency((@items.collect{|i| i.price}).inject{|sum, i| sum + i}) %></h4>
 	<%= button_to 'Proceed to checkout', checkout_path, :class => 'cart_checkout' %>
-	<%= button_to 'Keep shopping', shops_path, :class => 'cart_shop' %>
+	<% if @items.last.shop == "Presents in the Post" %>
+		<%= button_to 'Keep shopping', get_a_present_path, :class => 'cart_shop' %>
+	<% else %>
+		<%= button_to 'Keep shopping', shops_path, :class => 'cart_shop', :method => :get %>
+	<% end %>
 <% end %>

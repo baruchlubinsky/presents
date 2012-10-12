@@ -10,7 +10,7 @@
         <%= label_tag 'Present choices:' %>
     </p>
     <p>
-        <%= f.multi_upload :options, :image, :description => :name %>
+        <%= f.multi_upload :options, :image, :description => :name, :no_source => true %>
     </p>
     <p>
         <%= f.submit 'Submit' %>

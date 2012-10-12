@@ -18,8 +18,16 @@ class PresentsController < ApplicationController
     @present = Present.find(params[:id])
     @present.write_attributes(params[:present])
     @present.save
+    redirect_to presents_path
   end
+  
   def show
     @present = Present.find(params[:id])
+  end
+  
+  def destroy
+    @present = Present.find(params[:id])
+    @present.delete
+    redirect_to presents_path
   end
 end

@@ -74,6 +74,9 @@ class OrdersController < ApplicationController
       render :payment
     else
       @order[:error] = 'Please enter an address and a post code.'
+      if @order.options.nil?
+        @order.options = Hash.new
+      end
       render 'carts/checkout'
     end
   end

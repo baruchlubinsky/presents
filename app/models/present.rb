@@ -1,6 +1,7 @@
 class Present
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes
+  include Mongoid::Timestamps
   
   field :online, :type => Boolean
   

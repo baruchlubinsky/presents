@@ -23,7 +23,7 @@ class User
 	field :shoe_size, :type => String
 	field :tshirt_size, :type => String
 
-	validates_uniqueness_of :email
+	validates_uniqueness_of :email, :message => 'E-mail address is already taken'
 	validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :message => 'Please enter a valid e-mail address'
 	validates_presence_of :email, :message => 'Please enter your e-mail address'
 	validates_presence_of :password, :message => 'You must provide a password'

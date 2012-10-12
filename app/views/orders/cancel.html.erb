@@ -1,4 +1,6 @@
-<h1>Payment failed</h1>
+<p>
+	Oh no. That didn't seem to work. Please try again.
+</p>
 <p>
 	<%= @message %>
 </p>
@@ -11,4 +13,4 @@ Do you want to:
 <p />
 <%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] } %>
 <p />
-<%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> ?
+<%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> 

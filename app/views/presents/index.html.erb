@@ -1,23 +1,28 @@
+<%= link_to 'Admin menu', admin_path %>
 <h1>Presents</h1>
 <h2>Online</h2>
 <ul>
 <% @presents.where(:online => true).each do |p| %>
-	<li><%= p.recipient %> - <%= p.orders %> 
+	<li><%= p.created_at %> - <%= p.recipient %> - <%= p.orders %> 
 		<%= form_for p do |f| %>
 			<%= f.hidden_field :online, :value => false %>
     		<%= f.submit 'Take offline' %> 
+			<%= button_to 'Delete', presents_path, :confirm => 'Are you sure?', :method => :delete %>
 		<% end %>
+		<p />
 	</li>
 <% end %>
 </ul>
 <h2>Offline</h2>
 <ul>
 <% @presents.where(:online.ne=> true).each do |p| %>
-	<li><%= p.recipient %> - <%= p.orders %>  
+	<li><%= p.created_at %> - <%= p.recipient %> - <%= p.orders %>  
 		<%= form_for p do |f| %>
 			<%= f.hidden_field :online, :value => true %>
     		<%= f.submit 'Take online' %> 
+			<%= button_to 'Delete', presents_path, :confirm => 'Are you sure?', :method => :delete %>
 		<% end %>
+		<p />
 </li>
 <% end %>
 </ul>

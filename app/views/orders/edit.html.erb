@@ -8,9 +8,17 @@
 	<% end %>
 	</ul>
 	<h3>Details</h3>
-	<% if @order.options['gift'] %>
-		<p>This is a gift.<p>
-		<p><%= simple_format @order.options['message'] %><p>
+	<p>
+		Customer: <%= @order.user.name %>
+	</p>
+	<p>
+		Order time: <%= @order.created_at %>
+	</p>
+	<% unless @order.options.nil? %>
+		<% if @order.options['gift'] %>
+			<p>This is a gift.</p>
+			<p><%= simple_format @order.options['message'] %></p>
+		<% end %>
 	<% end %>
     <%= f.label :delivery_address, 'Delivery address:' %>
     <%= f.fields_for :delivery_address do |d| %>
