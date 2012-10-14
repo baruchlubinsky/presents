@@ -1,9 +1,11 @@
 <%= content_for :prenav do %>
 <div id='three_pictures'>
-    <%= image_tag '3steps.jpg' %>
-    <a href='<%= new_user_path %>' style='position: absolute; top: 65px; left: 50px; width: 204px; height: 256px;'></a>
-    <a href='<%= get_a_present_path %>' style='position: absolute; top: 16px; left: 273px; width: 191px; height: 303px;'></a>	
-	<a href='<%= posted_presents_path %>' style='position: absolute; top: 51px; left: 508px; width: 148px; height: 276px;'></a>	
+    <%= image_tag '3steps.jpg', :usemap => "#three_steps" %>
+    <map name='three_steps'>
+		<area shape="rect" coords="50,59,269,311" href="<%= new_user_path %>" alt="Sun">
+		<area shape="rect" coords="273,6,464, 309" href="<%= get_a_present_path %>" alt="Sun">
+		<area shape="rect" coords="508,41,656, 317" href="<%= posted_presents_path %>" alt="Sun">
+	</map>
 </div>
 
 <% end %>
