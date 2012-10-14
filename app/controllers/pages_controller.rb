@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   before_filter :check_login
-  before_filter :force_login, :only => 'get_a_present'
   
   def home
     @scroller_images = ScrollerImage.all;

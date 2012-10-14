@@ -5,7 +5,7 @@ class AuthorisationsController < ApplicationController
   end
   # Sign in
   def create
-    query = User.where(:email => params[:email])
+    query = User.all(conditions: {email: /^#{params[:email]}$/i})
     if query.count == 0
       flash[:notice] = 'Unable to sign in, email does not exist'
       redirect_to new_authorisation_path
