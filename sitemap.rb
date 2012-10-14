@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sitemap_generator'
 
-SitemapGenerator::Sitemap.default_host = 'http://presentsinthepost.co.za'
+SitemapGenerator::Sitemap.default_host = 'http://www.presentsinthepost.co.za'
 SitemapGenerator::Sitemap.create do
   add '/home'
   add '/contact_us'
