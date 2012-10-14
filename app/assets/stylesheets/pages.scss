@@ -87,18 +87,25 @@ nav
 	div
 	{
 		overflow: hidden;
+		height: 28px;
 	}	
   	a
 	{
 		position:relative;
+		top: 5px;
 		&:hover
 		{
-			top: -5px;
+			top: 0px;
 		}
 	}
 	a.current
 	{
-		top: -5px;
+		top: 0px;
+	}
+	.navdot
+	{
+		position:relative;
+		top: 5px;
 	}
 }
 section
