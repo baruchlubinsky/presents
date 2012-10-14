@@ -6,7 +6,7 @@
     <div id='order_container'>
 	    <%= form_tag '/cart/add_present' do %>
 	   		<p>
-				<%= label_tag :product, 'How many presents would you like to receive?' %>
+				<%= label_tag :product, 'For how many months would you like to receive presents in the post?' %>
 				<br />
 				<%= select_tag :product_id, options_from_collection_for_select(@products, :id, :name) %>
 			</p>

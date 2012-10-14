@@ -7,8 +7,8 @@
 		<%= form_for p do |f| %>
 			<%= f.hidden_field :online, :value => false %>
     		<%= f.submit 'Take offline' %> 
-			<%= button_to 'Delete', presents_path, :confirm => 'Are you sure?', :method => :delete %>
 		<% end %>
+		<%= button_to 'Delete', presents_path, :confirm => 'Are you sure?', :method => :delete %>
 		<p />
 	</li>
 <% end %>
@@ -19,9 +19,9 @@
 	<li><%= p.created_at %> - <%= p.recipient %> - <%= p.orders %>  
 		<%= form_for p do |f| %>
 			<%= f.hidden_field :online, :value => true %>
-    		<%= f.submit 'Take online' %> 
-			<%= button_to 'Delete', presents_path, :confirm => 'Are you sure?', :method => :delete %>
+    		<%= f.submit 'Take online' %> 			
 		<% end %>
+		<%= button_to 'Delete', {:action => :destroy, :id => p.id}, {:confirm => 'Are you sure?', :method => :delete} %>
 		<p />
 </li>
 <% end %>
