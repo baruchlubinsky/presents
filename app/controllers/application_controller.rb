@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
     def force_login
       #check_login
       if @user.nil?
-        session[:return_path] = request.url
+        if request.path == '/cart/add_present'
+          session[:return_path] = '/get_a_present'
+        else
+          session[:return_path] = request.url
+        end
         redirect_to '/login', :notice => 'You must be signed in to place an order.'
       end
     end

@@ -26,7 +26,7 @@
     </div>
  	<div id='product_bottom'>
 		<h4 class='product_price'>
-            <%= number_to_currency @product.price %>
+            <%= number_to_currency @product.price %> incl. delivery
         </h4>
         <h4 class='buy_now'>
             <%= link_to 'Add to cart', cart_add_item_path(:product_id => @product.id) %> &nbsp;&nbsp;
