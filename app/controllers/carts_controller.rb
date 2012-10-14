@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_filter :check_login
+  before_filter :force_login
   layout 'pages'
   
   def show
