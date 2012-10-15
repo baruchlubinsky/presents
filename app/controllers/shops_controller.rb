@@ -33,7 +33,9 @@ class ShopsController < ApplicationController
   
   def edit
     @shop = Shop.find_by_name(params[:id])
-    if (@user[:admin].nil? && @user[:artist] != @shop.name )
+    if (@user[:admin].nil? && @user[:artist] != @shop.name)
+      redirect_to '/home'
+    end
   end
   
   def update
