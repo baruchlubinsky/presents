@@ -33,9 +33,7 @@ class ShopsController < ApplicationController
   
   def edit
     @shop = Shop.find_by_name(params[:id])
-    # unless @shop.user_id == @user.id
-    #       redirect_to '/login', :notice => 'Only the artist may enter this page'
-    #     end
+    if (@user[:admin].nil? && @user[:artist] != @shop.name )
   end
   
   def update

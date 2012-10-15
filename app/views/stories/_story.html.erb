@@ -1,3 +1,15 @@
+<% content_for :head do %>
+	<meta property='og:title' content='<%= story.title %>' />
+	<meta property='og:type' content='article' />
+	<% if story.images.count > 0 %>
+		<meta property='og:image' content='<%= story.images.first.file_url(:thumbnail) %>'>
+	<% else %>
+	    <meta property='og:image' content='http://www.presentsinthepost.co.za/images/wallpaper.jpg'>
+	<% end %>
+	<meta property='og:url' content='<%="http://www.presentsinthepost.co.za/stories/#{story.id}" %>'>
+	<meta property='og:site_name' content='Presents in the Post' />
+	<meta property='fb:admins' content='193700468'>
+<% end %>
 <section class='story_container'>
     <h2 class='story_title'>
         <%= link_to story.title, story_path(story) %>
@@ -14,6 +26,7 @@
     <div class='story'>
         <%= simple_format(story.content) %>
     </div>
+    <div class="fb-like" data-href="http://www.presentsinthepost.co.za/stories/#{story.id}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
     <p>
       <a name='comments' onclick='toggleComments("<%= story.id %>")' class='comments_link'>Comments (<%= story.comments.count %>)</a>
     </p>
@@ -36,6 +49,7 @@
 	            </div>
 			</div>
         <% end %>
+
 		<h4>Post a comment</h4>
         <%= form_for([story, Comment.comment_for(@user)]) do |f| %>
             <p>

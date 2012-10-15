@@ -2,19 +2,21 @@ Processing payment, please wait...
 
 <form action=<%= @payment[:url] %> method='post' >
 	<input type='hidden' name='Mode', value='<%= @payment[:mode] %>' >
-	<input type='hidden' name='MerchantID' value='<%= @payment[:merchant_id] %>' >
-	<input type='hidden' name='ApplicationID', value='<%= @payment[:application_id] %>' >
-	<input type='hidden' name='MerchantReference' value='<%= @payment[:merchant_reference] %>' >
-	<input type='hidden' name='Amount' value='<%= @payment[:amount] %>' >
-	<input type='hidden' name='Currency' value='<%= @payment[:currency_code] %>' >
-	<input type='hidden' name='RedirectSuccessfulURL' value='<%= u @payment[:redirect_successful_url] %>' >
-	<input type='hidden' name='RedirectFailedURL' value='<%= u @payment[:redirect_failed_url] %>' >
-	<input type='hidden' name='Recipient' value='<%= @payment[:recipient] %>'>
-	<input type='hidden' name='ShippingAddress1' value='<%= @payment[:shipping_address1] %> '>
-	<input type='hidden' name='ShippingAddress2' value='<%= @payment[:shipping_address2] %> '>
-	<input type='hidden' name='ShippingAddress3' value='<%= @payment[:shipping_address3] %> '>
-	<input type='hidden' name='ShippingAddress4' value='<%= @payment[:shipping_address4] %> '>
-	<input type='hidden' name='ShippingAddress5' value=' '>
+	<input type='hidden' name='txtMerchantID' value='<%= @payment[:merchant_id] %>' >
+	<input type='hidden' name='txtApplicationID', value='<%= @payment[:application_id] %>' >
+	<input type='hidden' name='txtMerchantReference' value='<%= @payment[:merchant_reference] %>' >
+	<input type='hidden' name='txtPrice' value='<%= @payment[:amount] %>' >
+	<input type='hidden' name='txtCurrencyCode' value='<%= @payment[:currency_code] %>' >
+	<input type='hidden' name='txtDisplayPrice' value='<%= @payment[:amount] %>' >
+	<input type='hidden' name='txtDisplayCurrencyCode' value='<%= @payment[:currency_code] %>' >
+	<input type='hidden' name='txtRedirectSuccessfulURL' value='<%= u @payment[:redirect_successful_url] %>' >
+	<input type='hidden' name='txtRedirectFailedURL' value='<%= u @payment[:redirect_failed_url] %>' >
+	<input type='hidden' name='txtRecipient' value='<%= @payment[:recipient] %>'>
+	<input type='hidden' name='txtShippingAddress1' value='<%= @payment[:shipping_address1] %> '>
+	<input type='hidden' name='txtShippingAddress2' value='<%= @payment[:shipping_address2] %> '>
+	<input type='hidden' name='txtShippingAddress3' value='<%= @payment[:shipping_address3] %> '>
+	<input type='hidden' name='txtShippingAddress4' value='<%= @payment[:shipping_address4] %> '>
+	<input type='hidden' name='txtShippingAddress5' value=' '>
     <input type="submit" value="Send Details" >
 </form>
 
