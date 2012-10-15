@@ -4,7 +4,7 @@ class SignupConfirmation < ActionMailer::Base
   def welcome(user, password)
     @user = user.first_name
     @password = password
-    attachments.inline['signature.jpg'] = File.read('~/presents/presents/public/images/footer.jpg')
+    attachments.inline['signature.jpg'] = File.read("#{Rails.root}/presents/presents/public/images/footer.jpg")
     mail :to => user.email, :subject => "Welcome to Presents in the Post"
   end
   
