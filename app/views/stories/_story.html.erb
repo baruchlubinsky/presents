@@ -2,13 +2,13 @@
 	<meta property='og:title' content='<%= story.title %>' />
 	<meta property='og:type' content='article' />
 	<% if story.images.count > 0 %>
-		<meta property='og:image' content='<%= story.images.first.file_url(:thumbnail) %>'>
+		<meta property='og:image' content='<%= story.images.first.file_url(:thumbnail) %>' />
 	<% else %>
-	    <meta property='og:image' content='http://www.presentsinthepost.co.za/images/wallpaper.jpg'>
+	    <meta property='og:image' content='http://www.presentsinthepost.co.za/images/wallpaper.jpg' />
 	<% end %>
-	<meta property='og:url' content='<%="http://www.presentsinthepost.co.za/stories/#{story.id}" %>'>
+	<meta property='og:url' content='<%="http://www.presentsinthepost.co.za/stories/#{story.id}" %>' />
 	<meta property='og:site_name' content='Presents in the Post' />
-	<meta property='fb:admins' content='193700468'>
+	<meta property='fb:admins' content='193700468' />
 <% end %>
 <section class='story_container'>
     <h2 class='story_title'>
