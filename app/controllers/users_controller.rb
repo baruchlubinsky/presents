@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :force_login, :only => [:edit, :update]
-  
+  before_filter :require_admin, :only => [:index, :show]
   def new
     @user = User.new
   end
@@ -47,5 +47,9 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+  end
+  
+  def show
+    @user = User.find(params[:id])
   end
 end
