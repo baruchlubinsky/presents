@@ -4,7 +4,7 @@ class OrderConfirmation < ActionMailer::Base
   def user_confirm(user, order)
     @recipient = user.name
     @order = order
-    attachments.inline['signature.jpg'] = File.read(image_path('~/presents/presents/public/images/footer.jpg'))
+    attachments.inline['signature.jpg'] = File.read('~/presents/presents/public/images/footer.jpg')
     mail :to => user.email, :subject => "Order Confirmation"
   end
   
@@ -17,7 +17,7 @@ class OrderConfirmation < ActionMailer::Base
   def bank_details(user, order)
     @recipient = user.name
     @order = order
-    attachments.inline['signature.jpg'] = File.read(image_path('~/presents/presents/public/images/footer.jpg'))
+    attachments.inline['signature.jpg'] = File.read('~/presents/presents/public/images/footer.jpg')
     mail :to => user.email, :subject => 'Presents in the Post Bank Details'
   end
   
