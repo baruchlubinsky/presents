@@ -6,7 +6,7 @@ Thank you for ordering from presents in the post.
 </p>
 <ul>
 <% @order.order_items.each do |i| %>
-	<li><%= "#{i.name} from #{i.shop}. #{i.note}" %></li>
+	<li><%= "#{i.name} from #{i.shop}." %></li>
 <% end %>
 </ul>
 <p>
