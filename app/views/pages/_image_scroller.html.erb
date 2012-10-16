@@ -1,11 +1,13 @@
 <div id="scroller_container">
 	<div id="scroller" data_items_count="<%= images.count %>" >
-		<% images.each do |i| %>
-			<div class='scroll_image_container' >   
-				<a href='<%= i.link %>'>
-					<%= image_div i.image.file_url, 'scroll_image' %>
-				</a>
-			</div>	
+		<% 2.times do %>
+			<% images.each do |i| %>
+				<div class='scroll_image_container' >   
+					<a href='<%= i.link %>'>
+						<%= image_div i.image.file_url, 'scroll_image' %>
+					</a>
+				</div>	
+			<% end %>
 		<% end %>
 	</div>	
 </div>

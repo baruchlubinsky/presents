@@ -1,6 +1,14 @@
 <p>Fantastic!</p> 
 <p>
-Your order has been received. Please use this order number for any queries (<%= @order.ref_no %>). <br />
+Your order has been received. 
+</p>
+<ul>
+<% @order.order_items.each do |i| %>
+	<li><%= "#{i.name} from #{i.shop}. #{i.note}" %></li>
+<% end %>
+</ul>
+<p>
+Please use this order number for any queries (<%= @order.ref_no %>). <br />
 Raj will tell the makers to get stitching and knocking.
 </p>
 <% unless @order._type == 'PresentProduct' %>

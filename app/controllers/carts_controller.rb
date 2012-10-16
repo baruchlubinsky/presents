@@ -24,7 +24,7 @@ class CartsController < ApplicationController
     present.orders ||= 0
     present.orders += 1 
     present.save
-    cart_item = CartItem.new({:name => "#{product.name} for a #{present.recipient}",
+    cart_item = CartItem.new({:name => "#{product.description} for a #{present.recipient}",
                               :price => product.price, 
                               :shop => 'Presents in the Post', 
                               :thumbnail => present.options[params[:options][:choice].to_i].image_url, 

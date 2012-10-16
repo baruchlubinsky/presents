@@ -1,5 +1,5 @@
 $(document).ready(function (){
-	maxScroll = parseInt($('#scroller').attr('data_items_count')) - 3;
+	maxScroll = parseInt($('#scroller').attr('data_items_count'));
 	scrollCount = 0;
 	scrollTimer = setInterval(animateScroller, 3000);
 	
@@ -14,20 +14,14 @@ var scrollTimer;
 function animateScroller()
 {
 	scroller = $('#scroller');
-	if(scrollCount <= maxScroll)
+	if(scrollCount == maxScroll)
 	{
-		scrollCount++;
-		scroller.animate(
-			{left: -scrollCount * 217.5},
-			1200,
-			'swing');
-	}
-	else
-	{
+		scroller.css('left', 0);
 		scrollCount = 0;
-		scroller.animate(
-			{left: '0'},
-			400,
-			'swing');
 	}
+	scrollCount++;
+	scroller.animate(
+					{left: -scrollCount * 217.5},
+					1200,
+					'swing');
 }
