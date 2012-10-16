@@ -2,6 +2,7 @@ require 'digest/sha1'
 
 class User
 	include Mongoid::Document
+	include Mongoid::MultiParameterAttributes
 	
 	field :first_name, :type => String
 	field :surname, :type => String
