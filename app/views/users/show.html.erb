@@ -1,6 +1,9 @@
 <%= link_to 'Admin menu', admin_path %>
 <h3><%= @user.name %></h3>
 <p>
+	Email: <%= mail_to @user[:email] %>
+</p>
+<p>
 	Gender: <%= @user[:gender] %>
 </p>
 <p>
