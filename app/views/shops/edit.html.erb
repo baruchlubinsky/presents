@@ -1,10 +1,31 @@
 <h1><%= @shop.name %></h1>
 <span><%= flash[:notice] %></span>
+<h3>Artists</h3>
+	<%= form_tag :action => 'add_artist', :id => @shop.name do %>
+	<p>
+		<%= label_tag :artist_email, 'Enter an e-mail to add an artist.' %><br />
+		<%= text_field_tag :artist_email %>
+	</p>
+	<p>
+		<%= submit_tag 'Add'%>
+	</p>
+	<% end %>
+	<ul>
+	<% @shop.artists.each do |a| %>
+	<li>
+		<%= a.name %> 
+		<%= button_to 'Remove', {:controller => :shops, :action => :remove_artist, :id => @shop.name, :artist_id => a.id, :method => :post} %>
+	</li>
+	<% end %>
+	</ul>
+<h3>Shop</h3>
 <%= form_for @shop do |f| %>
+    <% unless @user[:admin].nil? %>
     <p>
         <%= f.label :online, 'Is your shop ready to go online?' %>
         <%= f.check_box :online %>
     </p>
+ 	<% end %>
     <p>
         <%= f.label :blurb, 'A one line description of your shop' %>
         <br />
@@ -16,7 +37,8 @@
         <%= f.text_area :description, :rows => 4 %>
     </p>
 	<p>
-		<%= f.label :logo, 'Logo' %>
+		<%= f.label :logo, 'Logo' %><br />
+		<%= f.label :logo, '400px wide, any height, landscape is ideal.' %>
 		<% if @shop.logo %>
 			<p>
 				<%= image_tag @shop.logo.file_url(:thumbnail) %>
@@ -28,7 +50,9 @@
 		<% end %>
 	</p>
 	<p>
-		<%= f.label :cover, 'Shop front image' %>
+		<%= f.label :cover, 'Shop front image' %><br />
+		<%= f.label :cover, '310 by 248 pixels' %><br />
+		<%= f.label :cover, 'This image appears with your brand name, amongst the other shops.' %>
 		<% if @shop.cover %>
 			<p>
 				<%= image_tag @shop.cover.file_url(:thumbnail) %>
@@ -41,7 +65,7 @@
 	</p>
     <%= f.submit 'Save' %>
 <% end %>
-<h2>Products</h2>
+<h3>Products</h3>
 <%= link_to 'Add a product', new_shop_product_path(@shop) %>
 <ul>
     <% @shop.products.each do |p| %>

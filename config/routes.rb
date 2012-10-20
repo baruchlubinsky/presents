@@ -45,6 +45,11 @@ PresentsInThePost::Application.routes.draw do
   end
   
   resources :shops do
+    member do
+      get 'preview'
+      post 'add_artist'
+      post 'remove_artist'
+    end
     collection do
       get 'admin'
     end

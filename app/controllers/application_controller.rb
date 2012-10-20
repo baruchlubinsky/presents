@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_login
   
     def check_login
-    if session[:user_id].nil?
+      if session[:user_id].nil?
         @user = nil
       else
         @user = User.find(session[:user_id])
@@ -16,13 +16,6 @@ class ApplicationController < ActionController::Base
         redirect_to home_path
       end
     end  
-    
-    def require_artist
-      #check_login
-      if @user.nil? || (@user[:artist].nil? && @user[:admin].nil?)
-        redirect_to home_path
-      end
-    end 
   
     def force_login
       #check_login
@@ -34,5 +27,17 @@ class ApplicationController < ActionController::Base
         end
         redirect_to '/login', :notice => 'You must be signed in to place an order.'
       end
+    end
+    
+    def check_artist?
+      if @user.nil?
+        redirect_to '/login'
+        return false
+      end
+      if (!@user[:admin].nil? || @shop.artists.to_a.include?(@user))
+        return true
+      end
+      redirect_to '/login'
+      return false
     end
 end

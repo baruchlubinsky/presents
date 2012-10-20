@@ -46,8 +46,16 @@ $column-color: white;
 	background: url('../images/footer.jpg');
 	margin-top: 180px;
 	width: 740px;
-	height: 332px;
+	height: 336px;
 	clear: both;
+	position: relative;
+	span
+	{
+		position: absolute;
+		bottom: 1px;
+		right: 2px;
+		font-size: 12px;
+	}
 }
 
 #logo

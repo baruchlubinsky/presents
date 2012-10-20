@@ -1,0 +1,10 @@
+<h2 class='shop_title'><%= @shop.name %></h2>
+<p>
+     <span class='shop_bio'><%= @shop.description %></span>
+</p>  
+<div id='shop_product_container'>
+ 	<%= render :partial => 'product', :collection => @shop.products %>
+</div>
+<div id='logo_container'>
+	<%= image_tag @shop.logo.file_url %>
+</div>

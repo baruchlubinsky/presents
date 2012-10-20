@@ -33,7 +33,6 @@ class User
 	
 	has_many :orders
 	embeds_one :cart
-	has_one :shop
 	
   def hash_password(pw)
     self.salt ||= Digest::SHA1.hexdigest(Time.now.to_s)

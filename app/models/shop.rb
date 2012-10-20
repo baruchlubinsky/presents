@@ -6,7 +6,7 @@ class Shop
   field :blurb, :type => String
   field :online, :type => Boolean
   
-  belongs_to :user
+  has_and_belongs_to_many :artists, :class_name => 'User', :inverse_of => nil
   
   has_many :products
   

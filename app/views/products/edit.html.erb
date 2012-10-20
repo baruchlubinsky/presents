@@ -18,7 +18,8 @@
         R<%= f.text_field :price %>
     </p>
     <p>
-        <%= f.label 'Images (400px wide)' %>
+        <%= f.label 'Images (400px wide)' %><br />
+		<%= f.label '400px wide. At least 280px high.' %>
     </p>
     <ul>
         <% @product.images.each do |image| %>
