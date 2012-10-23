@@ -22,7 +22,7 @@
 		<%= f.label '400px wide. At least 280px high.' %>
     </p>
     <p>
-        <%= f.multi_upload :images, :file %>
+        <%= f.multi_upload :images, :file, :no_source => true %>
     </p>
     <p>
         <%= f.submit 'Create' %>

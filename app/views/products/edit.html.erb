@@ -30,7 +30,7 @@
         <% end %>
     </ul>  
     <p>
-        <%= f.multi_upload :images, :file %>
+        <%= f.multi_upload :images, :file, :no_source => true %>
     </p>
     <p>
         <%= f.submit 'Save' %>
