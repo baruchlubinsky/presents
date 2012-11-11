@@ -9,20 +9,33 @@
 	<%= submit_tag 'Search' %>
 	</p>
 <% end %>
+<%= form_tag '/orders', :method => :get do |form| %>
+	<p>
+		<%= label_tag :from_date, "Start date" %><br />
+		<%= date_select :from, :date, :default => @from_date %>
+	</p>
+	<p>
+		<%= label_tag :to_date, "End date" %><br />
+		<%= date_select :to, :date, :default => @to_date %>
+	</p>
+	<p>
+		<%= submit_tag "Search" %>
+	</p>
+<% end %>
 <table class='record_table'>
-    <tr class='table_header'>
-        <td>
+    <tr>
+        <th>
             Ref no.
-        </td>
-        <td>
+        </th>
+        <th>
             Customer
-        </td>
-        <td>
+        </th>
+        <th>
             Paid
-        </td>
-        <td>
+        </th>
+        <th>
             Shipped
-        </td>
+        </th>
     </tr>
     <% @orders.each do |o| %>
         <tr>  
@@ -39,9 +52,9 @@
                 <td>
                     <%= f.check_box :shipped, :data_trigger_submit => true %>
                 </td>
-                <td>
+                
                     <%= f.submit 'Save', :class => 'hidden' %>
-                </td>
+                
             <% end %>
         </tr>
         

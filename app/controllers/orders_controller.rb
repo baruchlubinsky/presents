@@ -24,6 +24,9 @@ class OrdersController < ApplicationController
     @order.order_items.to_a.count.times do |i|
       p = Product.find(@order.order_items[i].product_id)
       @order.order_items[i].write_attributes p.order_item
+      if @order.order_items[i].options['delivery_note']
+        @order.options['delivery_note'] = @order.order_items[i].options['delivery_note']
+      end
     end
     @order.create_ref_no
     @order.user = @user
@@ -33,7 +36,18 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.includes(:user).all.asc(:paid, :shipped).desc(:created_at)
+    if params[:from]
+      @from_date = DateTime.new(params[:from]['date(1i)'].to_i, params[:from]['date(2i)'].to_i, params[:from]['date(3i)'].to_i).to_time
+    else
+      present = Present.where(:online => true).asc(:created_at).first
+      @from_date = present.created_at
+    end
+    if params[:to]
+      @to_date = DateTime.new(params[:to]['date(1i)'].to_i, params[:to]['date(2i)'].to_i, params[:to]['date(3i)'].to_i).to_time
+    else
+      @to_date = DateTime.now
+    end
+    @orders = Order.includes(:user).where(:created_at.gt => @from_date).where(:created_at.lt => @to_date).asc(:paid, :shipped).desc(:created_at)
   end
   
   def show
@@ -47,6 +61,7 @@ class OrdersController < ApplicationController
   
   def destroy
     @order = Order.find(params[:id])
+    @order.delete
     redirect_to :root
   end
   
@@ -66,12 +81,26 @@ class OrdersController < ApplicationController
     else
       @order = Order.new(params[:order])
     end
-    unless @order.delivery_address['0'].empty? || @order.delivery_address['post_code'].empty?
+    if params[:order][:delivery_address].nil?
+      @has_add = true
+      @order.delivery_address = Hash.new
+    else
+      if params[:order][:delivery_address]['0'].empty? || params[:order][:delivery_address]['post_code'].empty?
+        @has_add = false
+      else
+        @has_add = true
+      end
+    end
+    if @has_add
       @order.create_ref_no
       @order.user = @user
       @order.save
-      @payment = my_gate_params
-      render :payment
+      if params[:commit] == "Pay by credit card"
+        @payment = my_gate_params
+        render :payment
+      else
+        redirect_to mail_order_path(@order)
+      end
     else
       @order[:error] = 'Please enter an address and a post code.'
       if @order.options.nil?
@@ -146,9 +175,12 @@ class OrdersController < ApplicationController
   
   def mail
     @order = Order.find(params[:id])
+    @order.options ||= Hash.new
+    @order.options[:eft] = 'EFT'
+    @order.save
     message = OrderConfirmation.bank_details @user, @order
     message.deliver
-    owner_message = OrderConfirmation.owner_confirm @user, @order
+    owner_message = OrderConfirmation.owner_confirm_eft @user, @order
     owner_message.deliver
     @user = User.find session[:user_id]
     @user.cart.cart_items.delete_all

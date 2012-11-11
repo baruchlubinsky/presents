@@ -1,4 +1,5 @@
 <% if @presents.empty?  %>
+<%= image_tag 'designer.jpg' %>
 <p>
     We're sorry, there is no present available to order at this time, please check back soon.
 </p>
@@ -10,14 +11,22 @@
 				<br />
 				<%= select_tag :product_id, options_from_collection_for_select(@products, :id, :name) %>
 			</p>
-			<p>
-				<%= label_tag 'Choose the option to get the present best suited to you'%>
-			</p>
+			<%= fields_for :order do |order| %>
+				<%= order.fields_for :options do |o| %>
+					<p>
+			            <%= o.label :gift, 'Send as a gift?' %>
+				        <%= o.check_box 'gift' %>
+			        </p>
+				<% end %>
+			<% end %>
 			<%= fields_for :options do |o| %>
 				<p>
-					<%= o.label :recipient, 'This present is for a:'%>
+					<%= o.label :recipient, 'This present is for a'%>
 					<br />
 					<%= o.select :recipient, options_from_collection_for_select(@presents, :id, :recipient) %>
+				</p>
+				<p>
+					<%= label_tag 'Click on a picture to customise your present' %>
 				</p>
 				<div id='choices_container'>
 					<% @presents.each_with_index do |p, i| %>
@@ -36,6 +45,56 @@
 						<% end %>
 					<% end %>
 				</div>
+			<% end %>
+			<%= fields_for :order do |order| %>
+				<%= order.fields_for :options do |o| %>
+			        <div id='message' class='hidden'>
+						<p>
+							<%= o.label :to, 'To (full name)' %><br />
+							<%= o.text_field :to %>
+						</p>
+			            <p>
+			                <%= o.label :message, 'Write a message'%>
+			                <br />
+			                <%= text_area_tag 'order[options][message]', nil, :rows => 8, :cols => 40  %>
+			            </p>
+						<p>
+							<%= o.label :from, 'From' %><br />
+							<%= o.text_field :from, :value => @user.nil? ? nil : @user.name %>
+						</p>
+						<p>
+							<%= o.label 'delivery_address_0', 'Delivery address line 1' %><br />
+							<%= o.text_field 'delivery_address_0'  %>
+						</p>
+						<p>
+							<%= o.label 'delivery_address_1', 'Delivery address line 2' %><br />
+							<%= o.text_field 'delivery_address_1'  %>
+						</p>
+						<p>
+							<%= o.label 'delivery_address_2', 'Delivery address line 3' %><br />
+							<%= o.text_field 'delivery_address_2'  %>
+						</p>
+						<p>
+							<%= o.label 'delivery_address_postal_code', 'Postal code' %><br />
+							<%= o.text_field 'delivery_address_post_code'  %>
+						</p>
+						<p>
+							Recipient's details:
+						</p>
+						<p>
+							<%= o.label :shoe_size, 'Shoe size' %></br>
+							<%= o.text_field :shoe_size %>
+						</p>
+						<p>
+							<%= o.label :tshirt_size, 'T-shirt size' %></br>
+							<%= o.text_field :tshirt_size %>
+						</p>
+						<p>
+							<%= o.label :waist_size, 'Dress/Pants size' %></br>
+							<%= o.text_field :waist_size %>
+						</p>
+			        </div>
+				<% end %>
 			<% end %>	
 			<%= submit_tag 'Add to cart' %>
 		<% end %>

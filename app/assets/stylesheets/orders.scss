@@ -20,3 +20,20 @@
 	}
 }
 
+.record_table
+{
+	table, tr, td, th
+	{
+		border: 1px solid black;
+	}
+	th
+	{
+		font-weight: bold;
+		padding: 3px;
+	}
+	td
+	{
+		padding: 2px;
+		text-align: center;
+	}
+}

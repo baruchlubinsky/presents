@@ -14,6 +14,12 @@ class OrderConfirmation < ActionMailer::Base
     mail :to => 'pammijoy@gmail.com', :subject => "New order received (No. #{@order.ref_no})"   
   end
   
+  def owner_confirm_eft(user, order)
+    @customer = user
+    @order = order
+    mail :to => 'pammijoy@gmail.com', :subject => "New EFT order received (No. #{@order.ref_no})"    
+  end
+  
   def bank_details(user, order)
     @recipient = user.name
     @order = order

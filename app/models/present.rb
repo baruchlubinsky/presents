@@ -5,6 +5,8 @@ class Present
   
   field :online, :type => Boolean
   
+  field :delivery_note, :type => String
+  
   field :recipient, :type => String
   field :orders, :type => Integer
   

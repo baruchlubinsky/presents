@@ -28,7 +28,7 @@ PresentsInThePost::Application.routes.draw do
       post 'payment'
       post 'success'
       post 'cancel'
-      post 'mail'
+      get 'mail'
     end
   end
   

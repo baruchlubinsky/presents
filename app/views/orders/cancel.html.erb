@@ -1,3 +1,7 @@
+<script type='text/javascript' >
+	var allow = false;
+</script>
+
 <p>
 	Oh no. That didn't seem to work. Please try again.
 </p>
@@ -8,9 +12,18 @@ Do you want to:
 <p /> 
 <%= form_tag checkout_path do %>
 	<%= hidden_field_tag :order_id, params[:id] %>
-	<%= submit_tag 'Review your order' %>
+	<%= submit_tag 'Review your order', :onclick => 'allow = true;' %>
 <% end %>
 <p />
-<%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] } %>
+<%= button_to "Pay by EFT", {:controller => 'orders', :action => 'mail', :id => params[:id] }, :method => 'get', :onclick => 'allow = true;' %>
 <p />
-<%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete' %> 
+<%= button_to "Cancel order", {:controller => 'orders', :action => 'destroy', :id => params[:id]}, :method => 'delete', :onclick => 'allow = true;' %> 
+
+<script type='text/javascript' >
+window.onbeforeunload = function() {
+	if(!allow)
+	{
+		return allow;
+	}
+} ;
+</script>

@@ -12,7 +12,8 @@ class CartsController < ApplicationController
     cart_item = CartItem.new({:name => product.name,
                               :price => product.price,
                               :shop => product.shop.name,
-                              :thumbnail => product.images.first.file_url(:thumbnail)})
+                              :thumbnail => product.images.first.file_url(:thumbnail)},
+                              :options => Hash.new )
     @user.cart.cart_items << cart_item
     @user.cart.save
     redirect_to '/cart/show'
@@ -28,8 +29,9 @@ class CartsController < ApplicationController
                               :price => product.price, 
                               :shop => 'Presents in the Post', 
                               :thumbnail => present.options[params[:options][:choice].to_i].image_url, 
-                              :note => present.options[params[:options][:choice].to_i].name })
-                              
+                              :note => present.options[params[:options][:choice].to_i].name,
+                              :options => params[:order][:options] })
+    cart_item[:options][:delivery_note] = present.delivery_note      
     @user.cart ||= Cart.new
     @user.cart.cart_items << cart_item
     @user.cart.save
@@ -47,6 +49,11 @@ class CartsController < ApplicationController
       if @order.options.nil?
         @order.options = Hash.new
       end
+      @order.order_items.each do |item|
+        if item.options.nil?
+          item.options = Hash.new
+        end
+      end
     else
       @order = Order.new
       @order.options = Hash.new
@@ -57,6 +64,7 @@ class CartsController < ApplicationController
                                            :price => cart.price, 
                                            :shop => cart.shop, 
                                            :note => cart.note, 
+                                           :options => cart.options || Hash.new,
                                            :shipped => false})
       end
     end

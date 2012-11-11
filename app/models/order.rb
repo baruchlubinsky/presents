@@ -25,4 +25,13 @@ class Order
     return sum
   end
   
+  def delivery_note
+    order_items.each do |oi|
+      if !oi.options.nil? && oi.options['delivery_note']
+        return oi.options['delivery_note']
+      end
+    end
+    return nil
+  end
+  
 end

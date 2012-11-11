@@ -42,6 +42,7 @@
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url='<%= "http://www.presentsinthepost.co.za/stories/#{story.id}" %>' data-text="<%= story.title %>">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</div>
+	<!--
     <p>
       <a name='comments' onclick='toggleComments("<%= story.id %>")' class='comments_link'>Comments (<%= story.comments.count %>)</a>
     </p>
@@ -90,4 +91,5 @@
             <%= f.submit 'Submit' %>
         <% end %>
     </div>
+	!-->
 </section>

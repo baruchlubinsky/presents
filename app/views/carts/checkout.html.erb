@@ -8,7 +8,6 @@ You are about to order:
 <p>
 Total: <%= number_to_currency @order.total %>
 </p>
-<h3>Order Details</h3>
 <% unless @order[:error].nil? %>
 	<%= @order[:error] %>
 <% end %>
@@ -19,43 +18,38 @@ Total: <%= number_to_currency @order.total %>
 				<%= i.hidden_field :name, :value => item.name %>
 				<%= i.hidden_field :price, :value => item.price %>
 				<%= i.hidden_field :shop, :value => item.shop %>
-				<%= i.hidden_field :note, :value => item.note %>								
+				<%= i.hidden_field :note, :value => item.note %>	
+				<%= i.fields_for :options do |option| %>
+					<% item[:options].each do |key, val| %>
+						<%= option.hidden_field key, :value => val %>
+					<% end %>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %>
-     <%= f.fields_for :options do |o| %>
-        <p>
-            <%= o.label :gift, 'Send as a gift?' %>
-			<% if @order.options['gift'] %>
-	            <%= check_box_tag 'order[options][gift]', 'yes', :checked => true %>
-			<% else %>
-	            <%= check_box_tag 'order[options][gift]', 'yes' %>
-			<% end %>
-        </p>
-        <div id='message' class='hidden'>
-            <p>
-                <%= o.label :message, 'Write a message'%>
-                <br />
-                <%= text_area_tag 'order[options][message]', @order.options['message'], :rows => 8, :cols => 40  %>
-            </p>
-        </div>
-    <% end %>
-    <%= f.label :delivery_address, 'Delivery address' %>
-    <%= f.fields_for :delivery_address do |a| %>
-        <% 3.times do |i| %>
-            <p>
-                <%= a.label "line #{i}", "Address line #{i + 1}"%>
-                <br />
-                <%= a.text_field i.to_s, :value => @order.delivery_address[i.to_s] %>
-            </p>
-        <% end %>
-        <p>
-            <%= a.label :post_code, "Postal code"%>
-            <br />
-            <%= a.text_field :post_code, :value => @order.delivery_address['post_code'] %>
-        </p>
-    <% end %>
+	<% unless (@order.order_items.select{|item| item[:options]['gift'] == '0' }).empty? %>
+	    <%= f.label :delivery_address, 'Your delivery address' %>
+	    <%= f.fields_for :delivery_address do |a| %>
+	        <% 3.times do |i| %>
+	            <p>
+	                <%= a.label "line #{i}", "Address line #{i + 1}"%>
+	                <br />
+	                <%= a.text_field i.to_s, :value => @order.delivery_address[i.to_s] %>
+	            </p>
+	        <% end %>
+	        <p>
+	            <%= a.label :post_code, "Postal code"%>
+	            <br />
+	            <%= a.text_field :post_code, :value => @order.delivery_address['post_code'] %>
+	        </p>
+	    <% end %>
+	<% end %>
 	<p>
-    	<%= f.submit "Purchase" %>
+		Purchase online now via credit card. Transaction secured by MyGate.<br />
+    	<%= f.submit "Pay by credit card" %>
 	</p>	
+	<p>
+		Receive an e-mail with our banking details and make a transfer.<br />
+		<%= f.submit "Pay by EFT" %>
+	</p>
 <% end %>

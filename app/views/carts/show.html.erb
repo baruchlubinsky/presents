@@ -9,6 +9,11 @@
 				<p>
 					<%= "#{item.name} from #{item.shop}" %>
 				</p>
+				<% unless item[:options].nil? || item[:options]['to'].nil? %>
+				<p>
+					For <%= item[:options]['to'] %>
+				</p>
+				<% end %>
 				<p>
 					<%= number_to_currency item.price %>
 				</p>

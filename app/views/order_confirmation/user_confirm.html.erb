@@ -7,6 +7,11 @@ Your order has been received.
 	<li><%= "#{i.name} from #{i.shop}." %></li>
 <% end %>
 </ul>
+<% if(@order.delivery_note) %>
+<p>
+	<%= @order.delivery_note %>
+</p>
+<% end %>
 <p>
 Please use this order number for any queries (<%= @order.ref_no %>). <br />
 Raj will tell the makers to get stitching and knocking.

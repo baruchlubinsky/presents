@@ -7,6 +7,8 @@ class OrderItem
   field :price, :type => Float
   field :note, :type => String
   
+  field :options, :type => Hash
+  
   embedded_in :order
   
 end

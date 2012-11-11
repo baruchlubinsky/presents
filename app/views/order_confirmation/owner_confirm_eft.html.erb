@@ -1,0 +1,22 @@
+<p>
+	Hi Pammi-Joy
+</p>
+<p>
+	We just received a new order for:
+	<ul>
+	<% @order.order_items.each do |i| %>
+		<li><%= "#{i.name} from #{i.shop}. #{i.note}" %></li>
+	<% end %>
+	</ul>
+	from <%= @customer.name %>.
+</p>
+<p>
+	Pay by EFT.
+</p>
+<p>
+	Please remember to check that you have received the money, even if the system has registered a payment.
+</p>
+<p>
+	Yay, for a sale! Well done.<br/>
+	Raj
+</p>	

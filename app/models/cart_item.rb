@@ -7,6 +7,8 @@ class CartItem
   field :thumbnail, :type => String
   field :note, :type => String
   
+  field :options, :type => Hash
+  
   embedded_in :cart
   
 end
