@@ -40,7 +40,12 @@ class OrdersController < ApplicationController
       @from_date = DateTime.new(params[:from]['date(1i)'].to_i, params[:from]['date(2i)'].to_i, params[:from]['date(3i)'].to_i).to_time
     else
       present = Present.where(:online => true).asc(:created_at).first
-      @from_date = present.created_at
+      if present?
+        @from_date = present.created_at
+      else
+        present = Present.where(:online => false).desc(:created_at).first
+        @from_date = present.created_at
+      end
     end
     if params[:to]
       @to_date = DateTime.new(params[:to]['date(1i)'].to_i, params[:to]['date(2i)'].to_i, params[:to]['date(3i)'].to_i).to_time
