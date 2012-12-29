@@ -23,9 +23,17 @@ function toggleMessage()
 	if(this.checked)
 	{
 		$('#message').removeClass('hidden');
+		$('#order_options_delivery_address_0').addClass('required');
+		$('#order_options_delivery_address_post_code').addClass('required');
+		$('#order_options_to').addClass('required');
+		$('#order_options_from').addClass('required');
 	}
 	else
 	{
 		$('#message').addClass('hidden');
+		$('#order_options_delivery_address_0').removeClass('required');
+		$('#order_options_delivery_address_post_code').removeClass('required');
+		$('#order_options_to').removeClass('required');
+		$('#order_options_from').removeClass('required');
 	}
 }

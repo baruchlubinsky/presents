@@ -5,7 +5,7 @@
 </p>
 <% else %>
     <div id='order_container'>
-	    <%= form_tag '/cart/add_present' do %>
+	    <%= form_tag '/cart/add_present', 'data-validate' => true do %>
 	   		<p>
 				<%= label_tag :product, 'For how many months would you like to receive presents in the post?' %>
 				<br />

@@ -111,7 +111,7 @@ class OrdersController < ApplicationController
       if @order.options.nil?
         @order.options = Hash.new
       end
-      render 'carts/checkout'
+      redirect_to checkout_path
     end
   end
   

@@ -11,7 +11,7 @@ Total: <%= number_to_currency @order.total %>
 <% unless @order[:error].nil? %>
 	<%= @order[:error] %>
 <% end %>
-<%= form_for @order, :url => "/payment?id=#{@order.id}", :method => :post do |f| %>
+<%= form_for @order, :url => "/payment?id=#{@order.id}", :method => :post, html: {'data-validate' => true} do |f| %>
 	<%= f.fields_for :order_items do |oi| %>
 		<% @order.order_items.each_with_index do |item, index| %>
 			<%= oi.fields_for index.to_s do |i| %>
@@ -27,20 +27,28 @@ Total: <%= number_to_currency @order.total %>
 			<% end %>
 		<% end %>
 	<% end %>
-	<% unless (@order.order_items.select{|item| item[:options]['gift'] == '0' }).empty? %>
+	<% unless (@order.order_items.all?{|item| item[:options].has_key?('delivery_address_0') }) %>
 	    <%= f.label :delivery_address, 'Your delivery address' %>
 	    <%= f.fields_for :delivery_address do |a| %>
-	        <% 3.times do |i| %>
-	            <p>
-	                <%= a.label "line #{i}", "Address line #{i + 1}"%>
-	                <br />
-	                <%= a.text_field i.to_s, :value => @order.delivery_address[i.to_s] %>
-	            </p>
-	        <% end %>
+            <p>
+                <%= a.label "line 0", "Address line 1"%>
+                <br />
+                <%= a.text_field '0', :value => @order.delivery_address['0'], :class => 'required' %>
+            </p>
+			<p>
+                <%= a.label "line 1", "Address line 2"%>
+                <br />
+                <%= a.text_field '1', :value => @order.delivery_address['1'] %>
+            </p>
+			<p>
+                <%= a.label "line 2", "Address line 3"%>
+                <br />
+                <%= a.text_field '2', :value => @order.delivery_address['2'] %>
+            </p>
 	        <p>
 	            <%= a.label :post_code, "Postal code"%>
 	            <br />
-	            <%= a.text_field :post_code, :value => @order.delivery_address['post_code'] %>
+	            <%= a.text_field :post_code, :value => @order.delivery_address['post_code'], :class => 'required' %>
 	        </p>
 	    <% end %>
 	<% end %>
